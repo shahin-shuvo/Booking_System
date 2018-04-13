@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/du_booking_system.css" rel="stylesheet">
-    <link href="/static/css/style_signup.css" rel="stylesheet">
+    <link href="/static/css/style_login.css" rel="stylesheet">
       <link href="/static/css/style_navbar.css" rel="stylesheet">
 
   </head>
@@ -54,59 +54,46 @@
             <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
             <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
             <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
-            <li  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="#" id="auditorium" >Auditorium Booking</a></li>
             <li  class="active" style="width: 150px"><a class="active" href="#" id="field" >Field Booking</a></li>
           </ul>
         </div>
 
       </div> <div class="btn-group-vertical">
-           <a href="login" class="btn btn-danger navbar-btn" >Login</a>
-         <a  class="btn btn-warning navbar-btn" href="signup.html">SignUp</a>
+           <a href="#" class="btn btn-danger navbar-btn" >Login</a>
+         <a  class="btn btn-warning navbar-btn" href="signup">SignUp</a>
          </div>
     </nav>
 
 
-
-
-   <script type="text/javascript">
-
-           function input_data() {
-
-               name1 = document.getElementById("name").value;
-               email1= document.getElementById("email").value;
-               password1= document.getElementById("password").value;
-               password2= document.getElementById("confirm_password").value;
-               phone1= document.getElementById("phone").value;
-               dept1= document.getElementById("dept").value;
-               if(password1==password2 && password1!="")
-               {
-
-               }
-            }
-	</script>
 <body >
   <div id="window">
-  <h1  style="font-size: 30px ; color: #F4D03F">SIGN UP</h1>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li style="font-weight: bold; color: crimson ;font-size: 30px">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <h1  style="font-size: 40px ; color: black">Login</h1>
   {% from "_formhelpers.html" import render_field %}
-		<form method=post action="/signup">
+		<form method=post action="/login">
 			<dl style="color: white  ">
 				{{render_field(form.username)}}
-                {{render_field(form.email)}}
 				{{render_field(form.password)}}
-				{{render_field(form.confirm)}}
-                {{render_field(form.phone)}}
-				{{render_field(form.dept)}}
 			</dl>
-            <button type="submit" class="btn btn-success" style="width: 80px">Submit</button>
+            <button type="submit" class="btn btn-danger" style="width: 80px">Submit</button>
 		</form>
-  {% for message in get_flashed_messages() %}
-        {{ message }}
-  {% endfor %}
+   <dl style="color: red ">
 		{% if error %}
 			<p class="error"><strong>Error:</strong>{{error}}</p>
 		{% endif %}
+    </dl>
 </div>
 </body>
+
 
 
    <script src="/static/vendor/jquery/jquery.min.js"></script>

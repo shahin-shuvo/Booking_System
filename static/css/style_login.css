@@ -6,13 +6,13 @@ body {
 }
 
 #window {
-  height: 700px;
+  height: 500px;
   width: 800px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin: -225px auto 10px -400px;
-  background-image: url('/static/img/signbg.jpg');
+  background-color: rgba(5,4,2,0.1);
   background-size: 100% 100%;
   box-shadow: 0 0px 50px rgba(0, 0, 0, 0.5);
 }

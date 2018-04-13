@@ -17,7 +17,9 @@
 			</dl>
 			<p><input type=submit value=Register></p>
 		</form>
-
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+    {% endfor %}
 		{% if error %}
 			<p class="error"><strong>Error:</strong>{{error}}</p>
 		{% endif %}

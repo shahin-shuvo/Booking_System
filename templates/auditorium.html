@@ -1,0 +1,361 @@
+
+<html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DU_Booking_Site</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link href="/static/css/style_signup.css" rel="stylesheet">
+       <link href="/static/css/style_navbar.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/du_booking_system.css" rel="stylesheet">
+
+
+
+
+
+  </head>
+
+  <body id="header">
+
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+          <img class="navbar-brand" src="/static/img/logo.png">
+        <a class="navbar-brand" href="#">University of Dhaka</a>
+
+        <div class="topnav" id="navbarResponsive" >
+            <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
+          <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
+            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
+            <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
+            <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field" id="field" >Field Booking</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+         <div class="btn-group-vertical">
+             {% if session.logged_in %}
+             <a href="logout" class="btn btn-danger navbar-btn"  >Logout</a>
+                 </div><a href="#" target="_blank">
+                 <div id="container" title="View My Profile">
+                 <div id="fab"></div></div></a>
+             {% else %}
+             <a href="login" class="btn btn-danger navbar-btn"  >Login</a>
+             <a class="btn btn-warning navbar-btn" href="signup">SignUp</a>
+             {% endif %}
+         </div>
+
+    </nav>
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
+<div id="fullpage" style="background-color: burlywood">
+
+    <!--this section is for page header(Classroom Booking)-->
+
+        <section>
+            <a id="main-content"></a>
+            <h1 class="title" id="page-title" >Auditorium Booking</h1>
+            <style>
+                h1{
+                    float: left;
+                    width: 100%;
+                    padding: 1px 1px;
+                    margin-top: 70px;
+                    background-color: #339966;
+                    margin-right: 10px;
+                    /*border: 1px solid black;*/
+                    font-size: 25px;
+                    font-family: Verdana;
+                    color: white;
+                    font-weight: bold;
+                }
+            </style>
+        </section>
+
+
+        <!--this section is for color legend-->
+
+        <!--this section is for color legend-->
+        <section >
+
+            <div id="calender-color-legend" >
+                <ul style="list-style-type: none;">
+                     <li style="font-weight: bold ;font-family: Verdana;font-size: 20px;"><a3>Color Code:</a3></li>
+                    <li><a2>Booked</a2></li>
+                    <li><a1>Apply for Booking</a1></li>
+                    <li><a4>Already Applied</a4></li>
+                </ul>
+
+            <style>
+
+                li{
+                    float: left;
+                }
+
+                li a2{
+                    height: 30px;
+                    background-color: #dc143c;
+                    color: white;
+                    text-align: center;
+                    font-size: 18px;
+                    display: block;
+                }
+
+                li a1{
+                    height: 30px;
+                    background-color: #138D75;
+                    color: white;
+                    text-align: center;
+                    font-size: 18px;
+                    display: block;
+                }
+                 li a4{
+                     height: 30px;
+                    background-color: #A569BD;
+                    color: white;
+                    text-align: center;
+                    font-size: 18px;
+                    display: block;
+                }
+            </style>
+        </div>
+    </section>
+
+    <!--this section is for date selector-->
+     <div>
+     <ul style="list-style-type: none; width: 200px; margin-left: 60px">
+         <h2 style="font-weight: bold ;font-family: Verdana;font-size: 20px;"><b3>Select Date:</b3></h2>
+          <style>
+              h2{
+                  float: left;
+                  margin-top: 20px;
+              }
+          </style>
+          <form1  method=get action="/auditorium"  style="margin-left: 1px ">
+         <input id="date" type="date" name="bday">
+          <button  id="show" type="submit" class="btn btn-success" onclick="getValue()" style="width: 80px" formaction="/auditorium_call">Show</button>
+         </form1>
+         <style>
+             form1{
+                 float: left;
+
+             }
+             button{
+                 margin-top: 30px;
+                 float: left;
+             }
+         </style>
+     </ul>
+     </div>
+    <section>
+
+
+
+    </section>
+
+    <!--2d table is starting from here-->
+   <style>
+        table, th, td
+        {
+            padding: 2px 2px;
+            margin-top: 50px;
+            border: 1px solid black;
+            height: inherit;
+            width: 700px;
+        }
+    </style>
+
+
+   <section><center>
+       <style>
+           section{
+               margin-left: 60px;
+               margin-right: 60px;
+           }
+       </style>
+    <div class="table-responsive">
+        <table id="Table" class="mb30" bgcolor="#f0ffff">
+            <thead>
+            <tr id="tableHeadRow" bgcolor="#dcdcdc">
+                <th ><center>Auditorium</center></th>
+                <th ><center>Status</center></th>
+
+            </tr>
+            </thead>
+
+            <tbody id="tableBody">
+                   <form method=post action="/auditorium" name="audi_form" id="table" >
+									<tr>
+										<td style="background-color: #D5F5E3"><center>TSC Auditorium</center></td>
+                                        {% if data[1]=="1" %}
+                                                     {% if data[0] == "Booked"%}
+                                                         <td id="btn1" bgcolor="#dc143c"><center><p><a  class="active" id="button1" style="background-color: #dc143c; color: white ;border: none">Booked</a></p></center></td>
+                                                     {% elif data[0] == "Already Applied"%}
+                                                         <td id="btn1" bgcolor="#A569BD"><center><p><a  class="active" id="button1" style="background-color: #A569BD; border: none ; color: white">Already Applied</a></p></center></td>
+                                                     {% endif %}
+                                        {% else %}
+                                         <td id="btn1" bgcolor="#138D75"><center><p><a  href="auditorium_booking_form" class="active" id="button1" style="background-color: #138D75; color: white ;border: none">Apply for Booking</a></p></center></td>
+                                        {% endif %}
+
+									</tr>
+									<tr>
+                                        <td style="background-color: #FCF3CF"><center>RC Majumdar Arts Auditorium</center></td>
+                                    {% if data[3]=="1" %}
+                                                     {% if data[2] == "Booked"%}
+                                                         <td id="btn2" bgcolor="#dc143c"><center><p><a  class="active" id="button2" style="background-color: #dc143c; color: white ;border: none">Booked</a></p></center></td>
+                                                     {% elif data[2] == "Already Applied"%}
+                                                         <td id="btn2" bgcolor="#A569BD"><center><p><a  class="active" id="button2" style="background-color: #A569BD; border: none ; color: white">Already Applied</a></p></center></td>
+                                                     {% endif %}
+                                    {% else %}
+                                         <td id="btn2" bgcolor="#138D75 "><center><p><a  href="auditorium_booking_form" class="active" id="button2" style="background-color: #138D75; color: white ;border: none">Apply for Booking</a></p></center></td>
+                                     {% endif %}
+									</tr>
+
+									 <tr>
+										 <td style="background-color: #EBDEF0"><center>Nawab Ali Chowdhury Senate Bhaban</center></td>
+                                     {% if data[5] == "1" %}
+                                                     {% if data[4] == "Booked"%}
+                                                         <td id="btn3" bgcolor="#dc143c"><center><p><a  class="active" id="button3" style="background-color: #dc143c; color: white ;border: none">Booked</a></p></center></td>
+                                                     {% elif data[4] == "Already Applied"%}
+                                                         <td id="btn3" bgcolor="#A569BD"><center><p><a  class="active" id="button3" style="background-color: #A569BD; border: none ; color: white">Already Applied</a></p></center></td>
+                                                     {% endif %}
+                                     {% else %}
+                                         <td id="btn3" bgcolor="#138D75"><center><p><a   href="auditorium_booking_form" class="active" id="button3" style="background-color: #138D75; color: white ;border: none">Apply for Booking</a></p></center></td>
+                                     {% endif %}
+									</tr>
+
+									<tr>
+                                        <td style="background-color: #FADBD8 "><center>Lecture Theater, Fine Arts</center></td>
+                                    {% if data[7] == "1" %}
+                                                     {% if data[6] == "Booked"%}
+                                                         <td id="btn4" bgcolor="#dc143c"><center><p><a  class="active" id="button4" style="background-color: #dc143c; color: white ;border: none">Booked</a></p></center></td>
+                                                     {% elif data[6] == "Already Applied"%}
+                                                         <td id="btn4" bgcolor="#A569BD"><center><p><a  class="active" id="button4" style="background-color: #A569BD; border: none ; color: white">Already Applied</a></p></center></td>
+                                                     {% endif %}
+                                    {% else %}
+                                         <td id="btn4" bgcolor="#138D75"><center><p><a   href="auditorium_booking_form" class="active" id="button4" style="background-color: #138D75; color: white ;border: none">Apply for Booking</a></p></center></td>
+                                    {% endif %}
+									</tr>
+                        <script type=text/javascript>
+                            function getValue(){
+                               var xhttp = new XMLHttpRequest();
+                               xhttp.onreadystatechange = function() {
+                                   if (this.readyState == 4 && this.status == 200) {
+                                       var dataArr = JSON.parse(this.response);
+                                       //for 1
+                                        document.getElementById("button1").innerText = dataArr[0];
+                                       if(dataArr[0]=="Booked"){
+                                           document.getElementById("button1").style.backgroundColor = "#dc143c";
+                                           document.getElementById("btn1").style.backgroundColor = "#dc143c";
+                                           document.getElementById("button1").href="#";
+                                       }
+                                       else if(dataArr[0]=="Already Applied"){
+                                           document.getElementById("button1").style.backgroundColor = "#A569BD";
+                                           document.getElementById("btn1").style.backgroundColor = "#A569BD";
+                                           document.getElementById("button1").href="#";
+                                       }
+                                       else
+                                       {
+                                           document.getElementById("button1").style.backgroundColor = "#138D75";
+                                           document.getElementById("btn1").style.backgroundColor = "#138D75";
+                                           document.getElementById("button1").href="auditorium_booking_form";
+
+                                       }
+                                       //for 2
+                                       document.getElementById("button2").innerText = dataArr[2];
+                                       if(dataArr[2]=="Booked"){
+                                           document.getElementById("button2").style.backgroundColor = "#dc143c";
+                                           document.getElementById("btn2").style.backgroundColor = "#dc143c";
+                                           document.getElementById("button2").href="#";
+                                       }
+                                       else if(dataArr[2]=="Already Applied"){
+                                           document.getElementById("button2").style.backgroundColor = "#A569BD";
+                                           document.getElementById("btn2").style.backgroundColor = "#A569BD";
+                                           document.getElementById("button2").href="#";
+                                       }
+                                       else
+                                       {
+                                           document.getElementById("button2").style.backgroundColor = "#138D75";
+                                           document.getElementById("btn2").style.backgroundColor = "#138D75";
+                                           document.getElementById("button2").href="auditorium_booking_form";
+                                       }
+                                       //for 3
+                                       document.getElementById("button3").innerText = dataArr[4];
+                                       if(dataArr[4]=="Booked"){
+                                           document.getElementById("button3").style.backgroundColor = "#dc143c";
+                                           document.getElementById("btn3").style.backgroundColor = "#dc143c";
+                                           document.getElementById("button3").href="#";
+                                       }
+                                       else if(dataArr[4]=="Already Applied"){
+                                           document.getElementById("button3").style.backgroundColor = "#A569BD";
+                                           document.getElementById("btn3").style.backgroundColor = "#A569BD";
+                                           document.getElementById("button3").href="#";
+                                       }
+                                       else
+                                       {
+                                           document.getElementById("button3").style.backgroundColor = "#138D75";
+                                           document.getElementById("btn3").style.backgroundColor = "#138D75";
+                                           document.getElementById("button3").href="auditorium_booking_form";
+
+                                       }
+                                       //for 4
+                                       document.getElementById("button4").innerText = dataArr[6];
+                                       if(dataArr[6]=="Booked"){
+                                           document.getElementById("button4").style.backgroundColor = "#dc143c";
+                                           document.getElementById("btn4").style.backgroundColor = "#dc143c";
+                                           document.getElementById("button4").href="#";
+                                       }
+                                       else if(dataArr[6]=="Already Applied"){
+                                           document.getElementById("button4").style.backgroundColor = "#A569BD";
+                                           document.getElementById("btn4").style.backgroundColor = "#A569BD";
+                                           document.getElementById("button4").href="#";
+                                       }
+                                       else
+                                       {
+                                           document.getElementById("button4").style.backgroundColor = "#138D75";
+                                           document.getElementById("btn4").style.backgroundColor = "#138D75";
+                                           document.getElementById("button4").href="auditorium_booking_form";
+                                       }
+
+
+                                   }
+                                   };
+
+                             xhttp.open("GET", "http://127.0.0.1:8080/auditorium_call?query="+
+                                 document.getElementById("date").value, true);
+                             xhttp.send();
+        }
+                        </script>
+                       </form>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</center></section>
+
+
+    <footer class="py-5 bg-dark" style=" margin-top: 100px;">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; DU Booking Website 2018</p>
+      </div>
+    </footer>
+
+    </div>

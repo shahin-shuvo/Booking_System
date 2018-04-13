@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
-
   <head>
 
     <meta charset="utf-8">
@@ -55,16 +54,23 @@
             <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
             <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
             <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
-            <li  class="active" style="width: 210px"><a class="active " href="#" id="auditorium" >Auditorium Booking</a></li>
-            <li  class="active" style="width: 150px"><a class="active" href="#" id="field" >Field Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field" id="field" >Field Booking</a></li>
           </ul>
         </div>
 
       </div>
 
          <div class="btn-group-vertical">
-           <a href="#" class="btn btn-danger navbar-btn" >Login</a>
-         <a  class="btn btn-warning navbar-btn" href="signup">SignUp</a>
+             {% if session.logged_in %}
+             <a href="logout" class="btn btn-danger navbar-btn"  >Logout</a>
+                 </div><a href="#" target="_blank">
+                 <div id="container" title="View My Profile">
+                 <div id="fab"></div></div></a>
+             {% else %}
+             <a href="login" class="btn btn-danger navbar-btn"  >Login</a>
+             <a class="btn btn-warning navbar-btn" href="signup">SignUp</a>
+             {% endif %}
          </div>
 
     </nav>
@@ -177,9 +183,7 @@
 
       </div>
 
-    </div><a href="#" target="_blank">
-       <div id="container" title="View My Profile">
-    <div id="fab"></div></div></a>
+
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container" >
