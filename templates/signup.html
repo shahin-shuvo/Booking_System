@@ -1,49 +1,49 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="zxx">
 
-<!DOCTYPE html>
-<!--suppress ALL -->
-<html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+<head>
+	 <title>DU_Booking_Site</title>
 
-  <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-    <title>DU_Booking_Site</title>
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- Custom Theme files -->
+	<link href="/static/css/font-awesome.css" rel="stylesheet">
+	<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+	<!--fonts-->
+	<link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+	<!--//fonts-->
+
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/static/css/du_booking_system.css" rel="stylesheet">
-    <link href="/static/css/style_signup.css" rel="stylesheet">
-      <link href="/static/css/style_navbar.css" rel="stylesheet">
-
-  </head>
-
-  <body style="background: #F8C471    ">
-
-   <script type="text/javascript">
-			var nav = false;
-		function show_hide_nav(id){
-			var navbar = document.getElementById(id);
-
-			if(nav = false){
-				navbar.style.display = "block";
-				nav = true;
-			}else{
-				navbar.style.display = "none";
-				nav = false;
-			}
-		}
-	</script>
+       <link href="/static/css/signup_style.css" rel="stylesheet">
 
 
 
+</head>
 
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body style="background: burlywood">
+	<!-- login -->
+     <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 90px">
       <div class="container">
           <img class="navbar-brand" src="/static/img/logo.png">
         <a class="navbar-brand" href="#">University of Dhaka</a>
@@ -51,70 +51,133 @@
         <div class="topnav" id="navbarResponsive" >
             <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
           <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
-            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
-            <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
-            <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
-            <li  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li>
-            <li  class="active" style="width: 150px"><a class="active" href="#" id="field" >Field Booking</a></li>
+            <li3  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li3>
+            <li3  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li3>
+            <li3   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li3>
+            <li3  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li3>
+            <li3  class="active" style="width: 150px"><a class="active" href="field" id="field" >Field Booking</a></li3>
           </ul>
         </div>
 
-      </div> <div class="btn-group-vertical">
-           <a href="login" class="btn btn-danger navbar-btn" >Login</a>
-         <a  class="btn btn-warning navbar-btn" href="signup.html">SignUp</a>
+      </div>
+
+         <div class="btn-group-vertical">
+             {% if session.logged_in %}
+             <a href="logout" class="btn btn-danger navbar-btn"  >Logout</a>
+                 </div><a href="#" target="_blank">
+                 <div id="container" title="View My Profile">
+                 <div id="fab"></div></div></a>
+             {% else %}
+             <a href="login" class="btn btn-danger navbar-btn"  >Login</a>
+             <a class="btn btn-warning navbar-btn" href="signup">SignUp</a>
+             {% endif %}
          </div>
+
     </nav>
 
-
-
-
-   <script type="text/javascript">
-
-           function input_data() {
-
-               name1 = document.getElementById("name").value;
-               email1= document.getElementById("email").value;
-               password1= document.getElementById("password").value;
-               password2= document.getElementById("confirm_password").value;
-               phone1= document.getElementById("phone").value;
-               dept1= document.getElementById("dept").value;
-               if(password1==password2 && password1!="")
-               {
-
-               }
-            }
-	</script>
 <body >
-  <div id="window">
-  <h1  style="font-size: 30px ; color: #F4D03F">SIGN UP</h1>
-  {% from "_formhelpers.html" import render_field %}
-		<form method=post action="/signup">
-			<dl style="color: white  ">
-				{{render_field(form.username)}}
-                {{render_field(form.email)}}
-				{{render_field(form.password)}}
-				{{render_field(form.confirm)}}
-                {{render_field(form.phone)}}
-				{{render_field(form.dept)}}
-			</dl>
-            <button type="submit" class="btn btn-success" style="width: 80px">Submit</button>
+	<div class="login-section-agileits" style="margin-top: 5% ">
+		<form action="#" method="post">
+			<div class="w3ls-icon">
+				<span class="fa fa-user" aria-hidden="true"></span>
+				<input type="text" class="lock" id="username" name="name" placeholder="username" required="" />
+			</div>
+			<div class="w3ls-icon">
+				<span class="fa fa-envelope" aria-hidden="true"></span>
+				<input type="email" class="user" id="email" name="email" placeholder="Email" required="" />
+			</div>
+			<div class="w3ls-icon">
+				<span class="fa fa-lock" aria-hidden="true"></span>
+				<input type="password" class="lock" id="password1" name="password" placeholder="Password" required="" />
+			</div>
+			<div class="w3ls-icon">
+				<span class="fa fa-lock" aria-hidden="true"></span>
+				<input type="password" class="lock" id="password2" name="confirm password" placeholder="Confirm Password" required="" />
+			</div>
+            <div class="w3ls-icon">
+				<span class="fa fa-phone-square" aria-hidden="true"></span>
+				<input type="tel" class="lock" id="phone" name="Contact no.." placeholder="Contact No" required=""  />
+			</div>
+             <div class="w3ls-icon" >
+				<span   class="fa fa-university" aria-hidden="true"></span>
+				<input type="dept" class="lock" id="dept" name="Department Name" placeholder="Department Name" required="" />
+			</div>
+			<input type="submit" value="register now" onclick="submitSignupData()">
 		</form>
-  {% for message in get_flashed_messages() %}
-        {{ message }}
-  {% endfor %}
-		{% if error %}
-			<p class="error"><strong>Error:</strong>{{error}}</p>
-		{% endif %}
-</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+        var phn_valid = false;
+        var pass_valid = false;
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+			document.getElementById("phone").onchange = telephoneCheck;
+
+		}
+
+		function telephoneCheck() {
+		    var str = document.getElementById("phone").value;
+            if(/^(?:\+88|01)?(?:\d{11})$/.test(str)) {
+                phn_valid = true;
+            }
+            else
+            {
+                phn_valid=false;
+                document.getElementById("phone").setCustomValidity("Pattern do not Match");
+            }
+        }
+
+		function validatePassword() {
+			var pass2 = document.getElementById("password2").value;
+			var pass1 = document.getElementById("password1").value;
+			if (pass1 != pass2)
+				document.getElementById("password2").setCustomValidity("Passwords do not Match");
+			else
+            {
+                pass_valid=true;
+                document.getElementById("password2").setCustomValidity('');
+            }
+
+			//empty string means no validation error
+		}
+		function submitSignupData(){
+            var xhttp = new XMLHttpRequest();
+
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password2").value;
+            var phone = document.getElementById("phone").value;
+            var dept = document.getElementById("dept").value;
+
+            if(username!="" && email !="" && password != "" && phone!="" && dept!="" && pass_valid && phn_valid) {
+
+
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var x = xhttp.responseText;
+                        if (x == "Exist") {
+                            alert("Already Exist")
+                        }
+                        else if (x == "ERROR") {
+                            alert("Some error occured")
+
+                        }
+                        else if(x=="OK") alert("Successfully Done!")
+                    }
+                };
+                var args = [username, email, password, phone, dept]
+                xhttp.open("GET", "http://127.0.0.1:8080/signup_helper?query=" + JSON.stringify(args), true);
+                xhttp.send();
+            }
+
+        }
+
+	</script>
+ </body>
 </body>
-
-
-   <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/signup/pass_confirm.js"></script>
-
-
-
-  </body>
 
 </html>

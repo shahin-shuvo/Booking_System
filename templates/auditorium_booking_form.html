@@ -138,33 +138,44 @@
     <script type=text/javascript>
         function submitData(){
             var xhttp = new XMLHttpRequest();
-
+            var pay="";
             var username = document.getElementById("username").value;
             var date = document.getElementById("date").value;
             var e = document.getElementById('audi');
             var auditorium = e.options[e.selectedIndex].value;
-            var pay = document.getElementById("payment").files[0].name;
-
+            var paym = document.getElementById("payment").value;
+            if(paym!="")
+            {
+                pay = document.getElementById("payment").files[0].name;
+            }
 
              xhttp.onreadystatechange = function() {
                  if (this.readyState == 4 && this.status == 200) {
                      var x = xhttp.responseText;
                      if(x=="1")
                      {
-                        // alert("This Auditorium is already Booked");
+                         alert("Some error!");
                      }
-                     else if(x=="0")
+                     else if(x=="0") {
+                         alert("Successful!!");
+                         window.location.replace("http://127.0.0.1:8080/auditorium");
+                     }
+                     else if(x=="exist")
                      {
-                         alert("DONE!!")
+                         alert("This is already booked! Try another!");
+
                      }
                  }
              };
              var args = [username,date,auditorium,pay]
             if(auditorium=="hide")
             {
-                alert("Please Confirm Auditorium")
+                alert("Please Confirm Auditorium");
             }
-
+             else if(pay=="")
+            {
+                alert("Please give payment receipt!");
+            }
             else
             {
                 xhttp.open("GET", "http://127.0.0.1:8080/auditorium_booking_done?query="+JSON.stringify(args), true);
@@ -178,4 +189,3 @@
 </body>
 
 </html>
-

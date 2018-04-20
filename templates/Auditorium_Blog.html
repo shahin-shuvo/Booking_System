@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DU_Booking_Site</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link href="/static/css/style_signup.css" rel="stylesheet">
+       <link href="/static/css/style_navbar.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/du_booking_system.css" rel="stylesheet">
+
+       <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/1-col-portfolio.css" rel="stylesheet">
+
+
+
+  </head>
+
+  <body id="header">
+
+   <script type="text/javascript">
+			var nav = false;
+		function show_hide_nav(id){
+			var navbar = document.getElementById(id);
+
+			if(nav == false){
+				navbar.style.display = "block";
+				nav = true;
+			}else{
+				navbar.style.display = "none";
+				nav = false;
+			}
+		}
+	</script>
+
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+          <img class="navbar-brand" src="/static/img/logo.png">
+        <a class="navbar-brand" href="#">University of Dhaka</a>
+
+        <div class="topnav" id="navbarResponsive" >
+            <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
+          <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
+            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
+            <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
+            <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field" id="field" >Field Booking</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+         <div class="btn-group-vertical">
+             {% if session.logged_in %}
+             <a href="logout" class="btn btn-danger navbar-btn"  >Logout</a>
+                 </div><a href="#" target="_blank">
+                 <div id="container" title="View My Profile">
+                 <div id="fab"></div></div></a>
+             {% else %}
+             <a href="login" class="btn btn-danger navbar-btn"  >Login</a>
+             <a class="btn btn-warning navbar-btn" href="signup">SignUp</a>
+             {% endif %}
+         </div>
+
+    </nav>
+
+                <!-- Page Content -->
+    <div class="container" style="margin-top: 6%">
+
+      <!-- Page Heading -->
+      <h1 class="my-4" >AUDITORIUM  INFORMATION</h1>
+
+      <!-- Project One -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="/static/img/tsc1.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>TSC Auditorium</h3>
+            <p>
+                The Teacher-Student Centre or TSC of the University of Dhaka is a building on the Dhaka University campus in Shahbagh, Dhaka, Bangladesh. The Centre was established in 1961 by the Dhaka University as the Division publicAffairs.
+                Across the green lawn to the east of the Teacher-Student Centre stands a small Greek Mausoleum. It was constructed in 1915.
+            </p>
+              <a class="btn btn-primary" onclick="goto1()" style="color: white">Find On Map</a>
+             <script type="text/javascript">
+		         function goto1() {
+                     var url = "https://www.google.com/search?tbm=lcl&ei=gNDYWtHsKIyHvQSEq6OwCw&q=tsc+auditorium+university+of+dhaka&oq=TSC+Auditorium+university+of+dhaka&gs_l=psy-ab.1.0.35i39k1.53938.54850.0.57863.2.2.0.0.0.0.364.627.2-1j1.2.0....0...1c.1.64.psy-ab..0.2.625....0.HNO3zJikV0k#rlfi=hd:;si:;mv:!1m3!1d9.511531453041384!2d90.3959099!3d23.73210565!2m3!1f0!2f0!3f0!3m2!1i1!2i1!4f13.1;tbs:lrf:!2m4!1e17!4m2!17m1!1e2!3sIAE,lf:1,lf_ui:2";
+                     window.open(url, "_blank");
+                 }
+	         </script>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Two -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="/static/img/rcm.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>RC Majumdar Arts Auditorium</h3>
+          <p> An auditorium at the Lecture Theatre (near Kalabhabon) on the Dhaka University campus has been named after its former Vice Chancellor and noted historian Dr Romesh Chandra (RC) Majumdar. Vice Chancellor Prof SMA Faiz inaugurated the auditorium on Monday as the chief guest at a function to mark the occasion.  The air-conditioned auditorium will be available on rent for seminars, symposiums and educational discourses under appropriate permission from the authorities.</p>
+           <a class="btn btn-primary" onclick="goto2()" style="color: white">Find On Map</a>
+             <script type="text/javascript">
+		         function goto2() {
+                     var url = "https://www.google.com/search?q=RC+Majumdar+Arts+Auditorium+Dhaka+University&npsic=0&rflfq=1&rlha=0&rllag=23734425,90392633,50&tbm=lcl&ved=0ahUKEwiG4aXl5MbaAhUWTY8KHQY_CtYQtgMIKQ&tbs=lrf:!2m4!1e17!4m2!17m1!1e2!2m1!1e2!3sIAE,lf:1,lf_ui:2&rldoc=1#rlfi=hd:;si:;mv:!1m3!1d475.56810821938933!2d90.39263349999999!3d23.7344251!2m3!1f0!2f0!3f0!3m2!1i8!2i25!4f13.1;tbs:lrf:!2m1!1e2!2m4!1e17!4m2!17m1!1e2!3sIAE,lf:1,lf_ui:2";
+                     window.open(url, "_blank");
+                 }
+	         </script>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Three -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="/static/img/senate.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>Nawab Ali Chowdhury Senate Bhaban</h3>
+          <p>Nabab Nawab Ali Chowdhury Senate Bhaban, University of Dhaka was completed in the year 2007 and
+              it is a part of the University of Dhaka.
+              It was named after one of the founding fathers.Nabab Nawab Ali Chowdhury Senate Bhaban,
+              University of Dhaka has a 500 seated auditorium provided with digital conference auto system,
+              two committee rooms and three well furnished lobbies, situated at the level 3. </p>
+          <a class="btn btn-primary" onclick="goto3()" style="color: white">Find On Map</a>
+             <script type="text/javascript">
+		         function goto3() {
+		             var url = "https://www.google.com/search?tbm=lcl&ei=SczYWvz9J5uOvQTVvaDgAQ&q=nabab+nawab+ali+chowdhury+senate+bhaban+university+of+dhaka&oq=Nawab+Ali+Cho+Dhaka+University&gs_l=psy-ab.1.1.0i7i30k1j0i8i7i30k1.340401.348286.0.351728.14.14.0.0.0.0.492.2868.0j2j4j2j2.10.0....0...1c.1.64.psy-ab..4.7.1867...0j35i39k1j0i67k1j0i8i13i30k1j0i8i30k1.0.mGLjACjpjC4#rlfi=hd:;si:;mv:!1m3!1d2848.6421390544683!2d90.39001459999997!3d23.7349243!3m2!1i885!2i599!4f13.1";
+		             window.open(url, "_blank");
+                 }
+	         </script>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Four -->
+      <div class="row">
+
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="/static/img/arts1.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>Lecture Theater, Fine Arts</h3>
+            <p>
+                The Faculty of Fine Arts (FFA) was established in 1948 as the Dhaka Art School. It was the first art school in the region and became the main centre of art and cultural practice. Since 1956 it has been situated in Shahbag, Dhaka, close to the Bangladesh National Museum. Architect Muzharul Islam designed the building. In 2008, the institute took its current name when it became one of the faculties of the University of Dhaka.
+            </p>
+            <a class="btn btn-primary" onclick="goto4()" style="color: white">Find On Map</a>
+             <script type="text/javascript">
+		         function goto4(){
+		             var url = "https://www.google.com/maps/search/Lecture+Theater+and+library,+Fine+Arts+University+of+dhaka/@23.7359929,90.3921524,17z/data=!3m1!4b1";
+		             window.open(url, "_blank");
+		         }
+
+
+	         </script>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+    </div>
+    <!-- /.container -->
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container" >
+        <p class="m-0 text-center text-white">Copyright &copy; DU Booking Website 2018</p>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+     <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/blog_jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/blog_bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
