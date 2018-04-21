@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ec8dc988-30bd-4332-af73-f3292ecb56df" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/venv/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="ConfirmationMail.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ConfirmationMail.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Booking_System.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Booking_System.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+              <folding>
+                <marker date="1524342707975" expanded="true" signature="1999:2047" ph="SELECT * FRO... Registration" />
+                <marker date="1524342707975" expanded="true" signature="2222:2311" ph="INSERT INTO Registration... " />
+                <marker date="1524342707975" expanded="true" signature="3204:3265" ph="SELECT * FRO... Admin" />
+                <marker date="1524342707975" expanded="true" signature="3564:3632" ph="SELECT * FRO... Registration" />
+                <marker date="1524342707975" expanded="true" signature="4909:4978" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="5029:5098" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="5317:5386" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="5437:5506" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="5724:5793" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="5847:5916" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="6137:6206" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="6257:6326" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="7282:7351" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="7403:7472" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="7691:7760" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="7812:7881" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="8100:8169" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="8224:8293" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="8515:8584" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="8636:8705" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="10112:10181" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524342707975" expanded="true" signature="10350:10462" ph="INSERT INTO Auditorium_Data... " />
+                <marker date="1524342707975" expanded="true" signature="11292:11351" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="11406:11465" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="11687:11746" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="11803:11862" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="12086:12145" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="12200:12259" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="13168:13227" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="13283:13342" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="13565:13624" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="13682:13741" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="13966:14025" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="14081:14140" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="15543:15607" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524342707975" expanded="true" signature="15778:15880" ph="INSERT INTO Field_Data... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/templates/ClassBookingReq.html" />
+        <option value="$PROJECT_DIR$/templates/LabBookingReq.html" />
+        <option value="$PROJECT_DIR$/ConfirmationMail.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="50" />
+    <option name="y" value="-4" />
+    <option name="width" value="706" />
+    <option name="height" value="772" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/venv" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec8dc988-30bd-4332-af73-f3292ecb56df" name="Default" comment="" />
+      <created>1524342750465</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524342750465</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/ClassBookingReq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/LabBookingReq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="513" column="65" lean-forward="true" selection-start-line="513" selection-start-column="65" selection-end-line="513" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConfirmationMail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Booking_System.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding>
+            <marker date="1524342707975" expanded="true" signature="1999:2047" ph="SELECT * FRO... Registration" />
+            <marker date="1524342707975" expanded="true" signature="2222:2311" ph="INSERT INTO Registration... " />
+            <marker date="1524342707975" expanded="true" signature="3204:3265" ph="SELECT * FRO... Admin" />
+            <marker date="1524342707975" expanded="true" signature="3564:3632" ph="SELECT * FRO... Registration" />
+            <marker date="1524342707975" expanded="true" signature="4909:4978" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="5029:5098" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="5317:5386" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="5437:5506" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="5724:5793" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="5847:5916" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="6137:6206" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="6257:6326" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="7282:7351" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="7403:7472" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="7691:7760" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="7812:7881" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="8100:8169" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="8224:8293" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="8515:8584" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="8636:8705" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="10112:10181" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524342707975" expanded="true" signature="10350:10462" ph="INSERT INTO Auditorium_Data... " />
+            <marker date="1524342707975" expanded="true" signature="11292:11351" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="11406:11465" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="11687:11746" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="11803:11862" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="12086:12145" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="12200:12259" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="13168:13227" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="13283:13342" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="13565:13624" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="13682:13741" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="13966:14025" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="14081:14140" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="15543:15607" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524342707975" expanded="true" signature="15778:15880" ph="INSERT INTO Field_Data... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
