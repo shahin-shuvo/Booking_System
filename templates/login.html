@@ -78,7 +78,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </nav>
 
 <body >
+
 	<div class="login-section-agileits" style="margin-top: 15% ">
+       {% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div  style="font-size: 25px;alignment: center" class="alert alert-danger alert-dismissible" role="alert">
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 		<form action="#" method="post">
 			<div class="w3ls-icon">
 				<span class="fa fa-user" aria-hidden="true"></span>
@@ -117,13 +128,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             var got=2,call=0;
             show();
                   xhttp.onreadystatechange = function () {
-                      show();
+
                       if (this.readyState == 4 && this.status == 200) {
                          // swal("Good kok!", "You clicked the button!", "success");
                           var x = xhttp.responseText;
-                          if (x == "OK") {
-                              got = 1;
+                          if (x == "OK_User") {
+                              show();
+                              window.location.replace("http://127.0.0.1:8080/index");
 
+
+                          }
+                          else if (x == "OK_Admin") {
+                              show();
+                              window.location.replace("http://127.0.0.1:8080/admin");
 
                           }
                           else if (x == "error") {
@@ -142,7 +159,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         }
         function   show() {
-            swal("Good job!", "You clicked the button!", "success");
+            swal("Success!", "", "success");
         }
 
 	</script>

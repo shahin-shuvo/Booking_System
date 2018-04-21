@@ -45,6 +45,10 @@ def index():
 def home():
     return render_template('index.html')
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     return render_template('signup.html')
@@ -107,7 +111,7 @@ def login_helper():
                 session['logged_in'] = True
                 session['username'] = query[0]
                 gc.collect()
-                return "OK"
+                return "OK_Admin"
         elif query[2]=="USER":
             data = c.execute("SELECT * FROM Registration WHERE username = (%s) AND password = (%s)",
                              (query[0], query[1]))
@@ -115,7 +119,7 @@ def login_helper():
                 session['logged_in'] = True
                 session['username'] = query[0]
                 gc.collect()
-                return "OK"
+                return "OK_User"
 
         return "error"
 

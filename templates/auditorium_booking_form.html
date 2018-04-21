@@ -82,6 +82,16 @@
 
 <body >
   <body >
+     {% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div  style="font-size: 25px;alignment: center" class="alert alert-info alert-dismissible" role="alert">
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
     <div class="diamond"></div>
     <div class="form-wrap">
       <form action="">
@@ -171,10 +181,13 @@
             if(auditorium=="hide")
             {
                 alert("Please Confirm Auditorium");
+                //swal("Please Confirm Auditorium!", "", "success");
+                //swal("Good job!", "You clicked the button!", "success")
             }
              else if(pay=="")
             {
                 alert("Please give payment receipt!");
+                //swal("Please give payment receipt!", "", "danger");
             }
             else
             {
