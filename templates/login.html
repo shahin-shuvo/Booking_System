@@ -134,13 +134,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                           var x = xhttp.responseText;
                           if (x == "OK_User") {
                               show();
-                              window.location.replace("http://127.0.0.1:8080/index");
+                              window.location.replace("http://127.0.0.1:5000/index");
 
 
                           }
                           else if (x == "OK_Admin") {
                               show();
-                              window.location.replace("http://127.0.0.1:8080/admin");
+                              window.location.replace("http://127.0.0.1:5000/ClassBookingReq");
 
                           }
                           else if (x == "error") {
@@ -153,7 +153,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
            if(username!=""  && password != "") {
                 var args = [username, password, user_type]
-                xhttp.open("GET", "http://127.0.0.1:8080/login_helper?query=" + JSON.stringify(args), true);
+                xhttp.open("GET", "http://127.0.0.1:5000/login_helper?query=" + JSON.stringify(args), true);
                 xhttp.send();
             }
 

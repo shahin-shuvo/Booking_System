@@ -7,6 +7,8 @@ from flask import Flask, render_template, request, flash, session, url_for, redi
 from flaskext.mysql import MySQL
 
 from jinja2 import Environment
+from ConfirmationMail import send_mail
+from threading import Thread
 
 import formencode_jinja2
 jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
@@ -35,9 +37,6 @@ def index():
 def home():
     return render_template('index.html')
 
-@app.route('/admin')
-def admin():
-    return render_template('admin.html')
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -489,43 +488,347 @@ def blog2():
 
 
 #Shanto's file
-#Class update mehthod
-@app.route('/ClassUpdate',methods=['GET'])
-def class_info():
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT room_name,capacity from class_info")
-    data = cursor.fetchall()
-    #print(data)
-    return render_template('ClassUpdate.html', data=data)
 
-@app.route('/class_delete_orginal')
-def class_delete():
-    name=request.args["name"]
+#Class Booking request
+
+@app.route('/ClassBookingReq',methods=['GET'])
+#initial page for booking requests this will show
+#all request for class booking
+def class_booking():
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute("""SELECT u_name,req_id, room_no,registration_date,start_date, 
+                          end_date, slot_1, slot_2, slot_3, slot_4, slot_5,admin_confirmation 
+                          from class_booking_request""")
+        data = cursor.fetchall()
+        return render_template('ClassBookingReq.html', data=data)
+
+@app.route('/table_clicked',methods=['GET'])
+#send user details information when a request button is clicked
+def row_clicked():
+    table_row=request.args['query']
+    conn = mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("SELECT username,email,phone,dept from Registration WHERE username = (%s)",(table_row,))
+    data=cursor.fetchone()
+    return make_response(dumps(data))
+
+@app.route('/user_image',methods=['GET','POST'])
+#send user image to admin
+def send_image():
+    name=request.args["query"]
+    conn = mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("SELECT image from Registration WHERE username= (%s)",(name,))
+    data=cursor.fetchone()
+    return data[0]
+
+@app.route('/confirmation',methods=['GET','POST'])
+#admin confirmations or discarding information will be
+#sent to user through email
+def feedback():
+    reply=request.args['query']
+    user_name=request.args['name']
+    email=request.args['email']
+    room_name=request.args['room_name']
+    start_date=request.args['start_date']
+    end_date=request.args['end_date']
+    time_range=request.args['time_range']
+    time_slot=request.args['time_slot']
+
+    print(user_name+email+start_date+end_date+time_range+time_slot)
+    req_id=request.args['reqid']
+    req_id_f=int(req_id)
+    confirmed=""
+    if reply.lower()=="yes":
+        reply=1
+        confirmed="confirmed"
+    else:
+        reply=0
+        confirmed="not confirmed"
+    if(end_date != "Not Applicable"):
+        msg_body = "Dear " + user_name +"\n" \
+                    "Your booking request for Room " + room_name + " is " + confirmed + ".\n\n" \
+                    "Your booking booking details :\n"\
+                    "Start Date : "+start_date+"\n"\
+                    "End Date : "+end_date+"\n"\
+                    "Time Range : "+time_range+"\n"\
+                    "Slot Numbers : "+time_slot+"\n"
+    else:
+        msg_body = "Dear " + user_name +"\n" \
+                   "Your booking request for Room " + room_name + " is " + confirmed + ".\n\n" \
+                    "Your booking booking details :\n" \
+                    "Date : " + start_date + "\n" \
+                    "Time Range : " + time_range + "\n" \
+                    "Slot Numbers : " + time_slot + "\n"
+    msg_body=msg_body+"\nWith Regards\nDU Online Booking System\nFor any query visit https://www.du.ac.bd"
+    mailThread=Thread(target=send_mail,args=(msg_body,email))
+    mailThread.start()
+
+    print("Request id "+str(req_id_f))
+    print(msg_body)
+    conn = mysql.connect()
     cursor = conn.cursor()
     try:
-        cursor.execute("""DELETE FROM class_info 
-                          WHERE room_name = %s"""
-                       , (name,))
-        print("done this")
+        cursor.execute("""UPDATE class_booking_request 
+                          SET admin_confirmation = %s WHERE req_id = %s"""
+                            ,(reply,req_id_f,))
         conn.commit()
         return "Success"
     except Exception as e:
         print(e)
         return "Error"
 
+
+
+
+#Lab booking request
+@app.route('/LabBookingReq',methods=['GET'])
+#page for booking requests this will show
+#all request for lab booking
+def lab_booking():
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            """SELECT u_name,req_id, room_no,registration_date,start_date, end_date, slot_1,
+              slot_2, slot_3, slot_4, slot_5,admin_confirmation
+               from lab_booking_request""")
+        data = cursor.fetchall()
+        return render_template('LabBookingReq.html', data=data)
+
+@app.route('/lab_confirmation',methods=['GET','POST'])
+#admin confirmations or discarding information will be
+#sent to user through email
+def lab_feedback():
+    reply = request.args['query']
+    user_name = request.args['name']
+    email = request.args['email']
+    room_name = request.args['room_name']
+    start_date = request.args['start_date']
+    end_date = request.args['end_date']
+    time_range = request.args['time_range']
+    time_slot = request.args['time_slot']
+    req_id=request.args['reqid']
+    req_id_f=int(req_id)
+    print(req_id_f)
+    confirmed = ""
+    if reply.lower() == "yes":
+        reply = 1
+        confirmed = "confirmed"
+    else:
+        reply = 0
+        confirmed = "not confirmed"
+    if (end_date != "Not Applicable"):
+        msg_body = "Dear " + user_name + "\n" \
+                    "Your booking request for Lab " + room_name + " is " + confirmed + ".\n\n" \
+                    "Your booking booking details :\n" \
+                    "Start Date : " + start_date + "\n" \
+                    "End Date : " + end_date + "\n" \
+                    "Time Range : " + time_range + "\n" \
+                    "Slot Numbers : " + time_slot + "\n"
+    else:
+        msg_body = "Dear " + user_name + "\n" \
+                   "Your booking request for Lab " + room_name + " is " + confirmed + ".\n\n" \
+                    "Your booking booking details :\n" \
+                    "Date : " + start_date + "\n" \
+                    "Time Range : " + time_range + "\n" \
+                                                                                                                                                                           "Slot Numbers : " + time_slot + "\n"
+    msg_body = msg_body + "\nWith Regards\nDU Online Booking System\nFor any query visit https://www.du.ac.bd"
+    print(msg_body)
+    mailThread = Thread(target=send_mail, args=(msg_body, email))
+    mailThread.start()
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""UPDATE lab_booking_request 
+                          SET admin_confirmation = %s WHERE u_id = %s"""
+                            ,(reply,req_id_f,))
+        conn.commit()
+        return "Success"
+    except Exception as e:
+        print(e)
+        return "Error"
+
+
+#Auditorium Booking Request
+@app.route('/AuditoriumBookingReq',methods=['GET'])
+#page for booking requests this will show
+#all request for auditorium booking
+def auditorium_booking():
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT Username,req_id,Auditorium,ApplyDate,Date,Status from Auditorium_Data")
+        data = cursor.fetchall()
+        return render_template('AuditoriumBookingReq.html', data=data)
+
+
+@app.route('/audi_payment_image',methods=['GET','POST'])
+#payment image for auditorium will sent to admin
+def audi_payment_image():
+    req_id=request.args["query"]
+    conn = mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("SELECT payment from Auditorium_Data WHERE req_id= (%s)",(req_id,))
+    data=cursor.fetchone()
+    return data[0]
+
+
+@app.route('/auditorium_confirmation',methods=['GET','POST'])
+#admins reply for auditorium booking confirmation
+#reply would be send to customer through email
+def auditorium_feedback():
+    reply=request.args['query']
+    user_name=request.args['name']
+    email=request.args['email']
+    room_name=request.args['room_name']
+    start_date=request.args['start_date']
+
+    print(user_name+email+start_date)
+    req_id=request.args['req_id']
+    req_id_f=int(req_id)
+    confirmed=""
+    if reply.lower()=="yes":
+        reply="Booked"
+        confirmed="confirmed"
+    else:
+        confirmed="not confirmed"
+
+    msg_body = "Dear " + user_name + "\n" \
+                "Your booking request for Auditorium " + room_name + " is " + confirmed + ".\n\n" \
+                "Your booking booking details :\n" \
+                "Date : " + start_date + "\n\nWith Regards\n DU Online Booking System\nFor any query visit https://www.du.ac.bd"
+    mailThread=Thread(target=send_mail,args=(msg_body,email))
+    mailThread.start()
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    if reply=="Booked":
+        try:
+            cursor.execute("""UPDATE Auditorium_Data 
+                              SET status = %s WHERE req_id = %s"""
+                           , (reply, req_id_f,))
+            conn.commit()
+            return "Success"
+        except Exception as e:
+            print(e)
+            return "Error"
+    else:
+        try:
+            cursor.execute("""DELETE FROM Auditorium_Data 
+                              WHERE req_id = %s"""
+                           , (req_id_f,))
+            conn.commit()
+            return "Success"
+        except Exception as e:
+            print(e)
+            return "Error"
+
+
+#Field Booking Request
+@app.route('/FieldBookingReq',methods=['GET'])
+#page for booking requests this will show
+#all request for field booking
+def field_booking():
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT Username,req_id,Field,ApplyDate,Date,Status from Field_Data")
+        data = cursor.fetchall()
+        return render_template('FieldBookingReq.html', data=data)
+
+#payment image will shown to admin
+@app.route('/field_payment_image',methods=['GET','POST'])
+def field_payment_image():
+    req_id=request.args["query"]
+    conn = mysql.connect()
+    cursor=conn.cursor()
+    cursor.execute("SELECT payment from Field_Data WHERE req_id= (%s)",(req_id,))
+    data=cursor.fetchone()
+    return data[0]
+
+@app.route('/field_confirmation',methods=['GET','POST'])
+#admins reply for field booking confirmation
+#reply would be send to customer through email
+def field_feedback():
+    reply=request.args['query']
+    user_name=request.args['name']
+    email=request.args['email']
+    room_name=request.args['room_name']
+    start_date=request.args['start_date']
+
+    req_id=request.args['req_id']
+    req_id_f=int(req_id)
+    confirmed=""
+    if reply.lower()=="yes":
+        reply="Booked"
+        confirmed="confirmed"
+    else:
+        confirmed="not confirmed"
+
+    msg_body = "Dear " + user_name + "\n" \
+                "Your booking request for Auditorium " + room_name + " is " + confirmed + ".\n\n" \
+                "Your booking booking details :\n" \
+                "Date : " + start_date + "\n\nWith Regards\n DU Online Booking System\nFor any query visit https://www.du.ac.bd"
+    mailThread=Thread(target=send_mail,args=(msg_body,email))
+    mailThread.start()
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    if reply=="Booked":
+        try:
+            cursor.execute("""UPDATE Field_Data 
+                              SET status = %s WHERE req_id = %s"""
+                           , (reply, req_id_f,))
+            conn.commit()
+            return "Success"
+        except Exception as e:
+            print(e)
+            return "Error"
+    else:
+        try:
+            cursor.execute("""DELETE FROM Field_Data 
+                              WHERE req_id = %s"""
+                           , (req_id_f,))
+            conn.commit()
+            return "Success"
+        except Exception as e:
+            print(e)
+            return "Error"
+
+
+#Class update method
+@app.route('/ClassUpdate',methods=['GET'])
+#all available classes would be shown
+def class_info():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT room_name,capacity from class_info")
+    data = cursor.fetchall()
+    return render_template('ClassUpdate.html', data=data)
+
 @app.route('/class_delete')
-def class_delet():
-    #this is for test purpose content will not be deleted
-    print(request.args["name"])
-    return "Success"
+#admin can delete classroom
+def class_delete():
+    name=request.args["name"]
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""DELETE FROM class_info 
+                          WHERE room_name = %s"""
+                       , (name,))
+        conn.commit()
+        return "Success"
+    except Exception as e:
+        return "Error"
 
 
 @app.route('/class_update_data',methods=['GET'])
+#admin can update class info
 def class_update():
     old_name=request.args['old_name']
     new_name=request.args['new_name']
     capacity=request.args['capacity']
+    conn = mysql.connect()
     cursor = conn.cursor()
     print(old_name+" "+new_name+" "+capacity)
 
@@ -537,11 +840,12 @@ def class_update():
         return "error"
     return "success"
 @app.route('/class_insert_data',methods=['GET'])
+#admin can add new class
 def class_insert():
     new_name=request.args['new_name']
     capacity=request.args['capacity']
+    conn = mysql.connect()
     cursor = conn.cursor()
-    print(new_name+" "+capacity)
 
     try:
         #TODO: dept name should be replaced by sessions dept name
@@ -549,10 +853,69 @@ def class_insert():
                        (new_name, capacity,"CSE",))
         conn.commit()
     except Exception as e:
-        print("dtabase")
+        return "error"
+    return "success"
+
+@app.route('/LabUpdate',methods=['GET'])
+#all available lab will shown
+def lab_info():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT room_name,capacity from lab_info")
+    data = cursor.fetchall()
+    return render_template('LabUpdate.html', data=data)
+
+@app.route('/lab_delete')
+#delete any lab
+def lab_delete():
+    name=request.args["name"]
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""DELETE FROM lab_info 
+                          WHERE room_name = %s"""
+                       , (name,))
+        conn.commit()
+        return "Success"
+    except Exception as e:
+        return "Error"
+
+
+@app.route('/lab_update_data',methods=['GET'])
+#admin can update lab info
+def lab_update():
+    old_name=request.args['old_name']
+    new_name=request.args['new_name']
+    capacity=request.args['capacity']
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("UPDATE lab_info SET room_name=%s,capacity=%s WHERE room_name=%s",
+                       (new_name, capacity, old_name))
+        conn.commit()
+    except Exception as e:
+        return "error"
+    return "success"
+
+@app.route('/lab_insert_data',methods=['GET'])
+#admin can add lab
+def lab_insert():
+    new_name=request.args['new_name']
+    capacity=request.args['capacity']
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    try:
+        #TODO: dept name should be replaced by sessions dept name
+        cursor.execute("INSERT INTO lab_info (room_name,capacity,dept_name) VALUES (%s,%s,%s)",
+                       (new_name, capacity,"CSE",))
+        conn.commit()
+    except Exception as e:
         return "error"
     return "success"
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='127.0.0.1', port=8080)
+    app.run(host='127.0.0.1', port=5000)

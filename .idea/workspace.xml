@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5202d347-24e0-42bf-9e7b-0b09a4cf2385" name="Default" comment="" />
+    <list default="true" id="5202d347-24e0-42bf-9e7b-0b09a4cf2385" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Booking_System.py" afterPath="$PROJECT_DIR$/Booking_System.py" />
+      <change beforePath="$PROJECT_DIR$/templates/auditorium.html" afterPath="$PROJECT_DIR$/templates/auditorium.html" />
+      <change beforePath="$PROJECT_DIR$/templates/auditorium_booking_form.html" afterPath="$PROJECT_DIR$/templates/auditorium_booking_form.html" />
+      <change beforePath="$PROJECT_DIR$/templates/field.html" afterPath="$PROJECT_DIR$/templates/field.html" />
+      <change beforePath="$PROJECT_DIR$/templates/field_booking_form.html" afterPath="$PROJECT_DIR$/templates/field_booking_form.html" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" afterPath="$PROJECT_DIR$/templates/login.html" />
+      <change beforePath="$PROJECT_DIR$/templates/signup.html" afterPath="$PROJECT_DIR$/templates/signup.html" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Booking_System$Booking_System.coverage" NAME="Booking_System Coverage Results" MODIFIED="1524489763144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Booking_System$Booking_System.coverage" NAME="Booking_System Coverage Results" MODIFIED="1524508405533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -29,101 +38,70 @@
       <file leaf-file-name="Booking_System.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Booking_System.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6524">
-              <caret line="466" column="26" lean-forward="true" selection-start-line="466" selection-start-column="26" selection-end-line="466" selection-end-column="26" />
+            <state relative-caret-position="216">
+              <caret line="495" column="46" lean-forward="true" selection-start-line="495" selection-start-column="46" selection-end-line="495" selection-end-column="46" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1524489763083" expanded="true" signature="1426:1474" ph="SELECT * FRO... Registration" />
-                <marker date="1524489763083" expanded="true" signature="1649:1738" ph="INSERT INTO Registration... " />
-                <marker date="1524489763083" expanded="true" signature="2462:2523" ph="SELECT * FRO... Admin" />
-                <marker date="1524489763083" expanded="true" signature="2822:2890" ph="SELECT * FRO... Registration" />
-                <marker date="1524489763083" expanded="true" signature="4011:4058" ph="SELECT * FRO... TSC" />
-                <marker date="1524489763083" expanded="true" signature="4011:4080" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="4131:4200" ph="SELECT * FRO... TSC" />
-                <marker date="1524489763083" expanded="true" signature="4419:4433" ph="SELECT * FRO... Majumdar" />
-                <marker date="1524489763083" expanded="true" signature="4419:4488" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="4419:4490" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="4539:4608" ph="SELECT * FRO... Majumdar" />
-                <marker date="1524489763083" expanded="true" signature="4826:4895" ph="SELECT * FRO... Senate_Bhaban" />
-                <marker date="1524489763083" expanded="true" signature="4949:5018" ph="SELECT * FRO... Senate_Bhaban" />
-                <marker date="1524489763083" expanded="true" signature="5239:5308" ph="SELECT * FRO... Fine_Arts" />
-                <marker date="1524489763083" expanded="true" signature="5359:5428" ph="SELECT * FRO... Fine_Arts" />
-                <marker date="1524489763083" expanded="true" signature="6228:6242" ph="SELECT * FRO... TSC" />
-                <marker date="1524489763083" expanded="true" signature="6228:6297" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="6349:6418" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="6637:6706" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="6758:6827" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="7046:7115" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="7170:7239" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="7461:7530" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="7582:7651" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="8901:8970" ph="SELECT * FRO... Auditorium_Data" />
-                <marker date="1524489763083" expanded="true" signature="9139:9251" ph="INSERT INTO Auditorium_Data... " />
-                <marker date="1524489763083" expanded="true" signature="9925:9984" ph="SELECT * FRO... Central" />
-                <marker date="1524489763083" expanded="true" signature="10039:10098" ph="SELECT * FRO... Central" />
-                <marker date="1524489763083" expanded="true" signature="10320:10379" ph="SELECT * FRO... Jagannath" />
-                <marker date="1524489763083" expanded="true" signature="10436:10495" ph="SELECT * FRO... Jagannath" />
-                <marker date="1524489763083" expanded="true" signature="10719:10778" ph="SELECT * FRO... Jahurul" />
-                <marker date="1524489763083" expanded="true" signature="10833:10892" ph="SELECT * FRO... Jahurul" />
-                <marker date="1524489763083" expanded="true" signature="11645:11704" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="11760:11819" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="12042:12101" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="12159:12218" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="12443:12502" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="12558:12617" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="13827:13886" ph="SELECT * FRO... Field_Data" />
-                <marker date="1524489763083" expanded="true" signature="14057:14159" ph="INSERT INTO Field_Data... " />
+                <marker date="1524508279749" expanded="true" signature="1525:1573" ph="SELECT * FRO... Registration" />
+                <marker date="1524508279749" expanded="true" signature="1748:1837" ph="INSERT INTO Registration... " />
+                <marker date="1524508279749" expanded="true" signature="2561:2622" ph="SELECT * FRO... Admin" />
+                <marker date="1524508279749" expanded="true" signature="2921:2989" ph="SELECT * FRO... Registration" />
+                <marker date="1524508279749" expanded="true" signature="4110:4179" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="4230:4299" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="4518:4587" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="4638:4707" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="4925:4994" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="5048:5117" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="5338:5407" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="5458:5527" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="6327:6396" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="6448:6517" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="6736:6805" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="6857:6926" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="7145:7214" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="7269:7338" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="7560:7629" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="7681:7750" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="9000:9069" ph="SELECT * FRO... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="9238:9350" ph="INSERT INTO Auditorium_Data... " />
+                <marker date="1524508279749" expanded="true" signature="10024:10083" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="10138:10197" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="10419:10478" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="10535:10594" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="10818:10877" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="10932:10991" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="11744:11803" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="11859:11918" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="12141:12200" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="12258:12317" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="12542:12601" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="12657:12716" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="13926:13985" ph="SELECT * FRO... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="14156:14258" ph="INSERT INTO Field_Data... " />
+                <marker date="1524508279749" expanded="true" signature="14976:15184" ph="SELECT u_nam... class_booking_request" />
+                <marker date="1524508279749" expanded="true" signature="15525:15597" ph="SELECT usern... Registration" />
+                <marker date="1524508279749" expanded="true" signature="15875:15926" ph="SELECT image... Registration" />
+                <marker date="1524508279749" expanded="true" signature="17880:17981" ph="UPDATE class_booking_request... " />
+                <marker date="1524508279749" expanded="true" signature="18408:18589" ph="SELECT u_nam... lab_booking_request" />
+                <marker date="1524508279749" expanded="true" signature="20715:20812" ph="UPDATE lab_booking_request... " />
+                <marker date="1524508279749" expanded="true" signature="21263:21339" ph="SELECT Usern... " />
+                <marker date="1524508279749" expanded="true" signature="21685:21739" ph="SELECT payme... Auditorium_Data" />
+                <marker date="1524508279749" expanded="true" signature="22941:23028" ph="UPDATE Auditorium_Data... " />
+                <marker date="1524508279749" expanded="true" signature="23268:23344" ph="DELETE FROM Auditorium_Data... " />
+                <marker date="1524508279749" expanded="true" signature="23789:23855" ph="SELECT Usern... " />
+                <marker date="1524508279749" expanded="true" signature="24183:24232" ph="SELECT payme... Field_Data" />
+                <marker date="1524508279749" expanded="true" signature="25380:25462" ph="UPDATE Field_Data... " />
+                <marker date="1524508279749" expanded="true" signature="25702:25773" ph="DELETE FROM Field_Data... " />
+                <marker date="1524508279749" expanded="true" signature="26158:26199" ph="SELECT room_... class_info" />
+                <marker date="1524508279749" expanded="true" signature="26485:26555" ph="DELETE FROM class_info... " />
+                <marker date="1524508279749" expanded="true" signature="27082:27147" ph="UPDATE class_info... " />
+                <marker date="1524508279749" expanded="true" signature="27655:27726" ph="INSERT INTO class_info... " />
+                <marker date="1524508279749" expanded="true" signature="28070:28109" ph="SELECT room_... lab_info" />
+                <marker date="1524508279749" expanded="true" signature="28377:28445" ph="DELETE FROM lab_info... " />
+                <marker date="1524508279749" expanded="true" signature="28966:29029" ph="UPDATE lab_info... " />
+                <marker date="1524508279749" expanded="true" signature="29528:29597" ph="INSERT INTO lab_info... " />
+                <marker date="1524508279749" expanded="true" signature="29543:29597" ph="INSERT INTO class_info... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="field_booking_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/field_booking_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="56" column="82" lean-forward="false" selection-start-line="56" selection-start-column="82" selection-end-line="56" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auditorium_booking_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/auditorium_booking_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="182" column="51" lean-forward="false" selection-start-line="182" selection-start-column="51" selection-end-line="182" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_layout.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/main_layout.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auditorium.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/auditorium.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="260" column="46" lean-forward="true" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -131,28 +109,8 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="161" column="44" lean-forward="true" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="du_booking_system.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/du_booking_system.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/signup.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2478">
-              <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+            <state relative-caret-position="181">
+              <caret line="142" column="92" lean-forward="false" selection-start-line="142" selection-start-column="92" selection-end-line="142" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -174,7 +132,14 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>rtewgvr</find>
+      <find>8080</find>
     </findStrings>
+    <replaceStrings>
+      <replace>5000</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/templates</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -233,9 +198,9 @@
         <option value="$PROJECT_DIR$/templates/field_blog.html" />
         <option value="$PROJECT_DIR$/templates/auditorium_booking_form.html" />
         <option value="$PROJECT_DIR$/templates/admin.html" />
-        <option value="$PROJECT_DIR$/templates/login.html" />
-        <option value="$PROJECT_DIR$/Booking_System.py" />
         <option value="$PROJECT_DIR$/templates/field_booking_form.html" />
+        <option value="$PROJECT_DIR$/Booking_System.py" />
+        <option value="$PROJECT_DIR$/templates/login.html" />
       </list>
     </option>
   </component>
@@ -298,6 +263,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -308,29 +275,12 @@
             <path>
               <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
               <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Booking_System" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Booking_System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,7 +290,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/AdminSite2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -444,17 +394,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="499" y="-3" width="1307" height="786" extended-state="6" />
+    <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2977099" sideWeight="0.50593823" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2970451" sideWeight="0.5090909" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2977099" sideWeight="0.49406177" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970451" sideWeight="0.49406177" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21931908" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22272727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -464,7 +415,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
@@ -511,13 +461,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/signup_signin/js/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/signup/insert_data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
@@ -658,7 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -680,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="48" column="3" lean-forward="false" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,9 +680,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/field_booking_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="56" column="82" lean-forward="false" selection-start-line="56" selection-start-column="82" selection-end-line="56" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/auditorium_booking_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="182" column="51" lean-forward="false" selection-start-line="182" selection-start-column="51" selection-end-line="182" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/main_layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/auditorium.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="260" column="46" lean-forward="false" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/du_booking_system.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
+        <state relative-caret-position="361">
           <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
           <folding />
         </state>
@@ -749,106 +729,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/signup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2478">
-          <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+        <state relative-caret-position="361">
+          <caret line="177" column="0" lean-forward="false" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/main_layout.html">
+    <entry file="file://$PROJECT_DIR$/ConfirmationMail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="161" column="44" lean-forward="true" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/auditorium_booking_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="182" column="51" lean-forward="false" selection-start-line="182" selection-start-column="51" selection-end-line="182" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/field_booking_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="56" column="82" lean-forward="false" selection-start-line="56" selection-start-column="82" selection-end-line="56" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/auditorium.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="260" column="46" lean-forward="true" selection-start-line="260" selection-start-column="46" selection-end-line="260" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        <state relative-caret-position="181">
+          <caret line="142" column="92" lean-forward="false" selection-start-line="142" selection-start-column="92" selection-end-line="142" selection-end-column="92" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Booking_System.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6524">
-          <caret line="466" column="26" lean-forward="true" selection-start-line="466" selection-start-column="26" selection-end-line="466" selection-end-column="26" />
+        <state relative-caret-position="216">
+          <caret line="495" column="46" lean-forward="true" selection-start-line="495" selection-start-column="46" selection-end-line="495" selection-end-column="46" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1524489763083" expanded="true" signature="1426:1474" ph="SELECT * FRO... Registration" />
-            <marker date="1524489763083" expanded="true" signature="1649:1738" ph="INSERT INTO Registration... " />
-            <marker date="1524489763083" expanded="true" signature="2462:2523" ph="SELECT * FRO... Admin" />
-            <marker date="1524489763083" expanded="true" signature="2822:2890" ph="SELECT * FRO... Registration" />
-            <marker date="1524489763083" expanded="true" signature="4011:4058" ph="SELECT * FRO... TSC" />
-            <marker date="1524489763083" expanded="true" signature="4011:4080" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="4131:4200" ph="SELECT * FRO... TSC" />
-            <marker date="1524489763083" expanded="true" signature="4419:4433" ph="SELECT * FRO... Majumdar" />
-            <marker date="1524489763083" expanded="true" signature="4419:4488" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="4419:4490" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="4539:4608" ph="SELECT * FRO... Majumdar" />
-            <marker date="1524489763083" expanded="true" signature="4826:4895" ph="SELECT * FRO... Senate_Bhaban" />
-            <marker date="1524489763083" expanded="true" signature="4949:5018" ph="SELECT * FRO... Senate_Bhaban" />
-            <marker date="1524489763083" expanded="true" signature="5239:5308" ph="SELECT * FRO... Fine_Arts" />
-            <marker date="1524489763083" expanded="true" signature="5359:5428" ph="SELECT * FRO... Fine_Arts" />
-            <marker date="1524489763083" expanded="true" signature="6228:6242" ph="SELECT * FRO... TSC" />
-            <marker date="1524489763083" expanded="true" signature="6228:6297" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="6349:6418" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="6637:6706" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="6758:6827" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="7046:7115" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="7170:7239" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="7461:7530" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="7582:7651" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="8901:8970" ph="SELECT * FRO... Auditorium_Data" />
-            <marker date="1524489763083" expanded="true" signature="9139:9251" ph="INSERT INTO Auditorium_Data... " />
-            <marker date="1524489763083" expanded="true" signature="9925:9984" ph="SELECT * FRO... Central" />
-            <marker date="1524489763083" expanded="true" signature="10039:10098" ph="SELECT * FRO... Central" />
-            <marker date="1524489763083" expanded="true" signature="10320:10379" ph="SELECT * FRO... Jagannath" />
-            <marker date="1524489763083" expanded="true" signature="10436:10495" ph="SELECT * FRO... Jagannath" />
-            <marker date="1524489763083" expanded="true" signature="10719:10778" ph="SELECT * FRO... Jahurul" />
-            <marker date="1524489763083" expanded="true" signature="10833:10892" ph="SELECT * FRO... Jahurul" />
-            <marker date="1524489763083" expanded="true" signature="11645:11704" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="11760:11819" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="12042:12101" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="12159:12218" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="12443:12502" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="12558:12617" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="13827:13886" ph="SELECT * FRO... Field_Data" />
-            <marker date="1524489763083" expanded="true" signature="14057:14159" ph="INSERT INTO Field_Data... " />
+            <marker date="1524508279749" expanded="true" signature="1525:1573" ph="SELECT * FRO... Registration" />
+            <marker date="1524508279749" expanded="true" signature="1748:1837" ph="INSERT INTO Registration... " />
+            <marker date="1524508279749" expanded="true" signature="2561:2622" ph="SELECT * FRO... Admin" />
+            <marker date="1524508279749" expanded="true" signature="2921:2989" ph="SELECT * FRO... Registration" />
+            <marker date="1524508279749" expanded="true" signature="4110:4179" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="4230:4299" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="4518:4587" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="4638:4707" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="4925:4994" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="5048:5117" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="5338:5407" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="5458:5527" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="6327:6396" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="6448:6517" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="6736:6805" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="6857:6926" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="7145:7214" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="7269:7338" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="7560:7629" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="7681:7750" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="9000:9069" ph="SELECT * FRO... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="9238:9350" ph="INSERT INTO Auditorium_Data... " />
+            <marker date="1524508279749" expanded="true" signature="10024:10083" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="10138:10197" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="10419:10478" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="10535:10594" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="10818:10877" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="10932:10991" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="11744:11803" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="11859:11918" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="12141:12200" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="12258:12317" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="12542:12601" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="12657:12716" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="13926:13985" ph="SELECT * FRO... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="14156:14258" ph="INSERT INTO Field_Data... " />
+            <marker date="1524508279749" expanded="true" signature="14976:15184" ph="SELECT u_nam... class_booking_request" />
+            <marker date="1524508279749" expanded="true" signature="15525:15597" ph="SELECT usern... Registration" />
+            <marker date="1524508279749" expanded="true" signature="15875:15926" ph="SELECT image... Registration" />
+            <marker date="1524508279749" expanded="true" signature="17880:17981" ph="UPDATE class_booking_request... " />
+            <marker date="1524508279749" expanded="true" signature="18408:18589" ph="SELECT u_nam... lab_booking_request" />
+            <marker date="1524508279749" expanded="true" signature="20715:20812" ph="UPDATE lab_booking_request... " />
+            <marker date="1524508279749" expanded="true" signature="21263:21339" ph="SELECT Usern... " />
+            <marker date="1524508279749" expanded="true" signature="21685:21739" ph="SELECT payme... Auditorium_Data" />
+            <marker date="1524508279749" expanded="true" signature="22941:23028" ph="UPDATE Auditorium_Data... " />
+            <marker date="1524508279749" expanded="true" signature="23268:23344" ph="DELETE FROM Auditorium_Data... " />
+            <marker date="1524508279749" expanded="true" signature="23789:23855" ph="SELECT Usern... " />
+            <marker date="1524508279749" expanded="true" signature="24183:24232" ph="SELECT payme... Field_Data" />
+            <marker date="1524508279749" expanded="true" signature="25380:25462" ph="UPDATE Field_Data... " />
+            <marker date="1524508279749" expanded="true" signature="25702:25773" ph="DELETE FROM Field_Data... " />
+            <marker date="1524508279749" expanded="true" signature="26158:26199" ph="SELECT room_... class_info" />
+            <marker date="1524508279749" expanded="true" signature="26485:26555" ph="DELETE FROM class_info... " />
+            <marker date="1524508279749" expanded="true" signature="27082:27147" ph="UPDATE class_info... " />
+            <marker date="1524508279749" expanded="true" signature="27655:27726" ph="INSERT INTO class_info... " />
+            <marker date="1524508279749" expanded="true" signature="28070:28109" ph="SELECT room_... lab_info" />
+            <marker date="1524508279749" expanded="true" signature="28377:28445" ph="DELETE FROM lab_info... " />
+            <marker date="1524508279749" expanded="true" signature="28966:29029" ph="UPDATE lab_info... " />
+            <marker date="1524508279749" expanded="true" signature="29528:29597" ph="INSERT INTO lab_info... " />
+            <marker date="1524508279749" expanded="true" signature="29543:29597" ph="INSERT INTO class_info... " />
           </folding>
         </state>
       </provider>
