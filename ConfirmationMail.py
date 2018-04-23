@@ -14,7 +14,7 @@ def send_mail(msg_body,toaddr):
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login("lab.project.manager@gmail.com", "project515557")
+    server.login("lab.project.manager@gmail.com", "")
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()
