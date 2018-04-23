@@ -3,37 +3,27 @@ import gc
 from functools import wraps
 from datetime import date
 from json import dumps
-import warnings
-import MySQLdb
-import app as app
-import jinja2
-import os
 from flask import Flask, render_template, request, flash, session, url_for, redirect, jsonify, make_response, json
 from flaskext.mysql import MySQL
-from flask_wtf import FlaskForm
+
 from jinja2 import Environment
-from pymysql.constants.FIELD_TYPE import JSON
-from requests import Session
-from werkzeug.utils import secure_filename
-from wtforms import Form, TextField, validators, PasswordField, BooleanField, StringField
-from passlib.hash import sha256_crypt
-from MySQLdb import escape_string as thwart, connection
-from wtforms.validators import InputRequired, Length
+
 import formencode_jinja2
 jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
 jinja_env.add_extension(formencode_jinja2.formfill)
 
 
 app = Flask(__name__)
-
+mysql = MySQL()
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 app.secret_key = "super secret key"
 app.config['UPLOAD_FOLDER'] = 'UPLOAD_FOLDER'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '$huvo919671'
-app.config['MYSQL_DB'] = "Du_Booking_Data"
-mysql = MySQL(app)
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
+app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
+mysql.init_app(app)
+
 username = "Guest"
 
 @app.route('/')
@@ -59,10 +49,7 @@ def signup_helper():
     try:
         query = request.args['query']
         query = json.loads(query)
-        conn = MySQLdb.connect(host="localhost",
-                               user="root",
-                               passwd="$huvo919671",
-                               db="Du_Booking_Data")
+        conn = mysql.connect()
         x = conn.cursor()
 
 
@@ -98,11 +85,7 @@ def login_helper():
     try:
         query = request.args['query']
         query = json.loads(query)
-
-        conn = MySQLdb.connect(host="localhost",
-                               user="root",
-                               passwd="$huvo919671",
-                               db="Du_Booking_Data")
+        conn = mysql.connect()
         c = conn.cursor()
         if query[2]=="ADMIN":
             data = c.execute("SELECT * FROM Admin WHERE username = (%s) AND password = (%s)",
@@ -162,10 +145,7 @@ def auditorium():
     arts= "Lecture Theater, Fine Arts"
     today = str(date.today())
     session['date'] = today
-    conn = MySQLdb.connect(host="localhost",
-                           user="root",
-                           passwd="$huvo919671",
-                           db="Du_Booking_Data")
+    conn = mysql.connect()
     c = conn.cursor()
     # for tabl1
 
@@ -234,10 +214,7 @@ def auditorium_helper():
 
     today = request.args['query']
     session['date'] = today
-    conn = MySQLdb.connect(host="localhost",
-                           user="root",
-                           passwd="$huvo919671",
-                           db="Du_Booking_Data")
+    conn = mysql.connect()
     c = conn.cursor()
     # for tabl1
     c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
@@ -322,11 +299,7 @@ def auditorium_booking_done():
     try:
         with open('/home/shuvo/Pictures/'+query[3], "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
-
-        conn = MySQLdb.connect(host="localhost",
-                           user="root",
-                           passwd="$huvo919671",
-                           db="Du_Booking_Data")
+        conn = mysql.connect()
         x = conn.cursor()
         n = x.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
                        (query[1], query[2],))
@@ -355,10 +328,7 @@ def field():
     jahurul="Jahurul Haq Hall Ground"
     today = str(date.today())
     session['date2'] = today
-    conn = MySQLdb.connect(host="localhost",
-                           user="root",
-                           passwd="$huvo919671",
-                           db="Du_Booking_Data")
+    conn = mysql.connect()
     c = conn.cursor()
     # for tabl1
     c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
@@ -413,10 +383,7 @@ def field_helper():
 
     today = request.args['query']
     session['date2'] = today
-    conn = MySQLdb.connect(host="localhost",
-                           user="root",
-                           passwd="$huvo919671",
-                           db="Du_Booking_Data")
+    conn = mysql.connect()
     c = conn.cursor()
     # for tabl1
     c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
@@ -490,13 +457,10 @@ def field_booking_done():
         with open('/home/shuvo/Pictures/' + query[3], "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
 
-        conn = MySQLdb.connect(host="localhost",
-                               user="root",
-                               passwd="$huvo919671",
-                               db="Du_Booking_Data")
+        conn = mysql.connect()
         x = conn.cursor()
-        x = conn.cursor()
-        n = x.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Auditorium = (%s)",
+
+        n = x.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
                       (query[1], query[2],))
         print(n)
         if (int(n) > 0):

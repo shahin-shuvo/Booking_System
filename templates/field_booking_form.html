@@ -54,7 +54,7 @@
             <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
             <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
             <li  class="active" style="width: 210px"><a class="active " href="auditorium" id="auditorium" >Auditorium Booking</a></li>
-            <li  class="active" style="width: 150px"><a class="active" href="#" id="field" >Field Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field" id="field" >Field Booking</a></li>
           </ul>
         </div>
 
@@ -153,11 +153,7 @@
              xhttp.onreadystatechange = function() {
                  if (this.readyState == 4 && this.status == 200) {
                      var x = xhttp.responseText;
-                     if(x=="1")
-                     {
-                         alert("This Auditorium is already Booked");
-                     }
-                     else if(x=="0")
+                      if(x=="0")
                      {
                          alert("DONE!!");
                          window.location.replace("http://127.0.0.1:8080/field");
