@@ -487,6 +487,72 @@ def blog1():
 def blog2():
     return render_template('field_blog.html')
 
+
+#Shanto's file
+#Class update mehthod
+@app.route('/ClassUpdate',methods=['GET'])
+def class_info():
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT room_name,capacity from class_info")
+    data = cursor.fetchall()
+    #print(data)
+    return render_template('ClassUpdate.html', data=data)
+
+@app.route('/class_delete_orginal')
+def class_delete():
+    name=request.args["name"]
+    cursor = conn.cursor()
+    try:
+        cursor.execute("""DELETE FROM class_info 
+                          WHERE room_name = %s"""
+                       , (name,))
+        print("done this")
+        conn.commit()
+        return "Success"
+    except Exception as e:
+        print(e)
+        return "Error"
+
+@app.route('/class_delete')
+def class_delet():
+    #this is for test purpose content will not be deleted
+    print(request.args["name"])
+    return "Success"
+
+
+@app.route('/class_update_data',methods=['GET'])
+def class_update():
+    old_name=request.args['old_name']
+    new_name=request.args['new_name']
+    capacity=request.args['capacity']
+    cursor = conn.cursor()
+    print(old_name+" "+new_name+" "+capacity)
+
+    try:
+        cursor.execute("UPDATE class_info SET room_name=%s,capacity=%s WHERE room_name=%s",
+                       (new_name, capacity, old_name))
+        conn.commit()
+    except Exception as e:
+        return "error"
+    return "success"
+@app.route('/class_insert_data',methods=['GET'])
+def class_insert():
+    new_name=request.args['new_name']
+    capacity=request.args['capacity']
+    cursor = conn.cursor()
+    print(new_name+" "+capacity)
+
+    try:
+        #TODO: dept name should be replaced by sessions dept name
+        cursor.execute("INSERT INTO class_info (room_name,capacity,dept_name) VALUES (%s,%s,%s)",
+                       (new_name, capacity,"CSE",))
+        conn.commit()
+    except Exception as e:
+        print("dtabase")
+        return "error"
+    return "success"
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='127.0.0.1', port=8080)
