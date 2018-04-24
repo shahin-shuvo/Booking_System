@@ -22,8 +22,10 @@ app.secret_key = "super secret key"
 app.config['UPLOAD_FOLDER'] = 'UPLOAD_FOLDER'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
-app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
+# app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
+# app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
+app.config['MYSQL_DATABASE_PASSWORD'] = 'shanto55'
+app.config['MYSQL_DATABASE_DB'] = "Booking_system"
 mysql.init_app(app)
 
 username = "Guest"
@@ -810,6 +812,7 @@ def class_info():
 #admin can delete classroom
 def class_delete():
     name=request.args["name"]
+    print(name)
     conn = mysql.connect()
     cursor = conn.cursor()
     try:

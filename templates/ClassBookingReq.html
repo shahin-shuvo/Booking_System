@@ -47,63 +47,70 @@
                                                             style="height: 40px;width: 40px;">
                         <span>DU Booking</span></a>
                 </div>
+                <from action="">
+                    <div class="clearfix"></div>
 
-                <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="../static/img/my_photo.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
 
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic">
-                        <img src="../static/img/my_photo.jpg" alt="..." class="img-circle profile_img">
+                            <h2 id="name"></h2>
+                            <script type="text/javascript">
+                                var a = document.getElementById("name");
+                                a.value = '{{ username }}';
+                            </script>
+
+                        </div>
                     </div>
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2>Shahrear Bin Amin</h2>
+                    <!-- /menu profile quick info -->
+
+                    <br/>
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-calendar"></i> Booking Request<span
+                                        class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="ClassBookingReq">Classroom</a></li>
+                                        <li><a href="LabBookingReq">Lab</a></li>
+                                        <li><a href="AuditoriumBookingReq">Auditorium</a></li>
+                                        <li><a href="FieldBookingReq">Field</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-edit"></i> Update <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="ClassUpdate">Classroom</a></li>
+                                        <li><a href="LabUpdate">Lab</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="menu_section">
+                            <h3>Live On</h3>
+                            <ul class="nav side-menu">
+
+                                <li><a><i class="fa fa-warning"></i> Error Pages <span
+                                        class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="page_403.html">403 Error</a></li>
+                                        <li><a href="page_404.html">404 Error</a></li>
+                                        <li><a href="page_500.html">500 Error</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
                     </div>
-                </div>
-                <!-- /menu profile quick info -->
-
-                <br/>
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-calendar"></i> Booking Request<span
-                                    class="fa fa-chevron-down"></span></a>
-                                 <ul class="nav child_menu">
-                      <li><a href="ClassBookingReq">Classroom</a></li>
-                      <li><a href="LabBookingReq">Lab</a></li>
-                      <li><a href="AuditoriumBookingReq">Auditorium</a></li>
-                      <li><a href="FieldBookingReq">Field</a></li>
-                    </ul>
-                            </li>
-                           <li><a><i class="fa fa-edit"></i> Update <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="ClassUpdate">Classroom</a></li>
-                                    <li><a href="LabUpdate">Lab</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="menu_section">
-                        <h3>Live On</h3>
-                        <ul class="nav side-menu">
-
-                            <li><a><i class="fa fa-warning"></i> Error Pages <span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="page_403.html">403 Error</a></li>
-                                    <li><a href="page_404.html">404 Error</a></li>
-                                    <li><a href="page_500.html">500 Error</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                </div>
+                </from>
                 <!-- /sidebar menu -->
 
                 <!-- /menu footer buttons -->
@@ -288,7 +295,7 @@
 
                                     <tbody>
                                     {% for row in data %}
-{#                                        <a href="#detail_info">#}
+                                        {#                                        <a href="#detail_info">#}
                                         <tr class="clickable-row">
                                             {% for d in row %}
                                                 {% if d == 1 %}
@@ -300,7 +307,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                         </tr>
-{#                                        </a>#}
+                                        {#                                        </a>#}
                                     {% endfor %}
 
                                     </tbody>
@@ -309,169 +316,175 @@
                         </div>
                     </div>
                 </div>
-               <div class="row" id="detail_info">
-                     <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Booking Details</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false"></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Settings 1</a>
-                                        </li>
-                                        <li><a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content" id="appear" style="display:none;">
+                <div class="row" id="detail_info">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Booking Details</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Settings 1</a>
+                                            </li>
+                                            <li><a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content" id="appear" style="display:none;">
 
-                            <div class="row">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div class="card-header card-avatar" data-background-color="purple">
-                                                    <h4 class="title">User Info</h4>
-                                                </div>
-                                                <div class="card-content">
-                                                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-                                                        <div class="profile_img">
-                                                            <div id="crop-avatar">
-                                                                <!-- Current avatar -->
-                                                                <img id="user_image" class="img-responsive avatar-view"
-                                                                      alt="Avatar"
-                                                                     title="Change the avatar"
-                                                                     style="width:150px;height:150px;">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header card-avatar" data-background-color="purple">
+                                                        <h4 class="title">User Info</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                                                            <div class="profile_img">
+                                                                <div id="crop-avatar">
+                                                                    <!-- Current avatar -->
+                                                                    <img id="user_image"
+                                                                         class="img-responsive avatar-view"
+                                                                         alt="Avatar"
+                                                                         title="Change the avatar"
+                                                                         style="width:150px;height:150px;">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <h3 id="username"></h3>
+                                                            <h3 id="username"></h3>
 
-                                                        <div class="col-sm-5 col-xs-6 "><label>Contact :</label></div>
-                                                        <div class="col-sm-7 col-xs-6 " id="contact"
-                                                             style="font-size: medium;">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
+                                                            <div class="col-sm-5 col-xs-6 "><label>Contact :</label>
+                                                            </div>
+                                                            <div class="col-sm-7 col-xs-6 " id="contact"
+                                                                 style="font-size: medium;">
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
 
-                                                        <div class="col-sm-5 col-xs-6 tital "><label>Email :</label>
-                                                        </div>
-                                                        <div class="col-sm-7" id="email" style="font-size: medium;">
+                                                            <div class="col-sm-5 col-xs-6 tital "><label>Email :</label>
+                                                            </div>
+                                                            <div class="col-sm-7" id="email" style="font-size: medium;">
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+
+                                                            <div class="col-sm-5 col-xs-6 tital ">
+                                                                <label>Department:</label>
+                                                            </div>
+                                                            <div class="col-sm-7 " id="dept" style="font-size: medium;">
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+
+                                                            <br/>
 
                                                         </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
-
-                                                        <div class="col-sm-5 col-xs-6 tital "><label>Department:</label>
-                                                        </div>
-                                                        <div class="col-sm-7 " id="dept" style="font-size: medium;">
-
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
-
-                                                        <br/>
 
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="row">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div class="card-header card-avatar" data-background-color="purple">
-                                                    <h4 class="title">Booking Summary</h4>
-                                                </div>
-                                                <div class="card-content">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header card-avatar" data-background-color="purple">
+                                                        <h4 class="title">Booking Summary</h4>
+                                                    </div>
+                                                    <div class="card-content">
 
-                                                    <div class="col-md-8 col-sm-3 col-xs-12 profile_left">
-                                                        <h3 id="room_name"></h3>
+                                                        <div class="col-md-8 col-sm-3 col-xs-12 profile_left">
+                                                            <h3 id="room_name"></h3>
 
-                                                        <div class="col-sm-4 col-xs-6 tital "><label>Start Date
-                                                            :</label></div>
-                                                        <div class="col-sm-7 col-xs-6 " id="start_date"
-                                                             style="font-size: medium;">
+                                                            <div class="col-sm-4 col-xs-6 tital "><label>Start Date
+                                                                :</label></div>
+                                                            <div class="col-sm-7 col-xs-6 " id="start_date"
+                                                                 style="font-size: medium;">
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+
+                                                            <div class="col-sm-4 col-xs-6 tital "><label>End Date
+                                                                :</label>
+                                                            </div>
+                                                            <div class="col-sm-7 col-xs-6" id="end_date"
+                                                                 style="font-size: medium;">
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+
+                                                            <div class="col-sm-4 col-xs-6 tital "><label>Time Range
+                                                                :</label></div>
+                                                            <div class="col-sm-7 col-xs-6" id="time_range"
+                                                                 style="font-size: medium;">Year : 0, Month :
+                                                                0, Days : 0
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+
+                                                            <div class="col-sm-4 col-xs-6 tital "><label>Slot :</label>
+                                                            </div>
+                                                            <div class="col-sm-7 col-xs-6" id="slot_number"
+                                                                 style="font-size: medium;">
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+
+                                                            <div class="col-sm-4 col-xs-6"><label>Admin Confirmation
+                                                                :</label></div>
+                                                            <div class="col-sm-7 col-xs-6" id="admin_confirmation"
+                                                                 style="font-size: medium;">
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="bot-border"></div>
+                                                            <br/>
+
                                                         </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
 
-                                                        <div class="col-sm-4 col-xs-6 tital "><label>End Date :</label>
-                                                        </div>
-                                                        <div class="col-sm-7 col-xs-6" id="end_date"
-                                                             style="font-size: medium;">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
-
-                                                        <div class="col-sm-4 col-xs-6 tital "><label>Time Range
-                                                            :</label></div>
-                                                        <div class="col-sm-7 col-xs-6" id="time_range"
-                                                             style="font-size: medium;">Year : 0, Month :
-                                                            0, Days : 0
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
-
-                                                        <div class="col-sm-4 col-xs-6 tital "><label>Slot :</label>
-                                                        </div>
-                                                        <div class="col-sm-7 col-xs-6" id="slot_number"
-                                                             style="font-size: medium;">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
-
-                                                        <div class="col-sm-4 col-xs-6"><label>Admin Confirmation
-                                                            :</label></div>
-                                                        <div class="col-sm-7 col-xs-6" id="admin_confirmation"
-                                                             style="font-size: medium;">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="bot-border"></div>
-                                                        <br/>
 
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button id="discard" type="submit" class="btn btn-danger">Discard</button>
-                                    <button id="confirm" type="submit" class="btn btn-success">Confirm</button>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button id="discard" type="submit" class="btn btn-danger">Discard</button>
+                                        <button id="confirm" type="submit" class="btn btn-success">Confirm</button>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="success" class="row" style="display:none;width: 100%;padding: 5px;background-color: #A5D6A7;color: black;font-size: 15px;box-sizing: border-box;">
-                                <strong>Successfully updated!!</strong>
-                            </div>
-                            <div id="error" class="row" style="display:none;width: 100%;padding: 5px;background-color: #EF5350;color: black;font-size: 15px;box-sizing: border-box;">
-                                <strong>Error in updating !!</strong>
-                            </div>
+                                <div id="success" class="row"
+                                     style="display:none;width: 100%;padding: 5px;background-color: #A5D6A7;color: black;font-size: 15px;box-sizing: border-box;">
+                                    <strong>Successfully updated!!</strong>
+                                </div>
+                                <div id="error" class="row"
+                                     style="display:none;width: 100%;padding: 5px;background-color: #EF5350;color: black;font-size: 15px;box-sizing: border-box;">
+                                    <strong>Error in updating !!</strong>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-               </div>
 
             </div>
         </div>

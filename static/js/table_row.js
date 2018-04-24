@@ -8,12 +8,12 @@ $(document).ready(function () {
    console.log(path);
     $(function () {
         $('.trigger').click(function () {
-            console.log("clicked");
+            // console.log("clicked");
 
             $('#add_class_btn').click(function () {
                 name = $('#add_room_name').val();
                 capacity = $('#add_capacity').val();
-                console.log(name+capacity);
+                // console.log(name+capacity);
                 if (name.length > 4 && capacity > 0) {
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
@@ -53,11 +53,12 @@ function delete_row(row) {
     //console.log(row);
     var name = row.childNodes[1].textContent;
     //console.log(name);
-    showCancelMessage(name, row);
+    var path=window.location.pathname;
+    showCancelMessage(name, row,path);
 
 }
 
-function showCancelMessage(room, row) {
+function showCancelMessage(room, row,path) {
     swal({
         title: "Are you sure?",
         text: room + " will be deleted!",
@@ -83,8 +84,12 @@ function showCancelMessage(room, row) {
 
                 }
             };
+            if(path=="/ClassUpdate"){
+              xhttp.open("GET", "http://127.0.0.1:5000/class_delete?name=" + room, true);
+            }else if(path=="/LabUpdate"){
+                xhttp.open("GET", "http://127.0.0.1:5000/lab_delete?name=" + room, true);
+            }
 
-            xhttp.open("GET", "http://127.0.0.1:5000/class_delete?name=" + name, true);
             xhttp.send();
         }
     });
