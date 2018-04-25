@@ -156,7 +156,7 @@
                       if(x=="0")
                      {
                          alert("DONE!!");
-                         window.location.replace("http://127.0.0.1:8080/field");
+                         window.location.replace("http://127.0.0.1:5000/field");
                      }
                      else if(x=="exist")
                      {
@@ -178,7 +178,7 @@
             }
             else
             {
-                xhttp.open("GET", "http://127.0.0.1:8080/field_booking_done?query="+JSON.stringify(args), true);
+                xhttp.open("GET", "http://127.0.0.1:5000/field_booking_done?query="+JSON.stringify(args), true);
                 xhttp.send();
             }
 

@@ -170,7 +170,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     }
                 };
                 var args = [username, email, password, phone, dept]
-                xhttp.open("GET", "http://127.0.0.1:8080/signup_helper?query=" + JSON.stringify(args), true);
+                xhttp.open("GET", "http://127.0.0.1:5000/signup_helper?query=" + JSON.stringify(args), true);
                 xhttp.send();
             }
 
