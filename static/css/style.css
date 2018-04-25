@@ -269,10 +269,10 @@
         padding: 0.85em 1em;
         border: none;
         outline: none;
-        color: #fff;
+        color: #17202A  ;
         font-size: 1em;
         letter-spacing: 1px;
-        background: #00bcd4;
+        background: #FBFCFC   ;
         transition: 0.5s all;
         -webkit-transition: 0.5s all;
         -o-transition: 0.5s all;
@@ -282,29 +282,29 @@
     }
 
     .login-section-agileits input[type="text"] {
-        background: #4ddba6;
+        background:  #FBFCFC    ;
     }
 
     .login-section-agileits input[type="password"] {
-        background: #00b9ef;
+        background:  #FBFCFC    ;
     }
 
     .w3ls-icon input[type="password"]#password2 {
-        background: #4ddba6;
+        background:#FBFCFC   ;
     }
 
     .login-section-agileits input[type="email"] {
-        background: #00b9ef;
+        background:  #FBFCFC   ;
     }
 
      .login-section-agileits input[type="tel"] {
-        background: #4ddba6;
+        background:  #FBFCFC   ;
     }
       .login-section-agileits input[type="dept"] {
-        background: #00b9ef;
+        background:  #FBFCFC    ;
     }
       .login-section-agileits select[type="choose"] {
-        background:#eb5273;
+        background:#FBFCFC ;
     }
     /*-- login --*/
 
@@ -353,21 +353,21 @@
     }
 
     ::-webkit-input-placeholder {
-        color: #fff;
+        color: #17202A  ;
     }
 
     :-moz-placeholder {
         /* Firefox 18- */
-        color: #fff;
+        color: #17202A  ;
     }
 
     ::-moz-placeholder {
         /* Firefox 19+ */
-        color: #fff;
+        color: #17202A  ;
     }
 
     :-ms-input-placeholder {
-        color: #fff;
+        color: #17202A  ;
     }
     /*--responsive--*/
     /* -- Responsive code -- */

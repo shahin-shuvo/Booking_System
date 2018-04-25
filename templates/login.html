@@ -121,32 +121,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		function submitSignupData(){
             var xhttp = new XMLHttpRequest();
+
             var e = document.getElementById('choose');
             var user_type = e.options[e.selectedIndex].value;
+
             var username = document.getElementById("username").value;
             var password = document.getElementById("password1").value;
+             //alert(user_type+username+password);
             var got=2,call=0;
-            show();
                   xhttp.onreadystatechange = function () {
 
                       if (this.readyState == 4 && this.status == 200) {
                          // swal("Good kok!", "You clicked the button!", "success");
                           var x = xhttp.responseText;
                           if (x == "OK_User") {
-                              show();
                               window.location.replace("http://127.0.0.1:8080/index");
 
 
                           }
                           else if (x == "OK_Admin") {
-                              show();
                               window.location.replace("http://127.0.0.1:8080/admin");
 
                           }
                           else if (x == "error") {
-
+                              alert("Wrong password or username!");
                           }
-                          call=1;
+
                       }
 
                   };

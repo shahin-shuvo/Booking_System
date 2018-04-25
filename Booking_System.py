@@ -87,6 +87,8 @@ def login_helper():
         query = json.loads(query)
         conn = mysql.connect()
         c = conn.cursor()
+        print(query[0])
+        print(query[1])
         if query[2]=="ADMIN":
             data = c.execute("SELECT * FROM Admin WHERE username = (%s) AND password = (%s)",
                              (query[0], query[1]))
@@ -492,6 +494,7 @@ def blog2():
 #Class update mehthod
 @app.route('/ClassUpdate',methods=['GET'])
 def class_info():
+    conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(
         "SELECT room_name,capacity from class_info")
@@ -502,6 +505,7 @@ def class_info():
 @app.route('/class_delete_orginal')
 def class_delete():
     name=request.args["name"]
+    conn = mysql.connect()
     cursor = conn.cursor()
     try:
         cursor.execute("""DELETE FROM class_info 
@@ -526,6 +530,7 @@ def class_update():
     old_name=request.args['old_name']
     new_name=request.args['new_name']
     capacity=request.args['capacity']
+    conn = mysql.connect()
     cursor = conn.cursor()
     print(old_name+" "+new_name+" "+capacity)
 
@@ -540,6 +545,7 @@ def class_update():
 def class_insert():
     new_name=request.args['new_name']
     capacity=request.args['capacity']
+    conn = mysql.connect()
     cursor = conn.cursor()
     print(new_name+" "+capacity)
 
@@ -552,6 +558,10 @@ def class_insert():
         print("dtabase")
         return "error"
     return "success"
+
+@app.route('/auditorium_test',methods=['GET'])
+def auditorium_test():
+    return render_template("auditorium_test",)
 
 if __name__ == '__main__':
     app.debug = True
