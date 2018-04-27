@@ -113,6 +113,30 @@ def login_helper():
         # flash(e)
         error = "Invalid credentials, try again."
         return "Error"
+#This is only for user before booking
+@app.route('/login_user', methods=["GET", "POST"])
+def login_user():
+    error = ''
+    try:
+        query = request.args['query']
+        query = json.loads(query)
+        conn = mysql.connect()
+        c = conn.cursor()
+        data = c.execute("SELECT * FROM Registration WHERE username = (%s) AND password = (%s)",
+                         (query[0], query[1]))
+        if int(data) > 0:
+            session['logged_in'] = True
+            session['username'] = query[0]
+            gc.collect()
+            return "OK_User"
+
+        return "error"
+
+
+    except Exception as e:
+        # flash(e)
+        error = "Invalid credentials, try again."
+        return "Error"
 
 
 def login_required(f):
@@ -133,436 +157,89 @@ def logout():
     gc.collect()
     return render_template("index.html")
 
-
-
-
-#for auditorium call
-
-@app.route('/auditorium',methods=["GET", "POST"])
-def auditorium():
-
-    tsc = "TSC Auditorium"
-    rcm= "RC Majumdar Arts Auditorium"
-    senate= "Nawab Ali Chowdhury Senate Bhaban"
-    arts= "Lecture Theater, Fine Arts"
-    today = str(date.today())
-    session['date'] = today
-    conn = mysql.connect()
-    c = conn.cursor()
-    # for tabl1
-
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today,tsc,))
-    n1 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today,tsc,))
-    data1 = c.fetchall()
-    if (int(n1) > 0):
-        for row in data1:
-            status1 = row[3]
-    else:
-        status1 = "Apply for Booking"
-
-    # for table2
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today,rcm,))
-    n2 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today,rcm,))
-    data2 = c.fetchall()
-    if (int(n2) > 0):
-        for row in data2:
-            status2 = row[3]
-    else:
-        status2 = "Apply for Booking"
-    # for table3
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today,senate,))
-    n3 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today,senate,))
-    data3 = c.fetchall()
-    if (int(n3) > 0):
-        for row in data3:
-            status3 = row[3]
-    else:
-        status3 = "Apply for Booking"
-    # for table4
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today,arts))
-    n4 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today,arts))
-    data4 = c.fetchall()
-    if (int(n4) > 0):
-        for row in data4:
-            status4 = row[3]
-    else:
-        status4 = "Apply for Booking"
-    # END
-    n1 = str(n1)
-    n2 = str(n2)
-    n3 = str(n3)
-    n4 = str(n4)
-    print(status1)
-    data = [status1, n1, status2, n2, status3, n3, status4, n4]
-    return render_template("auditorium.html",data=data)
-
-
-@app.route('/auditorium_call',methods=["GET","POST"])
-def auditorium_helper():
-    #initialize
-
-    tsc = "TSC Auditorium"
-    rcm = "RC Majumdar Arts Auditorium"
-    senate = "Nawab Ali Chowdhury Senate Bhaban"
-    arts = "Lecture Theater, Fine Arts"
-
-    today = request.args['query']
-    session['date'] = today
-    conn = mysql.connect()
-    c = conn.cursor()
-    # for tabl1
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today, tsc,))
-    n1 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today, tsc,))
-    data1 = c.fetchall()
-    if (int(n1) > 0):
-        for row in data1:
-            status1 = row[3]
-    else:
-        status1 = "Apply for Booking"
-    # for table2
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today, rcm,))
-    n2 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today, rcm,))
-    data2 = c.fetchall()
-    if (int(n2) > 0):
-        for row in data2:
-            status2 = row[3]
-    else:
-        status2 = "Apply for Booking"
-    # for table3
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today, senate,))
-    n3 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today, senate,))
-    data3 = c.fetchall()
-    if (int(n3) > 0):
-        for row in data3:
-            status3 = row[3]
-    else:
-        status3 = "Apply for Booking"
-    # for table4
-    c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-              (today, arts))
-    n4 = c.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                   (today, arts,))
-    data4 = c.fetchall()
-    if (int(n4) > 0):
-        for row in data4:
-            status4 = row[3]
-    else:
-        status4 = "Apply for Booking"
-    # END
-    n1 = str(n1)
-    n2 = str(n2)
-    n3 = str(n3)
-    n4 = str(n4)
-
-
-    data= [status1,n1,status2,n2,status3,n3,status4,n4]
-    return make_response(dumps(data))
-
-
-@app.route('/auditorium_booking_form')
-def booking_form():
-    if 'logged_in' in session:
-        username = session['username']
-        date = session['date']
-        print(username)
-        return render_template('auditorium_booking_form.html',username=username,date=date)
-
-    flash('You have to Login first!!')
-    return redirect(url_for('login'))
-
-@app.route('/auditorium_booking_done',methods=["GET", "POST"])
-def auditorium_booking_done():
-    table=""
-    query = request.args['query']
-    query = json.loads(query)
-    file = query[3]
-
-    print(query[0])
-    print(query[1])
-    print(query[2])
-    print(query[3])
-    status = "Already Applied"
-
-
-    try:
-        with open('/home/shuvo/Pictures/'+query[3], "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read())
-        conn = mysql.connect()
-        x = conn.cursor()
-        n = x.execute("SELECT * FROM Auditorium_Data WHERE Date = (%s) AND Auditorium = (%s)",
-                       (query[1], query[2],))
-        print(n)
-        if(int(n)>0):
-            return "exist"
-        else:
-            x.execute(
-                "INSERT INTO Auditorium_Data (Auditorium,Date,Status,Payment,Username,Applydate) VALUES (%s, %s, %s,  %s, %s, %s)",
-                (query[2], query[1], status, encoded_string, query[0], query[1]))
-            # x.execute("UPDATE Auditorium_table SET Status = %s WHERE username = %s",(table,username,))
-
-            conn.commit()
-            conn.close()
-            return "0"
-
-    except Exception as e:
-         return "1"
-
-
-#for showing the Field booking Page with inital data
-@app.route('/field',methods=["GET", "POST"])
-def field():
-    central = "DU Central Field"
-    jagannath ="Jagannath Hall Field"
-    jahurul="Jahurul Haq Hall Ground"
-    today = str(date.today())
-    session['date2'] = today
-    conn = mysql.connect()
-    c = conn.cursor()
-    # for tabl1
-    c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-              (today,central,))
-    n1 = c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                   (today,central,))
-    data1 = c.fetchall()
-    if (int(n1) > 0):
-        for row in data1:
-            status1 = row[3]
-    else:
-        status1 = "Apply for Booking"
-    # for table2
-    c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-              (today,jagannath,))
-    n2 = c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                   (today,jagannath,))
-    data2 = c.fetchall()
-    if (int(n2) > 0):
-        for row in data2:
-            status2 = row[3]
-    else:
-        status2 = "Apply for Booking"
-    # for table3
-    c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-              (today,jahurul,))
-    n3 = c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                   (today,jahurul,))
-    data3 = c.fetchall()
-    if (int(n3) > 0):
-        for row in data3:
-            status3 = row[3]
-    else:
-        status3 = "Apply for Booking"
-
-    # END
-    n1 = str(n1)
-    n2 = str(n2)
-    n3 = str(n3)
-
-    data = [status1, n1, status2, n2, status3, n3]
-    return render_template("field.html",data=data)
-
-
-#for showing the Field booking Page with selected date
-@app.route('/field_call',methods=["GET","POST"])
-def field_helper():
-    #initialize
-    central = "DU Central Field"
-    jagannath = "Jagannath Hall Field"
-    jahurul = "Jahurul Haq Hall Ground"
-
-    today = request.args['query']
-    session['date2'] = today
-    conn = mysql.connect()
-    c = conn.cursor()
-    # for tabl1
-    c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-              (today, central,))
-    n1 = c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                   (today, central,))
-    data1 = c.fetchall()
-    if (int(n1) > 0):
-        for row in data1:
-            status1 = row[3]
-    else:
-        status1 = "Apply for Booking"
-    # for table2
-    c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-              (today, jagannath,))
-    n2 = c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                   (today, jagannath,))
-    data2 = c.fetchall()
-    if (int(n2) > 0):
-        for row in data2:
-            status2 = row[3]
-    else:
-        status2 = "Apply for Booking"
-    # for table3
-    c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-              (today, jahurul,))
-    n3 = c.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                   (today, jahurul,))
-    data3 = c.fetchall()
-    if (int(n3) > 0):
-        for row in data3:
-            status3 = row[3]
-    else:
-        status3 = "Apply for Booking"
-
-    # END
-    n1 = str(n1)
-    n2 = str(n2)
-    n3 = str(n3)
-
-
-    data= [status1,n1,status2,n2,status3,n3]
-    return make_response(dumps(data))
-
-@app.route('/field_booking_form')
-def field_form():
-    if 'logged_in' in session:
-        username = session['username']
-        date = session['date2']
-        print(username)
-        return render_template('field_booking_form.html',username=username,date=date)
-
-    flash('You have to Login first!!')
-    return redirect(url_for('login'))
-
-@app.route('/field_booking_done',methods=["GET", "POST"])
-def field_booking_done():
-    table = ""
-    query = request.args['query']
-    query = json.loads(query)
-    file = query[3]
-
-    print(query[0])
-    print(query[1])
-    print(query[2])
-    print(query[3])
-    status = "Already Applied"
-
-
-    try:
-        with open('/home/shuvo/Pictures/' + query[3], "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read())
-
-        conn = mysql.connect()
-        x = conn.cursor()
-
-        n = x.execute("SELECT * FROM Field_Data WHERE Date = (%s) AND Field = (%s)",
-                      (query[1], query[2],))
-        print(n)
-        if (int(n) > 0):
-            return "exist"
-        else:
-            x.execute(
-                "INSERT INTO Field_Data (Field,Date,Status,Payment,Username,Applydate) VALUES (%s, %s, %s,  %s, %s, %s)",
-                (query[2], query[1], status, encoded_string, query[0], query[1]))
-
-            conn.commit()
-            conn.close()
-            return "0"
-
-
-    except Exception as e:
-        return "1"
-
-
 @app.route('/Auditorium_Blog',methods=["GET", "POST"])
 def blog1():
     return render_template('Auditorium_Blog.html')
 
 @app.route('/field_blog',methods=["GET", "POST"])
 def blog2():
+
     return render_template('field_blog.html')
 
 
-#Shanto's file
-#Class update mehthod
-@app.route('/ClassUpdate',methods=['GET'])
-def class_info():
+
+
+@app.route('/auditorium_test',methods=['GET'])
+def auditorium_final():
+    date_current=str(date.today())
+    session['date'] = date_current
+    #date_current ="2018-04-04"
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+
+    cursor.execute("SELECT  Auditorium_Info.Name, Auditorium_Table.Status FROM Auditorium_Info LEFT OUTER JOIN  Auditorium_Table  ON Auditorium_Info.Name=Auditorium_Table.Auditorium AND Auditorium_Table.Date= %s ORDER BY Auditorium_Info.Name DESC",(date_current,))
+
+    data = cursor.fetchall()
+    print(data)
+    if 'logged_in' in session:
+            username = session['username']
+    else: username = "Guest"
+    return render_template("auditorium_main.html", data=data, username=username, date =date_current)
+
+@app.route('/auditorium_data_query',methods=["GET","POST"])
+def auditorium_query():
+    #initialize
+    date_current = request.args['query']
+    session['date'] = date_current
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT room_name,capacity from class_info")
+        "SELECT  Auditorium_Info.Name, Auditorium_Table.Status FROM Auditorium_Info LEFT OUTER JOIN  Auditorium_Table  ON Auditorium_Info.Name=Auditorium_Table.Auditorium AND Auditorium_Table.Date= %s  ORDER BY Auditorium_Info.Name ASC",
+        (date_current,))
     data = cursor.fetchall()
-    #print(data)
-    return render_template('ClassUpdate.html', data=data)
+    print(data)
+    return make_response(dumps(data))
 
-@app.route('/class_delete_orginal')
-def class_delete():
-    name=request.args["name"]
+@app.route('/auditorium_book_helper',methods=["GET","POST"])
+def auditorium_book_helper():
+    try:
+       auditorium = request.args['query']
+       session['auditorium_applied'] = auditorium
+       print(auditorium)
+       return "0"
+    except Exception as e:
+        return "1"
+
+@app.route('/auditorium_book',methods=["GET","POST"])
+def auditorium_book():
+    #initialize
+    status = "Already Applied"
+    auditorium = session['auditorium_applied']
+    file = request.args['query2']
+    date_apply = session['date']
+    username = session['username']
+    print(auditorium)
+    print(date_apply)
+    print(username)
     conn = mysql.connect()
     cursor = conn.cursor()
     try:
-        cursor.execute("""DELETE FROM class_info 
-                          WHERE room_name = %s"""
-                       , (name,))
-        print("done this")
+        with open('/home/shuvo/Pictures/'+file, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+        cursor.execute(
+            "INSERT INTO Auditorium_Table (Auditorium,Date,Status,Payment,Username,Applydate) VALUES (%s, %s, %s,  %s, %s, %s)",
+            (auditorium, date_apply, status, encoded_string, username, date_apply))
+        # x.execute("UPDATE Auditorium_table SET Status = %s WHERE username = %s",(table,username,))
         conn.commit()
-        return "Success"
+        conn.close()
+        return "0"
+
     except Exception as e:
-        print(e)
-        return "Error"
-
-@app.route('/class_delete')
-def class_delet():
-    #this is for test purpose content will not be deleted
-    print(request.args["name"])
-    return "Success"
+        return "1"
 
 
-@app.route('/class_update_data',methods=['GET'])
-def class_update():
-    old_name=request.args['old_name']
-    new_name=request.args['new_name']
-    capacity=request.args['capacity']
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    print(old_name+" "+new_name+" "+capacity)
-
-    try:
-        cursor.execute("UPDATE class_info SET room_name=%s,capacity=%s WHERE room_name=%s",
-                       (new_name, capacity, old_name))
-        conn.commit()
-    except Exception as e:
-        return "error"
-    return "success"
-@app.route('/class_insert_data',methods=['GET'])
-def class_insert():
-    new_name=request.args['new_name']
-    capacity=request.args['capacity']
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    print(new_name+" "+capacity)
-
-    try:
-        #TODO: dept name should be replaced by sessions dept name
-        cursor.execute("INSERT INTO class_info (room_name,capacity,dept_name) VALUES (%s,%s,%s)",
-                       (new_name, capacity,"CSE",))
-        conn.commit()
-    except Exception as e:
-        print("dtabase")
-        return "error"
-    return "success"
-
-@app.route('/auditorium_test',methods=['GET'])
-def auditorium_test():
-    return render_template("auditorium_test",)
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='127.0.0.1', port=8080)
+    app.run(host='127.0.0.1', port=5000)
