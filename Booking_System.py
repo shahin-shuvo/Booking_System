@@ -238,7 +238,78 @@ def auditorium_book():
     except Exception as e:
         return "1"
 
+# Start of fielding booking
+#Here are all function related to field booking
 
+@app.route('/field_main',methods=['GET'])
+def field_final():
+    date_current=str(date.today())
+    session['date_field'] = date_current
+    #date_current ="2018-04-04"
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+
+    cursor.execute("SELECT  Field_Info.Name, Field_Table.Status FROM Field_Info LEFT OUTER JOIN  Field_Table  ON Field_Info.Name=Field_Table.Field AND Field_Table.Date= %s ORDER BY Field_Info.Name DESC",(date_current,))
+
+    data = cursor.fetchall()
+    print(data)
+    if 'logged_in' in session:
+            username = session['username']
+    else: username = "Guest"
+    return render_template("field_main.html", data=data, username=username, date =date_current)
+
+@app.route('/field_data_query',methods=["GET","POST"])
+def field_query():
+    #initialize
+    date_current = request.args['query']
+    session['date_field'] = date_current
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT  Field_Info.Name, Field_Table.Status FROM Field_Info LEFT OUTER JOIN  Field_Table  ON Field_Info.Name=Field_Table.Field AND Field_Table.Date= %s ORDER BY Field_Info.Name ASC",
+        (date_current,))
+
+    data = cursor.fetchall()
+    print(data)
+    return make_response(dumps(data))
+
+@app.route('/field_book_helper',methods=["GET","POST"])
+def field_book_helper():
+    try:
+       field = request.args['query']
+       session['field_applied'] = field
+       print(field)
+       return "0"
+    except Exception as e:
+        return "1"
+
+@app.route('/field_book',methods=["GET","POST"])
+def field_book():
+    #initialize
+    status = "Already Applied"
+    field = session['field_applied']
+    file = request.args['query2']
+    date_apply = session['date_field']
+    username = session['username']
+    print(field)
+    print(date_apply)
+    print(username)
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    try:
+        with open('/home/shuvo/Pictures/'+file, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+        cursor.execute(
+            "INSERT INTO Field_Table (Field,Date,Status,Payment,Username,Applydate) VALUES (%s, %s, %s,  %s, %s, %s)",
+            (field, date_apply, status, encoded_string, username, date_apply))
+        # x.execute("UPDATE Auditorium_table SET Status = %s WHERE username = %s",(table,username,))
+        conn.commit()
+        conn.close()
+        return "0"
+
+    except Exception as e:
+        return "1"
 
 if __name__ == '__main__':
     app.debug = True

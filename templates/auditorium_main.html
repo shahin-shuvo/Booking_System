@@ -46,8 +46,8 @@
             <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
             <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
             <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
-            <li  class="active" style="width: 210px"><a class="active " href="auditorium_main" id="auditorium" >Auditorium Booking</a></li>
-            <li  class="active" style="width: 150px"><a class="active" href="field_main" id="field" >Field Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium_test" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field" id="field" >Field Booking</a></li>
           </ul>
         </div>
 
@@ -176,7 +176,7 @@
                                 <table id="myTable" class="table table-striped table-bordered" style="width: 900px">
                                     <thead>
                                     <tr style="background-color: #154360;color: white ">
-                                        <th>Play Ground</th>
+                                        <th>Auditorium</th>
                                         <th>Status</th>
 
                                     </tr>
@@ -207,15 +207,17 @@
                                                         {% endif %}
                                                     </th>
 
-                                                {% elif d == "DU Central Field" %}
-                                                    <th href="#" style="background-color: #EEDEA2">DU Central Field</th>
-                                                {% elif d == "Jagannath Hall Ground" %}
-                                                    <th href="#" style="background-color: #C9CCF3">Jagannath Hall Ground</th>
-                                                {% elif d == "Jahurul Haq Hall Ground" %}
-                                                    <th href="#" style="background-color: #F3CCF0">Jahurul Haq Hall Ground</th>
+                                                {% elif d == "TSC Auditorium" %}
+                                                    <th href="#" style="background-color: #EEDEA2">TSC Auditorium</th>
+                                                {% elif d == "Lecture Theater, Fine Arts" %}
+                                                    <th href="#" style="background-color: #C9CCF3">Lecture Theater, Fine Arts</th>
+                                                {% elif d == "RC Majumdar Arts Auditorium" %}
+                                                    <th href="#" style="background-color: #F3CCF0">RC Majumdar Arts Auditorium</th>
+                                                {% elif d == "Nawab Ali Chowdhury Senate Bhaban" %}
+                                                    <th href="#" style="background-color: #C3E8B9  ">Nawab Ali Chowdhury Senate Bhaban</th>
 
                                                 {% else %}
-                                                    <td style="background-color: #A5D6A7">{{ d }}</td>
+                                                    <td>{{ d }}</td>
                                                 {% endif %}
                                             {% endfor %}
 
@@ -294,8 +296,9 @@
                  }
              };
 
+             document.getElementById("date3").innerText = "kjfjer";
 
-            xhttp.open("GET", "http://127.0.0.1:5000/field_data_query?query="+
+            xhttp.open("GET", "http://127.0.0.1:5000/auditorium_data_query?query="+
                 document.getElementById("date").value, true);
             xhttp.send();
 
@@ -344,7 +347,7 @@
                 }
 
             };
-                xhttp.open("GET", "http://127.0.0.1:5000/field_book_helper?query=" +audit[0] , true);
+                xhttp.open("GET", "http://127.0.0.1:5000/auditorium_book_helper?query=" +audit[0] , true);
                 xhttp.send();
 
               }
@@ -471,7 +474,7 @@
                 }
 
             };
-            xhttp.open("GET", "http://127.0.0.1:5000/field_book?query2=" + pay, true);
+            xhttp.open("GET", "http://127.0.0.1:5000/auditorium_book?query2=" + pay, true);
             xhttp.send();
         }
     </script>
