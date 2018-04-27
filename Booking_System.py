@@ -156,11 +156,11 @@ def logout():
     session.clear()
     gc.collect()
     return render_template("index.html")
-
+#Auditorium info page
 @app.route('/Auditorium_Blog',methods=["GET", "POST"])
 def blog1():
     return render_template('Auditorium_Blog.html')
-
+#Field info page
 @app.route('/field_blog',methods=["GET", "POST"])
 def blog2():
 
@@ -168,8 +168,9 @@ def blog2():
 
 
 
-
-@app.route('/auditorium_test',methods=['GET'])
+#Start of auditorium
+#Here are all function of auditorium related
+@app.route('/auditorium_main',methods=['GET'])
 def auditorium_final():
     date_current=str(date.today())
     session['date'] = date_current
@@ -187,6 +188,8 @@ def auditorium_final():
     else: username = "Guest"
     return render_template("auditorium_main.html", data=data, username=username, date =date_current)
 
+
+#After selecting date this function return data
 @app.route('/auditorium_data_query',methods=["GET","POST"])
 def auditorium_query():
     #initialize
@@ -201,6 +204,7 @@ def auditorium_query():
     print(data)
     return make_response(dumps(data))
 
+#this function receive auditorium name
 @app.route('/auditorium_book_helper',methods=["GET","POST"])
 def auditorium_book_helper():
     try:
