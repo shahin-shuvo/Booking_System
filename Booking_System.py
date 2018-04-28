@@ -315,6 +315,25 @@ def field_book():
     except Exception as e:
         return "1"
 
+@app.route('/user_profile',methods=["GET","POST"])
+def view_profile():
+    date_current = str(date.today())
+    username = session['username']
+    # date_current ="2018-04-04"
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT  Auditorium,Status,Date FROM   Auditorium_Table WHERE Username = %s",
+        (username,))
+
+    dataA = cursor.fetchall()
+    cursor.execute(
+        "SELECT  Field,Status,Date FROM   Field_Table WHERE Username = %s",
+        (username,))
+    dataF = cursor.fetchall()
+    return render_template('user_profile.html',dataA=dataA,dataF=dataF);
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='127.0.0.1', port=5000)

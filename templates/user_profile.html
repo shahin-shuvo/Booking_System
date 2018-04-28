@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DU_Booking_Site</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link href="/static/css/style_signup.css" rel="stylesheet">
+       <link href="/static/css/style_navbar.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/du_booking_system.css" rel="stylesheet">
+      <!-- For profile page body -->
+
+
+
+   <script type="text/javascript">
+			var nav = false;
+		function show_hide_nav(id){
+			var navbar = document.getElementById(id);
+
+			if(nav == false){
+				navbar.style.display = "block";
+				nav = true;
+			}else{
+				navbar.style.display = "none";
+				nav = false;
+			}
+		}
+	</script>
+
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+          <img class="navbar-brand" src="/static/img/logo.png">
+        <a class="navbar-brand" href="#">University of Dhaka</a>
+
+        <div class="topnav" id="navbarResponsive" >
+            <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
+          <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
+            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Profile</a></li>
+            <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
+            <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium_main" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field_main" id="field" >Field Booking</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </nav>
+
+
+    <style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+    margin-top: 1.4%;
+    font-family: Arial;
+    height: inherit;
+    width: inherit;
+}
+
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 20%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: inherit;
+}
+
+#Field {background-color:#45B39D;}
+#Profile {background-color: red;}
+#Class {background-color: green;}
+#Lab {background-color: blue;}
+#Auditorium {background-color: #5DADE2;}
+
+</style>
+  </head>
+<body>
+
+<button class="tablink" onclick="openPage('Profile', this, 'red')">Profile</button>
+<button class="tablink" onclick="openPage('Class', this, 'green')" id="defaultOpen">Class</button>
+<button class="tablink" onclick="openPage('Lab', this, 'blue')">Lab</button>
+<button class="tablink" onclick="openPage('Auditorium', this, '#5DADE2')">Auditorium</button>
+<button class="tablink" onclick="openPage('Field', this, '#45B39D')">Field</button>
+
+
+<div id="Profile" class="tabcontent">
+  <h3>Profile</h3>
+  <p>Profile is where the heart is..</p>
+</div>
+
+<div id="Class" class="tabcontent">
+  <h3>Class</h3>
+  <p>Some news this fine day!</p>
+</div>
+
+<div id="Lab" class="tabcontent">
+  <h3>Lab</h3>
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="Auditorium" class="tabcontent">
+    <div id="fullpage" style=" margin-top: 5%;margin-left: 15%;margin-right: 15%">
+
+
+                     <div class="row">
+
+
+                                <table id="myTable" class="table table-striped table-bordered" style="width: 900px">
+                                    <thead>
+                                    <tr style="background-color: #154360;color: white ">
+                                        <th>Auditorium</th>
+                                        <th>Status</th>
+                                         <th>Apply Date</th>
+
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody class="card-link" style="font-family: 'Josefin Sans', sans-serif">
+
+                                    {% for row in dataA %}
+                                        {#                                        <a href="#detail_info">#}
+                                        <tr class="clickable-row">
+
+                                            {% for d in row %}
+                                                {% if d == "Booked" %}
+                                                    <th  style="background-color:#dc143c;text-align: center ;height: 45px">Accepted</th>
+                                                {% elif d == "Already Applied" %}
+                                                    <th href="#" style="background-color:  #A569BD;text-align: center;height: 45px">Requested</th>
+                                                {% elif d == "TSC Auditorium" %}
+                                                    <th href="#" style="background-color: #EEDEA2;color: black">TSC Auditorium</th>
+                                                {% elif d == "Lecture Theater, Fine Arts" %}
+                                                    <th href="#" style="background-color: #C9CCF3;color: black">Lecture Theater, Fine Arts</th>
+                                                {% elif d == "RC Majumdar Arts Auditorium" %}
+                                                    <th href="#" style="background-color: #F3CCF0;color: black">RC Majumdar Arts Auditorium</th>
+                                                {% elif d == "Nawab Ali Chowdhury Senate Bhaban" %}
+                                                    <th href="#" style="background-color: #C3E8B9;color: black  ">Nawab Ali Chowdhury Senate Bhaban</th>
+
+                                                {% else %}
+                                                    <td style="background-color: #FCF3CF;color: black">{{ d }}</td>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </tr>
+                                        {#                                        </a>#}
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                      </div>
+    </div>
+</div>
+<div id="Field" class="tabcontent">
+   <div id="fullpage" style=" margin-top: 5%;margin-left: 15%;margin-right: 15%">
+
+
+                     <div class="row">
+
+
+                                <table id="myTable" class="table table-striped table-bordered" style="width: 900px">
+                                    <thead>
+                                    <tr style="background-color: #154360;color: white ">
+                                        <th>Field</th>
+                                        <th>Status</th>
+                                         <th>Apply Date</th>
+
+                                    </tr>
+                                    </thead>
+
+
+                                   <tbody class="card-link" style="font-family: 'Josefin Sans', sans-serif">
+
+                                    {% for row in dataF %}
+                                        {#                                        <a href="#detail_info">#}
+                                        <tr class="clickable-row">
+
+                                            {% for d in row %}
+                                                {% if d == "Booked" %}
+                                                    <th  style="background-color:#dc143c;text-align: center ;height: 45px">Accepted</th>
+                                                {% elif d == "Already Applied" %}
+                                                    <th href="#" style="background-color:  #A569BD;text-align: center;height: 45px">Requested</th>
+
+                                                {% elif d == "DU Central Field" %}
+                                                    <th href="#" style="background-color: #EEDEA2;color: black">DU Central Field</th>
+                                                {% elif d == "Jagannath Hall Ground" %}
+                                                    <th href="#" style="background-color: #C9CCF3;color: black">Jagannath Hall Ground</th>
+                                                {% elif d == "Jahurul Haq Hall Ground" %}
+                                                    <th href="#" style="background-color: #F3CCF0;color: black">Jahurul Haq Hall Ground</th>
+
+                                                {% else %}
+                                                    <td style="background-color: #F2D7D5;color: black">{{ d }}</td>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </tr>
+                                        {#                                        </a>#}
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                      </div>
+    </div>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+<!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container" >
+        <p class="m-0 text-center text-white">Copyright &copy; DU Booking Website 2018</p>
+      </div>
+    </footer>
+</html>
+
