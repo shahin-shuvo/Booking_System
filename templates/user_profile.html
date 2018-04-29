@@ -16,7 +16,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/du_booking_system.css" rel="stylesheet">
-
+    <!-- Icon library -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -45,7 +46,7 @@
         <div class="topnav" id="navbarResponsive" >
             <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
           <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
-            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Profile</a></li>
+            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
             <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
             <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
             <li  class="active" style="width: 210px"><a class="active " href="auditorium_main" id="auditorium" >Auditorium Booking</a></li>
@@ -104,11 +105,21 @@ body, html {
   </head>
 <body>
 
-<button class="tablink" onclick="openPage('Profile', this, 'red')">Profile</button>
-<button class="tablink" onclick="openPage('Class', this, 'green')" id="defaultOpen">Class</button>
-<button class="tablink" onclick="openPage('Lab', this, 'blue')">Lab</button>
-<button class="tablink" onclick="openPage('Auditorium', this, '#5DADE2')">Auditorium</button>
-<button class="tablink" onclick="openPage('Field', this, '#45B39D')">Field</button>
+<button  class="tablink" onclick="openPage('Profile', this, 'red')" id="defaultOpen">
+    <i class="fa fa-user" style="font-size: 20px">Profile</i>
+</button>
+<button class="tablink" onclick="openPage('Class', this, 'green')" >
+     <i class="fa fa-graduation-cap" style="font-size: 20px">Class</i>
+</button>
+<button class="tablink" onclick="openPage('Lab', this, 'blue')">
+     <i class="fa fa-desktop" style="font-size: 20px">Lab</i>
+</button>
+<button class="tablink" onclick="openPage('Auditorium', this, '#5DADE2')">
+    <i class="fa fa-institution" style="font-size: 20px">Auditorium</i>
+</button>
+<button class="tablink" onclick="openPage('Field', this, '#45B39D')">
+      <i class="fa fa-soccer-ball-o" style="font-size: 20px">Play Ground</i>
+</button>
 
 
 <div id="Profile" class="tabcontent">
