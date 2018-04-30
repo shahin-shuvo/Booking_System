@@ -194,6 +194,8 @@ def auditorium_final():
 def auditorium_query():
     #initialize
     date_current = request.args['query']
+    if(date_current==""):
+        date_current = str(date.today())
     session['date'] = date_current
     conn = mysql.connect()
     cursor = conn.cursor()
@@ -267,6 +269,8 @@ def field_final():
 def field_query():
     #initialize
     date_current = request.args['query']
+    if (date_current == ""):
+        date_current = str(date.today())
     session['date_field'] = date_current
     conn = mysql.connect()
     cursor = conn.cursor()
@@ -333,6 +337,7 @@ def view_profile():
         (username,))
     dataF = cursor.fetchall()
     return render_template('user_profile.html',dataA=dataA,dataF=dataF);
+    #return render_template('profile.html')
 
 if __name__ == '__main__':
     app.debug = True
