@@ -1,0 +1,490 @@
+
+<html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DU_Booking_Site</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link href="/static/css/style_signup.css" rel="stylesheet">
+       <link href="/static/css/style_navbar.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/du_booking_system.css" rel="stylesheet">
+
+    <!-- Datatable -->
+      <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+   <!-- This for login Modal -->
+
+
+
+  </head>
+
+  <body id="header">
+
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container" style="height: 75px">
+          <img class="navbar-brand" src="/static/img/logo.png">
+        <a class="navbar-brand" href="#">University of Dhaka</a>
+
+        <div class="topnav" id="navbarResponsive" >
+            <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
+          <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
+            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
+            <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
+            <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium_main" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 150px"><a class="active" href="field_main" id="field" >Field Booking</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+         <div class="btn-group-vertical">
+             {% if session.logged_in %}
+             <a href="logout" class="btn btn-danger navbar-btn"  >Logout</a>
+                 </div><a href="user_profile" >
+                 <div id="container" title="View My Profile">
+                 <div id="fab" style="background-color: #F39C12"></div></div></a>
+
+             {% else %}
+             <a href="login" class="btn btn-danger navbar-btn"  >Login</a>
+             <a class="btn btn-warning navbar-btn" href="signup">SignUp</a>
+             {% endif %}
+         </div>
+
+    </nav>
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+  </body >
+
+
+  <section style="margin-top: 6px;background-color: burlywood">
+            <a id="main-content"></a>
+            <h1 class="title" id="page-title" >Auditorium Booking</h1>
+            <style>
+                h1{
+                    float: left;
+                    width: 100%;
+                    padding: 1px 1px;
+                    margin-top: 40px;
+                    background-color: #339966;
+                    margin-right: 10px;
+                    /*border: 1px solid black;*/
+                    font-size: 25px;
+                    font-family: Verdana;
+                    color: white;
+                    font-weight: bold;
+                }
+            </style>
+        </section>
+ <section >
+
+            <div id="calender-color-legend" >
+                <ul style="list-style-type: none;margin-left: 15%">
+                     <li style="font-weight: bold ;font-family: Verdana;font-size: 20px;"><a3>Color Code:</a3></li>
+                    <li><a2>Booked</a2></li>
+                    <li><a1>Apply for Booking</a1></li>
+                    <li><a4>Already Applied</a4></li>
+                </ul>
+
+            <style>
+
+                li{
+                    float: left;
+                }
+
+                li a2{
+                    height: 30px;
+                    background-color: #dc143c;
+                    color: white;
+                    text-align: center;
+                    font-size: 18px;
+                    display: block;
+                }
+
+                li a1{
+                    height: 30px;
+                    background-color: #138D75;
+                    color: white;
+                    text-align: center;
+                    font-size: 18px;
+                    display: block;
+                }
+                 li a4{
+                     height: 30px;
+                    background-color: #A569BD;
+                    color: white;
+                    text-align: center;
+                    font-size: 18px;
+                    display: block;
+                }
+            </style>
+        </div>
+    </section>
+
+    <!--this section is for date selector-->
+     <div>
+     <ul style="list-style-type: none; margin-left: 15%;margin-top: 9%">
+         <li>
+         <h2 style="font-weight: bold ;font-family: Verdana;font-size: 20px;"><b3>Select Date:</b3></h2>
+         </li>
+          <style>
+              h2{
+                  float: left;
+                  margin-top: 20px;
+              }
+          </style>
+         <li>
+         <input id="date" type="date" name="bday" style="margin-top: 10%" title="date">
+             </li>
+         <li>
+          <button  id="show" type="submit" class="btn btn-primary btn-sm" onclick="submitData()" style="width: 80px;height:30px;margin-left: 10%;margin-top: 23%" formaction="/auditorium_call">Show</button>
+         </li>
+
+     </ul>
+     </div>
+    <section>
+
+
+
+    </section>
+
+
+</html>
+<body style="background-color: burlywood">
+<div id="fullpage" style=" margin-top: 20%;margin-left: 15%;margin-right: 15%">
+
+
+                     <div class="row">
+
+
+                                <table id="myTable" class="table table-striped table-bordered" style="width: 900px">
+                                    <thead>
+                                    <tr style="background-color: #154360;color: white ">
+                                        <th>Play Ground</th>
+                                        <th>Status</th>
+
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody class="card-link" style="font-family: 'Josefin Sans', sans-serif">
+
+                                    {% for row in data %}
+                                        {#                                        <a href="#detail_info">#}
+                                        <tr class="clickable-row">
+
+                                            {% for d in row %}
+                                                {% if d == "Booked" %}
+                                                    <th  style="background-color:#dc143c;text-align: center ;height: 45px">Booked</th>
+                                                {% elif d == "Already Applied" %}
+                                                    <th href="#" style="background-color:  #A569BD;text-align: center;height: 45px">Already Applied</th>
+                                                {% elif d == None %}
+                                                    <th href="#" style="background-color: #138D75;padding: 0%;height: 45px;">
+
+                                                        {% if username != "Guest" %}
+                                                          <button type="button" id="apply"  data-toggle="modal" data-target= "#bookingForm";
+                                                            class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>
+                                                        {% else %}
+                                                        <button type="button" id="apply" data-toggle="modal" data-target= "#popUpWindow";
+                                                            class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>
+                                                    <!-- data-toggle="modal" data-target="#popUpWindow" -->
+                                                        {% endif %}
+                                                    </th>
+
+                                                {% elif d == "DU Central Field" %}
+                                                    <th href="#" style="background-color: #EEDEA2">DU Central Field</th>
+                                                {% elif d == "Jagannath Hall Ground" %}
+                                                    <th href="#" style="background-color: #C9CCF3">Jagannath Hall Ground</th>
+                                                {% elif d == "Jahurul Haq Hall Ground" %}
+                                                    <th href="#" style="background-color: #F3CCF0">Jahurul Haq Hall Ground</th>
+
+                                                {% else %}
+                                                    <td style="background-color: #A5D6A7">{{ d }}</td>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </tr>
+                                        {#                                        </a>#}
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                      </div>
+    <input style="width: 0px" name="arrival" type="text"  id="user" hidden/>
+              <script type="text/javascript">
+               var a = document.getElementById("user");
+               a.value = '{{ username }}';
+            </script>
+     <input style="width: 0px" name="arrival" type="text"  id="date3" hidden/>
+              <script type="text/javascript">
+               var a = document.getElementById("date3");
+               a.value = '{{ date }}';
+            </script>
+
+</div>
+      <script type=text/javascript>
+        function submitData(){
+            var myTable = document.getElementById('myTable');
+            //myTable.rows[0].cells[1].innerHTML = 'Hello';
+
+            var date =  document.getElementById('date').value;
+
+            var user =  document.getElementById('user').value;
+            var xhttp = new XMLHttpRequest();
+             xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                     var dataArr = JSON.parse(this.response);
+                     var length = dataArr.length
+                     var i,j;
+                     for (i = 1; i <= length; i++) {
+                         for( j = 0; j< 2;j++)
+                         {
+                            myTable.rows[i].cells[j].innerHTML = dataArr[i-1][j];
+                            if (dataArr[i-1][j] == null)
+                            {
+                                if(user =="Guest")
+                                  myTable.rows[i].cells[j].innerHTML ='<button id="apply" data-toggle="modal" data-target= "#popUpWindow";'+
+                                      'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
+                                else {
+                                     myTable.rows[i].cells[j].innerHTML ='<button id="apply" data-toggle="modal" data-target= "#bookingForm";'+
+                                      'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
+
+                                }
+                                 myTable.rows[i].cells[1].style.height="45px";
+                                 myTable.rows[i].cells[1].style.padding="0%"
+                                 myTable.rows[i].cells[1].style.backgroundColor = "#138D75";
+
+                            }
+                            else if(dataArr[i-1][j] == "Booked")
+                            {
+                                 myTable.rows[i].cells[1].style.backgroundColor = "#dc143c";
+                                 myTable.rows[i].cells[1].style.textAlign="center";
+                                 myTable.rows[i].cells[1].style.verticalAlign="middle";
+                                  myTable.rows[i].cells[1].style.height=" 45px";
+                            }
+                            else if(dataArr[i-1][j] == "Already Applied")
+                            {
+                                 myTable.rows[i].cells[1].style.backgroundColor ="#A569BD";
+                                 myTable.rows[i].cells[1].style.textAlign="center";
+                                 myTable.rows[i].cells[1].style.verticalAlign="middle";
+                                 myTable.rows[i].cells[1].style.height=" 45px";
+                            }
+
+                         }
+
+                     }
+
+                 }
+             };
+
+
+            xhttp.open("GET", "http://127.0.0.1:5000/field_data_query?query="+
+                document.getElementById("date").value, true);
+            xhttp.send();
+
+
+        }
+
+
+
+      </script>
+
+      <script>
+          // This is for hide header -->
+          var table,i;
+          $.noConflict();
+          $(document).ready( function ($) {
+
+            table  = $('#myTable').DataTable({
+                "paging":   false,
+                "info":     false
+            });
+
+          } );
+
+
+          $('body').on('click', '#apply', function(){
+
+              if(user=="Guest")
+              {
+                   $('#popUpWindow').modal('show');
+
+              }
+              else {
+                  var row = $(this).parents('tr')[0];
+                  audit = table.row(row).data();
+                  var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var x = xhttp.responseText;
+                    if(x=="0")
+                    {
+
+                    }
+
+                }
+
+            };
+                xhttp.open("GET", "http://127.0.0.1:5000/field_book_helper?query=" +audit[0] , true);
+                xhttp.send();
+
+              }
+          });
+
+
+      </script>
+<div class="container">
+   <!--
+  <button type='button' class="btn btn-success" >Open Log In Window</button>
+ -->
+  <div class="modal fade" id="popUpWindow">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- header -->
+        <div class="modal-header">
+          <h3 class="modal-title">PLEASE LOGIN FIRST !</h3>
+            <button style="height: 3px;width: 3px" type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- body -->
+        <div class="modal-header">
+          <form role="form">
+            <div class="form-group">
+              <input id="username" type="email" class="form-control" placeholder="Username"/>
+              <input id="password" type="password" class="form-control" placeholder="Password" />
+            </div>
+          </form>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <button onclick="login()" class="btn btn-primary btn-block" data-dismiss="modal">Log In</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+    <script>
+        function login() {
+            var xhttp = new XMLHttpRequest();
+
+
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+             var btn = document.getElementById("apply");
+            xhttp.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    // swal("Good kok!", "You clicked the button!", "success");
+                    var x = xhttp.responseText;
+                    if(x=="OK_User")
+                    {
+                         location.reload(true);
+                    }
+
+                }
+
+            };
+
+            if (username != "" && password != "") {
+                var args = [username, password];
+                xhttp.open("GET", "http://127.0.0.1:5000/login_user?query=" + JSON.stringify(args), true);
+                xhttp.send();
+            }
+        }
+    </script>
+
+<!-- This for booking form -->
+
+<div class="container">
+   <!--
+  <button type='button' class="btn btn-success" >Open Log In Window</button>
+ -->
+  <div class="modal fade" id="bookingForm">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- header -->
+        <div class="modal-header">
+          <h3 class="modal-title">PLEASE GIVE PAYMENT !</h3>
+            <button style="height: 3px;width: 3px" type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- body -->
+        <div class="modal-header">
+          <form role="form">
+            <div class="form-group">
+                 <input   style="background-color:white ;width: 350px;" id="payment" type="file" name="pic" accept="image/*" >
+            </div>
+          </form>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <button onclick="bookNow()" class="btn btn-primary btn-block" data-dismiss="modal">BOOK NOW</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+ <script>
+        function bookNow() {
+            var xhttp = new XMLHttpRequest();
+            var paym = document.getElementById("payment").value;
+            if(paym!="")
+            {
+                pay = document.getElementById("payment").files[0].name;
+            }
+            xhttp.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    var x = xhttp.responseText;
+                    if(x=="0")
+                    {
+                         submitData();
+                    }
+                    else {
+                        alert("ERROR!!");
+                    }
+
+                }
+
+            };
+            xhttp.open("GET", "http://127.0.0.1:5000/field_book?query2=" + pay, true);
+            xhttp.send();
+        }
+    </script>
+
+
+
+</body>
+
+    <footer class="py-5 bg-dark" style=" margin-top: 100px;">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; DU Booking Website 2018</p>
+      </div>
+    </footer>
+
+

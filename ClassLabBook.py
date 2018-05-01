@@ -110,7 +110,7 @@ def classBook(self):
         print("slot: ", classSlots)
 
         today_date_class = str(date.today())
-        session['today_date'] = today_date_class
+        session['today_date'] = today
 
         conn.close()
         return render_template('classRoomBooking.html', demoData=selectDateData, data=numberOfSlot)

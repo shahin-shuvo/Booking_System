@@ -9,7 +9,6 @@ from flaskext.mysql import MySQL
 from jinja2 import Environment
 from ConfirmationMail import send_mail
 from threading import Thread
-from ClassLabBook import classBook, showLabStatus
 
 import formencode_jinja2
 jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
@@ -919,51 +918,6 @@ def lab_insert():
     except Exception as e:
         return "error"
     return "success"
-
-
-
-#Munna
-today_date = str(date.today())
-@app.route('/classRoomBooking', methods=["GET", "POST"])
-def showClassSlot():
-    res= classBook(self=1)
-    today = str(date.today())
-    session['today_date']=today
-    return res
-
-
-
-@app.route('/classRoomFixedDate', methods=["GET", "POST"])
-def showClassSlotOnFixedDate():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    print("Successfully connected")
-
-    today = request.args['query']
-    session['today_date'] = today
-
-    return "0"
-
-today_date1 = str(date.today())
-@app.route('/labBooking', methods=["GET","POST"])
-def showLabSlot():
-    res= showLabStatus(self=1)
-    today = str(date.today())
-    session['today_date1'] = today
-    return res
-
-@app.route('/labFixedDate', methods=["GET", "POST"])
-def showLabSlotOnFixedDate():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    print ("Successfully connected")
-
-    today = request.args['query']
-    session['today_date1']=today
-
-    return "1"
-
-
 
 if __name__ == '__main__':
     app.debug = True
