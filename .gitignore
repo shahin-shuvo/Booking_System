@@ -1,6 +1,5 @@
 #file to be ignored
-classRoomBooking.html
-labBooking.html
+
 
 #folder to be ignored
 static/vendor/jquery/dist
