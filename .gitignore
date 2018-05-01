@@ -10,9 +10,6 @@ workspace.xml
 __pycache__
 ConfirmationMail.cpython-35.pyc
 .idea/
-ClassLabRequest.py
-AudiField.py
-Update.py
 *.pyc
 class_book.js
 MyFile.py
