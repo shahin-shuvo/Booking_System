@@ -20,6 +20,14 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+    <!----------for profile -->
+       <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+       <link href="/static/css/profile_bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/profile_style.css" rel="stylesheet">
+          <link href="/static/fonts/glyphicons-halflings-regular.eot" rel="stylesheet">
+      <link href="/static/fonts/glyphicons-halflings-regular.woff" rel="stylesheet">
+       <link href="/static/fonts/glyphicons-halflings-regular.woff2" rel="stylesheet">
+
 
    <script type="text/javascript">
 			var nav = false;
@@ -38,10 +46,10 @@
 
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-          <img class="navbar-brand" src="/static/img/logo.png">
-        <a class="navbar-brand" href="#">University of Dhaka</a>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" >
+      <div class="container" style="height: 79px">
+          <img style="margin-left: -40px" class="navbar-brand" src="/static/img/logo.png">
+        <a class="navbar-brand" style="font-size: 20px;color: white">University of Dhaka</a>
 
         <div class="topnav" id="navbarResponsive" >
             <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
@@ -64,7 +72,7 @@
 
 /* Set height of body and the document to 100% */
 body, html {
-    margin-top: 1.4%;
+    margin-top: 1.5%;
     font-family: Arial;
     height: inherit;
     width: inherit;
@@ -95,82 +103,103 @@ body, html {
     height: inherit;
 }
 
-#Field {background-color:#73C6B6;}
-#Profile {background-color: #73C6B6;}
-#Class {background-color: #73C6B6;}
-#Lab {background-color: #73C6B6;}
-#Auditorium {background-color: #73C6B6;}
+#Field {background-color: burlywood;}
+#Profile {background-color: burlywood;}
+#Class {background-color: burlywood;}
+#Lab {background-color: burlywood;}
+#Auditorium {background-color: burlywood;}
 
 </style>
   </head>
 <body>
 
-<button  class="tablink" onclick="openPage('Profile', this, '#73C6B6')" id="defaultOpen">
+<button  class="tablink" onclick="openPage('Profile', this, '#2471A3')" id="defaultOpen">
     <i class="fa fa-user" style="font-size: 20px">Profile</i>
 </button>
-<button class="tablink" onclick="openPage('Class', this, '#73C6B6')" >
+<button class="tablink" onclick="openPage('Class', this, '#2471A3')" >
      <i class="fa fa-graduation-cap" style="font-size: 20px">Class</i>
 </button>
-<button class="tablink" onclick="openPage('Lab', this, '#73C6B6')">
+<button class="tablink" onclick="openPage('Lab', this, '#2471A3')">
      <i class="fa fa-desktop" style="font-size: 20px">Lab</i>
 </button>
-<button class="tablink" onclick="openPage('Auditorium', this, '#73C6B6')">
+<button class="tablink" onclick="openPage('Auditorium', this, '#2471A3')">
     <i class="fa fa-institution" style="font-size: 20px">Auditorium</i>
 </button>
-<button class="tablink" onclick="openPage('Field', this, '#73C6B6')">
+<button class="tablink" onclick="openPage('Field', this, '#2471A3')">
       <i class="fa fa-soccer-ball-o" style="font-size: 20px">Play Ground</i>
 </button>
 
 
-<div id="Profile" class="tabcontent">
- <br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12 lead">User profile<hr></div>
-          </div>
-          <div class="row">
-			<div class="col-md-4 text-center">
-              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
-              display:block; margin:auto;" src="http://robohash.org/sitsequiquia.png?size=120x120">
+<div id="Profile" class="tabcontent" >
+       <section id="main">
+      <div class="container" style="color: black" >
+        <div class="row">
+          <div class="col-md-3">
+            <div class="list-group"  >
+              <a  class="list-group-item active main-color-bg" style="height: 60px;font-size: 20px">
+                <span style="font-size: 20px;margin-top: 3%" class="glyphicon glyphicon-user" aria-hidden="true"></span>{{ dataP[0][0]}}</a>
+              <a style="height: 50px" class="list-group-item"><span style="float: left;margin-top: 3%;font-size: 15px" class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span style="margin-top: 3%;font-size: 14px" class="badge">{{ dataP[0][1] }}</span></a>
+              <a style="height: 50px" class="list-group-item"><span  style="float: left;margin-top: 3%;font-size: 15px" class="glyphicon glyphicon-phone" aria-hidden="true"></span><span  style="margin-top: 3%;font-size: 14px"class="badge">{{ dataP[0][2] }}</span></a>
+              <a style="height: 50px"class="list-group-item"><span  style="float: left;margin-top: 3%;font-size: 15px" class="glyphicon glyphicon-education" aria-hidden="true"></span> <span style="margin-top: 3%;font-size: 14px"class="badge">{{ dataP[0][3] }}</span></a>
             </div>
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1 class="only-bottom-margin">User Name</h1>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <span class="text-muted">Email:</span> email@test.com<br>
-                  <span class="text-muted">Birth date:</span> 01.01.2001<br>
-                  <span class="text-muted">Gender:</span> male<br><br>
-                  <small class="text-muted">Created: 01.01.2015</small>
-                </div>
-                <div class="col-md-6">
-                  <div class="activity-mini">
-                    <i class="glyphicon glyphicon-comment text-muted"></i> 500
-                  </div>
-                  <div class="activity-mini">
-                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> 1500
-                  </div>
-                </div>
+
+            <div class="well">
+              <h4>Disk Space Used</h4>
+              <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                      60%
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+            <h4>Bandwidth Used </h4>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                    40%
             </div>
+          </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- Website Overview -->
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Activity Overview</h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                      <span style="font-size: 30px" class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                    <h2> Class</h2>
+                  <h4 style="color: #C0392B"> <span style="color: black">Request:</span>300</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                      <span style="font-size: 30px" class="fa fa-desktop" aria-hidden="true"></span>
+                    <h2> Lab</h2>
+                 <h4 style="color: #C0392B"> <span style="color: black">Request:</span>300</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                      <span style="font-size: 30px" class="fa fa-institution" aria-hidden="true"></span>
+                    <h2>Auditorium</h2>
+                   <h4 style="color: #C0392B"> <span style="color: black">Request:</span>{{ dataNum[0] }}</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                      <span  style="font-size: 30px" class="fa fa-soccer-ball-o" aria-hidden="true"></span>
+                    <h2> Field</h2>
+                    <h4 style="color: #C0392B"> <span style="color: black">Request:</span>{{ dataNum[1] }}</h4>
+                  </div>
+                </div>
+              </div>
+              </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
+
 </div>
 
 <div id="Class" class="tabcontent">
@@ -313,6 +342,9 @@ document.getElementById("defaultOpen").click();
 
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Placed at the end of the document so the pages load faster -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/js/profile/profile_bootstrap.min.js"></script>
 
 
 </body>

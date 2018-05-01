@@ -20,8 +20,10 @@ app.secret_key = "super secret key"
 app.config['UPLOAD_FOLDER'] = 'UPLOAD_FOLDER'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
-app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
+# app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
+# app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
+app.config['MYSQL_DATABASE_PASSWORD'] = 'shanto55'
+app.config['MYSQL_DATABASE_DB'] = "Booking_system"
 mysql.init_app(app)
 
 username = "Guest"
@@ -332,11 +334,19 @@ def view_profile():
         (username,))
 
     dataA = cursor.fetchall()
+   # Aud= int(dataA);
+
     cursor.execute(
         "SELECT  Field,Status,Date FROM   Field_Table WHERE Username = %s",
         (username,))
     dataF = cursor.fetchall()
-    return render_template('user_profile.html',dataA=dataA,dataF=dataF);
+    #Fild= int(dataF);
+    cursor.execute(
+        "SELECT  username,email,phone,dept FROM   Registration WHERE Username = %s",
+        (username,))
+    dataP= cursor.fetchall()
+    dataNum=[5,7]
+    return render_template('user_profile.html',dataA=dataA,dataF=dataF,dataP= dataP,dataNum=dataNum);
     #return render_template('profile.html')
 
 if __name__ == '__main__':
