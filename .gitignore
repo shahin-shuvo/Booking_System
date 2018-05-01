@@ -1,0 +1,11 @@
+#file to be ignored
+classRoomBooking.html
+labBooking.html
+
+#folder to be ignored
+static/vendor/jquery/dist
+static/vendor/jquery/external/
+static/vendor/jquery/src/
+static/vendor/node-waves/
+.idea/workspace.xml
+ConfirmationMail.cpython-35.pyc
