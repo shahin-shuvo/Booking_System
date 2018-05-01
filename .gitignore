@@ -6,5 +6,6 @@ static/vendor/jquery/dist
 static/vendor/jquery/external/
 static/vendor/jquery/src/
 static/vendor/node-waves/
-.idea/workspace.xml
+workspace.xml
 ConfirmationMail.cpython-35.pyc
+*.pyc
