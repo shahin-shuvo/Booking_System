@@ -332,18 +332,18 @@ def view_profile():
         (username,))
 
     dataA = cursor.fetchall()
-   # Aud= int(dataA);
+    Aud= len(dataA)
 
     cursor.execute(
         "SELECT  Field,Status,Date FROM   Field_Table WHERE Username = %s",
         (username,))
     dataF = cursor.fetchall()
-    #Fild= int(dataF);
+    Fild= len(dataF)
     cursor.execute(
         "SELECT  username,email,phone,dept FROM   Registration WHERE Username = %s",
         (username,))
     dataP= cursor.fetchall()
-    dataNum=[5,7]
+    dataNum=[Aud,Fild]
     return render_template('user_profile.html',dataA=dataA,dataF=dataF,dataP= dataP,dataNum=dataNum);
     #return render_template('profile.html')
 
