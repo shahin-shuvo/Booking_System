@@ -7,6 +7,9 @@ from flask import Flask, render_template, request, flash, session, url_for, redi
 from flaskext.mysql import MySQL
 
 from jinja2 import Environment
+from ClassLabRequest import ClassBookingReq,User,LabBookingReq
+from AudiFieldRequest import AuditoriumBookingReq,FieldBookingReq
+from Update import *
 
 import formencode_jinja2
 jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
@@ -348,6 +351,164 @@ def view_profile():
     dataNum=[Aud,Fild]
     return render_template('user_profile.html',dataA=dataA,dataF=dataF,dataP= dataP,dataNum=dataNum);
     #return render_template('profile.html')
+
+
+@app.route('/ClassBookingReq',methods=['GET'])
+#initial page for booking requests this will show
+#all request for class booking
+def class_booking():
+    return ClassBookingReq(mysql).class_booking()
+
+@app.route('/table_clicked',methods=['GET'])
+#send user details information when a request button is clicked
+def row_clicked():
+    return User(mysql).row_clicked()
+
+@app.route('/user_image',methods=['GET','POST'])
+#send user image to admin
+def send_image():
+    return User(mysql).send_image()
+
+@app.route('/confirmation',methods=['GET','POST'])
+#admin confirmations or discarding information will be
+#sent to user through email
+def feedback():
+    return ClassBookingReq(mysql).feedback()
+
+#Lab booking request
+@app.route('/LabBookingReq',methods=['GET'])
+#page for booking requests this will show
+#all request for lab booking
+def lab_booking():
+    return LabBookingReq(mysql).lab_booking()
+
+@app.route('/lab_confirmation',methods=['GET','POST'])
+#admin confirmations or discarding information will be
+#sent to user through email
+def lab_feedback():
+    return LabBookingReq(mysql).lab_feedback()
+
+#Auditorium Booking Request
+@app.route('/AuditoriumBookingReq',methods=['GET'])
+#page for booking requests this will show
+#all request for auditorium booking
+def auditorium_booking():
+    return AuditoriumBookingReq(mysql).auditorium_booking()
+
+@app.route('/audi_payment_image',methods=['GET','POST'])
+#payment image for auditorium will sent to admin
+def audi_payment_image():
+    return AuditoriumBookingReq(mysql).audi_payment_image()
+
+@app.route('/auditorium_confirmation',methods=['GET','POST'])
+#admins reply for auditorium booking confirmation
+#reply would be send to customer through email
+def auditorium_feedback():
+    return AuditoriumBookingReq(mysql).auditorium_feedback()
+
+#Field Booking Request
+@app.route('/FieldBookingReq',methods=['GET'])
+#page for booking requests this will show
+#all request for field booking
+def field_booking():
+    return FieldBookingReq(mysql).field_booking()
+
+#payment image will shown to admin
+@app.route('/field_payment_image',methods=['GET','POST'])
+def field_payment_image():
+    return FieldBookingReq(mysql).field_payment_image()
+
+@app.route('/field_confirmation',methods=['GET','POST'])
+#admins reply for field booking confirmation
+#reply would be send to customer through email
+def field_feedback():
+    return FieldBookingReq(mysql).field_feedback()
+
+#Class update method
+@app.route('/ClassUpdate',methods=['GET'])
+#all available classes would be shown
+def class_info():
+    return ClassUpdate(mysql).class_info()
+
+@app.route('/class_delete')
+#admin can delete classroom
+def class_delete():
+    return ClassUpdate(mysql).class_delete()
+
+@app.route('/class_update_data',methods=['GET'])
+#admin can update class info
+def class_update():
+    return ClassUpdate(mysql).class_update()
+
+@app.route('/class_insert_data',methods=['GET'])
+#admin can add new class
+def class_insert():
+    return ClassUpdate(mysql).class_insert()
+
+@app.route('/LabUpdate',methods=['GET'])
+#all available lab will shown
+def lab_info():
+    return LabUpdate(mysql).lab_info()
+
+@app.route('/lab_delete')
+#delete any lab
+def lab_delete():
+    return LabUpdate(mysql).lab_delete()
+
+@app.route('/lab_update_data',methods=['GET'])
+#admin can update lab info
+def lab_update():
+    return LabUpdate(mysql).lab_update()
+
+@app.route('/lab_insert_data',methods=['GET'])
+#admin can add lab
+def lab_insert():
+    return LabUpdate(mysql).lab_insert()
+
+
+
+@app.route('/AuditoriumUpdate',methods=['GET'])
+#all available lab will shown
+def auditorium_info():
+    return AuditoriumUpdate(mysql).auditorium_info()
+
+@app.route('/auditorium_delete')
+#delete any lab
+def auditorium_delete():
+    return AuditoriumUpdate(mysql).auditorium_delete()
+
+@app.route('/auditorium_update_data',methods=['POST'])
+#admin can update lab info
+def auditorium_update():
+    return AuditoriumUpdate(mysql).auditorium_update()
+
+@app.route('/auditorium_insert_data',methods=['POST'])
+#admin can add lab
+def auditorium_insert():
+    return AuditoriumUpdate(mysql).auditorium_insert()
+
+
+
+@app.route('/FieldUpdate',methods=['GET'])
+#all available lab will shown
+def field_info():
+    return FieldUpdate(mysql).field_info()
+
+@app.route('/field_delete')
+#delete any lab
+def field_delete():
+    return FieldUpdate(mysql).field_delete()
+
+@app.route('/field_update_data',methods=['POST'])
+#admin can update lab info
+def field_update():
+    return FieldUpdate(mysql).field_update()
+
+@app.route('/field_insert_data',methods=['POST'])
+#admin can add lab
+def field_insert():
+    return FieldUpdate(mysql).field_insert()
+
 
 if __name__ == '__main__':
     app.debug = True
