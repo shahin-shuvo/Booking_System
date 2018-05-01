@@ -1,5 +1,5 @@
 #file to be ignored
-
+*.xml
 
 #folder to be ignored
 static/vendor/jquery/dist
@@ -7,6 +7,9 @@ static/vendor/jquery/external/
 static/vendor/jquery/src/
 static/vendor/node-waves/
 workspace.xml
+.idea/
 ConfirmationMail.cpython-35.pyc
 *.pyc
 class_book.js
+MyFile.py
+backup.py
