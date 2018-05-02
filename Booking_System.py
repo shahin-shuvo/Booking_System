@@ -10,6 +10,7 @@ from jinja2 import Environment
 from ClassLabRequest import ClassBookingReq,User,LabBookingReq
 from AudiFieldRequest import AuditoriumBookingReq,FieldBookingReq
 from Update import *
+from ClassLabBook import *
 
 import formencode_jinja2
 jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
@@ -509,6 +510,24 @@ def field_update():
 def field_insert():
     return FieldUpdate(mysql).field_insert()
 
+#Munna started adding from here------------------------------------------------->
+
+@app.route('/classRoomBooking', methods=["GET", "POST"])
+def showClassSlotOnSelectedDate():
+    return classBookingClass(mysql).showClassSlot()
+
+@app.route('/classRoomFixedDate', methods=["GET", "POST"])
+def showClassSlotOnFixedDate():
+    return classBookingClass(mysql).showClassSlotOnFixedDate()
+
+@app.route('/labBooking', methods=["GET","POST"])
+def showLabStatus():
+    return labBookingClass(mysql).showLabStatus()
+
+
+@app.route('/labFixedDate', methods=["GET", "POST"])
+def showLabSlotOnFixedDate():
+    return labBookingClass(mysql).showLabSlotOnFixedDate()
 
 if __name__ == '__main__':
     app.debug = True

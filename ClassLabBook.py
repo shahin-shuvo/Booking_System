@@ -1,54 +1,31 @@
-import base64
-import gc
-from functools import wraps
 from datetime import date
-from json import dumps
-from flask import Flask, render_template, request, flash, session, url_for, redirect, jsonify, make_response, json
-from flaskext.mysql import MySQL
 
-from jinja2 import Environment
-from ConfirmationMail import send_mail
-from threading import Thread
+from flask import Flask, render_template, request, session
 
-import formencode_jinja2
-jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
-jinja_env.add_extension(formencode_jinja2.formfill)
+class classBookingClass:
+    def __init__(self,mysql):
+        self.mysql=mysql
 
-
-app = Flask(__name__)
-mysql = MySQL()
-app.jinja_env.add_extension('jinja2.ext.loopcontrols')
-app.secret_key = "super secret key"
-app.config['UPLOAD_FOLDER'] = 'UPLOAD_FOLDER'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_USER'] = 'root'
-# app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
-# app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
-app.config['MYSQL_DATABASE_PASSWORD'] = 'shanto55'
-app.config['MYSQL_DATABASE_DB'] = "Booking_system"
-mysql.init_app(app)
-
-username = "Guest"
-
-def classBook(self):
-        conn = mysql.connect()
+    def showClassSlot(self):
+        conn = self.mysql.connect()
         cursor = conn.cursor()
-        today = ""
 
+        today = ""
         try:
-             today = session['today_date']
+            today = session['today_date']
         except KeyError:
             print("Not Found")
 
         #today = "'" + today + "'"
 
         # for selecting the desired date data
-        cursor.execute("SELECT * FROM classRoomTable WHERE date_date = %s", (today,))
+
+        cursor.execute("SELECT * FROM classRoomTable WHERE date_date=%s",(today,))
         slotData = cursor.fetchall()
 
         # fetch all the room no
 
-        cursor.execute("SELECT * FROM roomNoTable")
+        cursor.execute("SELECT room_name FROM class_info WHERE dept_name='CSE'")
         classRoomNoData = cursor.fetchall()
 
         # fetch the number of class slots
@@ -69,13 +46,14 @@ def classBook(self):
 
         # copy the classRoom no
         for i in range(length):
-            classRoomNo[i] = int(classRoomNoData[i][0])
+            classRoomNo[i] = str(classRoomNoData[i][0])
 
         # copy the class room no based on the selected date
         for i in range(limit):
-            foundClassRoomArray[i] = int(slotData[i][0])
+            #foundClassRoomArray[i] = int(slotData[i][0])
+            foundClassRoomArray[i] = slotData[i][0]
 
-        foundClassRoomArray.sort()
+        #foundClassRoomArray.sort()
 
         selectDateData = []
 
@@ -96,7 +74,7 @@ def classBook(self):
             if (flag == 1):
                 finalData = [classRoomNo[i], today]
                 for k in range(totalSlots):
-                    finalData.append('2')
+                    finalData.append("2")
                 selectDateData.append(finalData)
 
         classSlots = []
@@ -105,92 +83,112 @@ def classBook(self):
         for i in range(totalSlots):
             classSlots.append(numberOfSlot[i][0])
 
-        print("data: ", slotData)
-        print("fnd class room: ", selectDateData)
-        print("slot: ", classSlots)
+        # print ("data: ", len(numberOfSlot))
+        # print ("fnd class room: ", foundClassRoomArray)
+        print ("slot: ", selectDateData)
 
-        today_date_class = str(date.today())
-        session['today_date'] = today
+        today_class_date = str(date.today())
+        session['today_date'] = today_class_date
 
         conn.close()
         return render_template('classRoomBooking.html', demoData=selectDateData, data=numberOfSlot)
 
-def showLabStatus(self):
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    #print ("Successfully: ", today_date1)
+    def showClassSlotOnFixedDate(self):
+        today = request.args['query']
+        session['today_date'] = today
 
-    today = ""
-    try:
-        today = session['today_date1']
-    except KeyError:
-        print("Not Found")
+        return "0"
 
-    #today = "'" + today + "'"
 
-    cursor.execute("SELECT * FROM LabTable WHERE date_date=%s", (today,))
-    #cursorClassSlot = conn.execute("SELECT * FROM LabTable")
-    slotData = cursor.fetchall()
+class labBookingClass:
+    def __init__(self,mysql):
+        self.mysql=mysql
 
-    cursor.execute("SELECT * FROM LabNoTable")
-    labRoomNoData = cursor.fetchall()
+    def showLabStatus(self):
+        conn = self.mysql.connect()
+        cursor = conn.cursor()
 
-    # fetch the number of lab slots
-    cursor.execute("SELECT slot FROM labSlotTable")
-    numberOfSlot = cursor.fetchall()
+        today = ""
+        try:
+            today = session['today_date1']
+        except KeyError:
+            print("Not Found")
 
-    length = len(labRoomNoData)
+        #today = "'" + today + "'"
 
-    totalSlots = len(numberOfSlot)
+        cursor.execute("SELECT * FROM LabTable WHERE date_date=%s", (today,))
+        # cursorClassSlot = conn.execute("SELECT * FROM LabTable")
+        slotData = cursor.fetchall()
 
-    limit = len(slotData)
+        cursor.execute("SELECT * FROM LabNoTable")
+        labRoomNoData = cursor.fetchall()
 
-    foundLabRoomArray = [0] * length
+        # fetch the number of lab slots
+        cursor.execute("SELECT slot FROM labSlotTable")
+        numberOfSlot = cursor.fetchall()
 
-    finalData = []
+        length = len(labRoomNoData)
 
-    labRoomNo = [0] * length
+        totalSlots = len(numberOfSlot)
 
-    # copy the classRoom no
-    for i in range(length):
-        labRoomNo[i] = int(labRoomNoData[i][0])
+        limit = len(slotData)
 
-    for i in range(limit):
-        foundLabRoomArray[i] = int(slotData[i][0])
+        foundLabRoomArray = [0] * length
 
-    k = 0
-    selectDateData = []
+        finalData = []
 
-    for i in range(limit):
-        selectDateData.append(slotData[i])
+        labRoomNo = [0] * length
 
-    # this part is for those which are fully free on the selected date
-    for i in range(len(labRoomNo)):
-        flag = 0
-        for j in range(len(foundLabRoomArray)):
-            if (labRoomNo[i] == foundLabRoomArray[j]):
-                flag = 0
-                break
-            else:
-                flag = 1
+        # copy the classRoom no
+        for i in range(length):
+            labRoomNo[i] = int(labRoomNoData[i][0])
 
-        if (flag == 1):
-            finalData = [labRoomNo[i], today]
-            for k in range(totalSlots):
-                finalData.append('2')
-            selectDateData.append(finalData)
+        for i in range(limit):
+            foundLabRoomArray[i] = int(slotData[i][0])
 
-    labSlots = []
+        k = 0
+        selectDateData = []
 
-    # this part is for the class slots
-    for i in range(totalSlots):
-        labSlots.append(numberOfSlot[i][0])
+        for i in range(limit):
+            selectDateData.append(slotData[i])
 
-    print ("data: ", slotData)
-    print ("fnd class room: ", foundLabRoomArray)
-    print ("slot: ", selectDateData)
+        # this part is for those which are fully free on the selected date
+        for i in range(len(labRoomNo)):
+            flag = 0
+            for j in range(len(foundLabRoomArray)):
+                if (labRoomNo[i] == foundLabRoomArray[j]):
+                    flag = 0
+                    break
+                else:
+                    flag = 1
 
-    #print ("lab Data: ", labData)
-    conn.close()
+            if (flag == 1):
+                finalData = [labRoomNo[i], today]
+                for k in range(totalSlots):
+                    finalData.append('2')
+                selectDateData.append(finalData)
 
-    return render_template('labBooking.html', demoData = selectDateData, data = numberOfSlot)
+        labSlots = []
+
+        # this part is for the class slots
+        for i in range(totalSlots):
+            labSlots.append(numberOfSlot[i][0])
+
+        # print ("data: ", labRoomNo)
+        # print ("fnd class room: ", foundLabRoomArray)
+        print("slot: ", selectDateData)
+
+        todayLabDate = str(date.today())
+        session['today_date1'] = todayLabDate
+
+        # print ("lab Data: ", labData)
+        conn.close()
+
+        return render_template('labBooking.html', demoData=selectDateData, data=numberOfSlot)
+
+
+    def showLabSlotOnFixedDate(self):
+        today = request.args['query']
+        session['today_date1'] = today
+
+        return "1"

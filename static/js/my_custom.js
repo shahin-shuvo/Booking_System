@@ -33,15 +33,16 @@ $(document).ready(function () {
 
                 $('#room_name').text(d[2]);
 
-
+                // var start_date_fmt=d[4];
                 var start = d[4].split('-');
-                start = new Date(start[0], start[1], start[2]);
+                // console.log(start_date);
+                start = new Date(start[0], start[1]-1, start[2]);
                 $('#start_date').text(start.toDateString());
 
                 //console.log(d[5] + "  " + typeof (d[5]));
                 if (d[5] != "None") {
                     var end = d[5].split('-');
-                    end = new Date(end[0], end[1], end[2]);
+                    end = new Date(end[0], end[1]-1, end[2]);
                     var differenceInMilisecond = end - start;
 
                     var year_age = Math.floor(differenceInMilisecond / 31536000000);

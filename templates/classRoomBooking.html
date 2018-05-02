@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:line-width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,155 +11,193 @@
     <title>DU_Booking_Site</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/du_booking_system.css" rel="stylesheet">
+    <link href="../static/css/du_booking_system.css" rel="stylesheet">
 
-      <style>
-			*{margin: 0px;padding: 0px;}
-			body{background: #FFC300;}
-			#header{width: 100%;height: 55px;background: white;box-shadow: 2px 2px 4px white;}
-			#navbar{width:880px;height: 50px;margin: 0px auto;}
-			
-			li>a{text-decoration: white;color: white;font-family: Verdana;font-size: 17px;line-height: 55px;display: block;text-align: center;}
-			li>a:hover,
-			li>a:focus{background:#FFC300 ;color: #333;}
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
 
-          .topnav a.active {
-             border-bottom: 3px solid #FFC300;
-          }
-		</style>
+        body {
+            background: #FFC300;
+        }
 
-      <!--date selector -->
+        #header {
+            width: 100%;
+            height: 55px;
+            background: white;
+            box-shadow: 2px 2px 4px white;
+        }
 
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+        #navbar {
+            width: 880px;
+            height: 50px;
+            margin: 0px auto;
+        }
 
-      <script>
-        $( function() {
-            $( "#datepicker" ).datepicker();
-        } );
-      </script>
+        li > a {
+            text-decoration: white;
+            color: white;
+            font-family: Verdana;
+            font-size: 17px;
+            line-height: 55px;
+            display: block;
+            text-align: center;
+        }
 
-      <!--date selector finish here-->
+        li > a:hover,
+        li > a:focus {
+            background: #FFC300;
+            color: #333;
+        }
 
-  </head>
+        .topnav a.active {
+            border-bottom: 3px solid #FFC300;
+        }
+    </style>
 
-  <body id="header">
+    <!--date selector -->
 
-   <script type="text/javascript">
-			var nav = false;
-		function show_hide_nav(id){
-			var navbar = document.getElementById(id);
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 
-			if(nav == false){
-				navbar.style.display = "block";
-				nav = true;
-			}else{
-				navbar.style.display = "none";
-				nav = false;
-			}
-		}
-	</script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+
+    <!--date selector finish here-->
+
+</head>
+
+<body id="header">
+
+<script type="text/javascript">
+    var nav = false;
+
+    function show_hide_nav(id) {
+        var navbar = document.getElementById(id);
+
+        if (nav == false) {
+            navbar.style.display = "block";
+            nav = true;
+        } else {
+            navbar.style.display = "none";
+            nav = false;
+        }
+    }
+</script>
 
 
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-          <img class="navbar-brand" src="/static/img/logo.png" style="margin-left: 2px">
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <img class="navbar-brand" src="/static/img/logo.png" style="margin-left: 2px">
         <a class="navbar-brand" href="#">University of Dhaka</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="topnav" id="navbarResponsive" >
-            <div id="res_btn" onclick="show_hide_nav('navbar')" ></div>
-          <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
-            <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
-            <li  class="active"><a class="active" href="labBooking" id = "lab">Lab Booking</a></li>
-            <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
-            <li  class="active" style="width: 210px"><a class="active " href="#" id="auditorium" >Auditorium Booking</a></li>
-            <li  class="active" style="width: 150px"><a class="active" href="#" id="field" >Field Booking</a></li>
-          </ul>
+        <div class="topnav" id="navbarResponsive">
+            <div id="res_btn" onclick="show_hide_nav('navbar')"></div>
+            <ul class="nav navbar-nav" id="navbar" style="margin-left: 100px ;color: #004085">
+                <li class="active" style="width: 110px"><a class="active" href="index">Home</a></li>
+                <li class="active"><a class="active" href="labBooking" id="lab">Lab Booking</a></li>
+                <li class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
+                <li class="active" style="width: 210px"><a class="active " href="auditorium_main" id="auditorium">Auditorium
+                    Booking</a></li>
+                <li class="active" style="width: 150px"><a class="active" href="field_main" id="field">Field Booking</a>
+                </li>
+            </ul>
         </div>
 
-      </div>
-        <div class="icon-bar">
-            <a href="#"><i class="fa fa-user"></i></a>
-        </div>
-         <div class="btn-group-vertical">
-           <button class="btn btn-danger navbar-btn">Login</button>
-         <button class="btn btn-warning navbar-btn" >SignUp</button>
-         </div>
+    </div>
+    <div class="icon-bar">
+        <a href="#"><i class="fa fa-user"></i></a>
+    </div>
+    <div class="btn-group-vertical">
+        <button class="btn btn-danger navbar-btn">Login</button>
+        <button class="btn btn-warning navbar-btn">SignUp</button>
+    </div>
 
-    </nav>
-
-
+</nav>
 
 
 <div id="fullpage" style="background-color: burlywood">
 
     <!--this section is for page header(Classroom Booking)-->
 
-        <section>
-            <a id="main-content"></a>
-            <h1 class="title" id="page-title">Classroom Booking</h1>
+    <section>
+        <a id="main-content"></a>
+        <h1 class="title" id="page-title">Classroom Booking</h1>
+        <style>
+            h1 {
+                float: left;
+                width: 100%;
+                padding: 1px 1px;
+                margin-top: 80px;
+                background-color: #339966;
+                margin-right: 10px;
+                /*border: 1px solid black;*/
+                font-size: 25px;
+                font-family: Verdana;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </section>
+
+    <!--this section is for color legend-->
+
+    <section>
+        <a id="main-content"></a>
+        <h2 class="title" id="page-title">Color Legend:</h2>
+        <style>
+            h2 {
+                float: left;
+                width: 100%;
+                padding: 1px 1px;
+                margin-top: 30px;
+                /*background-color: black;*/
+                margin-right: 10px;
+                /*border: 1px solid black;*/
+                font-size: 20px;
+                font-family: Verdana;
+                color: black;
+                font-weight: bold;
+            }
+
+        </style>
+
+    </section>
+
+    <!--this section is for color legend-->
+    <section>
+        <div id="calender-color-legend" style="width: 900px;">
+            <ul style="list-style-type: none;">
+                <li>
+                    <a2>Booked</a2>
+                </li>
+                <li>
+                    <a1>Apply for Booking</a1>
+                </li>
+                <li>
+                    <a3>Requested</a3>
+                </li>
+            </ul>
+
             <style>
-                h1{
-                    float: left;
-                    width: 100%;
-                    padding: 1px 1px;
-                    margin-top: 80px;
-                    background-color: #339966;
-                    margin-right: 10px;
-                    /*border: 1px solid black;*/
-                    font-size: 25px;
-                    font-family: Verdana;
-                    color: white;
-                    font-weight: bold;
-                    text-align: center;
-                }
-            </style>
-        </section>
-
-        <!--this section is for color legend-->
-
-        <section>
-            <a id="main-content"></a>
-            <h2 class="title" id="page-title">Color Legend:</h2>
-            <style>
-                h2{
-                    float: left;
-                    width: 100%;
-                    padding: 1px 1px;
-                    margin-top: 30px;
-                    /*background-color: black;*/
-                    margin-right: 10px;
-                    /*border: 1px solid black;*/
-                    font-size: 20px;
-                    font-family: Verdana;
-                    color: black;
-                    font-weight: bold;
-                }
-
-            </style>
-
-        </section>
-
-        <!--this section is for color legend-->
-        <section>
-            <div id="calender-color-legend" style="width: 900px;">
-                <ul style="list-style-type: none;">
-                    <li><a2>Booked</a2></li>
-                    <li><a1>Apply for Booking</a1></li>
-                    <li><a3>Requested</a3></li>
-                </ul>
-
-            <style>
-                li{
+                li {
                     float: left;
                 }
 
-                li a2{
+                li a2 {
                     background-color: #dc143c;
                     color: white;
                     text-align: center;
@@ -168,7 +205,7 @@
                     display: block;
                 }
 
-                li a1{
+                li a1 {
                     background-color: cadetblue;
                     color: white;
                     text-align: center;
@@ -176,7 +213,7 @@
                     display: block;
                 }
 
-                li a3{
+                li a3 {
                     background-color: #a64bf4;
                     color: white;
                     text-align: center;
@@ -191,214 +228,347 @@
     <!--this section is for date selector-->
 
     <section>
-            <a id="main-content"></a>
-            <h2 class="title" id="selectDate">Select Date:</h2>
+        <a id="main-content"></a>
+        <h2 class="title" id="selectDate">Select Date:</h2>
+        <style>
+            #selectDate {
+                float: left;
+                width: 100%;
+                padding: 1px 1px;
+                margin-top: 30px;
+                /*background-color: black;*/
+                margin-right: 10px;
+                /*border: 1px solid black;*/
+                font-size: 20px;
+                font-family: Verdana;
+                color: black;
+                font-weight: bold;
+            }
+        </style>
+
+        <form method=get action="/classRoomBooking" id="dateSelector">
+            <input id="date" type="date" name="bday">
+            <button id="show" type="submit" class="btn btn-success" onclick="getValue()" style="width: 80px">Show
+            </button>
             <style>
-                #selectDate{
-                    float: left;
-                    width: 100%;
-                    padding: 1px 1px;
-                    margin-top: 30px;
-                    /*background-color: black;*/
-                    margin-right: 10px;
-                    /*border: 1px solid black;*/
-                    font-size: 20px;
-                    font-family: Verdana;
-                    color: black;
-                    font-weight: bold;
+                #dateSelector {
+                    position: absolute;
+                    top: 305px;
+                    left: 160px;
                 }
             </style>
 
-            <form method=get action="/classRoomBooking" id="dateSelector">
-                <input id="date" type="date" name="bday">
-                <button id="show" type="submit" class="btn btn-success" onclick="getValue()" style="width: 80px">Show</button>
-                <style>
-                    #dateSelector{
-                        position: absolute;
-                        top:305px;
-                        left: 160px;
-                    }
-                </style>
-
-            </form>
+        </form>
 
     </section>
 
     <!--2d table is starting from here-->
-   <style>
-        table, th, td
-        {
+    <style>
+        table, th, td {
             padding: 2px 2px;
             margin-top: 50px;
             border: 1px solid black;
             height: inherit;
             width: inherit;
         }
-    </style>
 
-
-   <section><center>
-       <style>
-           section{
-               margin-left: 20px;
-               margin-right: 20px;
-           }
-       </style>
-    <div class="table-responsive">
-
-        <table id="Table" class="mb30" bgcolor="#f0ffff">
-
-            <thead>
-            <tr id="tableHeadRow" bgcolor="#dcdcdc">
-                <th><center>Room No</center></th>
-                {% for row in data %}
-                    <th><center>{{ row[0] }}</center></th>
-                {% endfor %}
-
-            </tr>
-            </thead>
-
-            <tbody id="tableBody" onload="myfunction()">
-             <form method=post action="/classRoomFixedDate" name="classRoomBooking_form" id="table" >
-
-                {% for row in demoData %}
-                    <tr>
-                    <td id = "roomNo"><center>{{ row[0] }}</center></td>
-                    {% for d in row%}
-                         {% if d=='0' %}
-                            <td id = "booked" bgcolor="#dc143c"><center><a id = "booked1" class="active" style="color: white">Booked</a></center></td>
-                         {% elif d=='1'%}
-                            <td id = "requested" bgcolor="#a64bf4"><center><a id = "requested1" class="active" style="color: white">Requested</a></center></td>
-                         {% elif d=='2' or d==None%}
-                            <td id = "apply_for_booking" bgcolor="#5f9ea0"><center><a id = "apply_for_booking1" href="auditorium_booking_form"
-                                                                                      class="active" style="color: white">Apply for Booking</a></center></td>
-                         {% endif %}
-                    {% endfor %}
-                    </tr>
-                {% endfor %}
-
-             <script type="text/javascript">
-                 function getValue() {
-
-                     var myTable = document.getElementById('Table');
-                     var date = document.getElementById('date').value;
-                     var xhttp = new XMLHttpRequest();
-
-                     xhttp.onreadystatechange = function () {
-                         if (this.readyState==4 && this.status ==200){
-                            var dataArr = JSON.parse(this.response);
-                            var length = dataArr.length;
-                            var i, j;
-
-                            for(i=1; i<=length; i++)
-                            {
-                                for(j=0; j<2; j++)
-                                {
-                                    myTable.rows[i].cells[j].innerHTML = dataArr[i-1][j];
-                                    if (dataArr[i-1][j] == 2)
-                                    {
-                                        if(user =="Guest")
-                                          myTable.rows[i].cells[j].innerHTML ='<button id="apply" data-toggle="modal" data-target= "#popUpWindow";'+
-                                              'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
-                                        else {
-                                             myTable.rows[i].cells[j].innerHTML ='<button id="apply" data-toggle="modal" data-target= "#bookingForm";'+
-                                              'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
-                                        }
-                                         myTable.rows[i].cells[1].style.height="45px";
-                                         myTable.rows[i].cells[1].style.padding="0%"
-                                         myTable.rows[i].cells[1].style.backgroundColor = "#138D75";
-                                    }
-                                    else if(dataArr[i-1][j] == 0)
-                                    {
-                                         myTable.rows[i].cells[1].style.backgroundColor = "#dc143c";
-                                         myTable.rows[i].cells[1].style.textAlign="center";
-                                         myTable.rows[i].cells[1].style.verticalAlign="middle";
-                                          myTable.rows[i].cells[1].style.height=" 45px";
-                                    }
-                                    else if(dataArr[i-1][j] == 1)
-                                    {
-                                         myTable.rows[i].cells[1].style.backgroundColor ="#A569BD";
-                                         myTable.rows[i].cells[1].style.textAlign="center";
-                                         myTable.rows[i].cells[1].style.verticalAlign="middle";
-                                         myTable.rows[i].cells[1].style.height=" 45px";
-                                    }
-                                }
-                            }
-                         }
-                     };
-
-                 xhttp.open("GET", "http://127.0.0.1:5000/classRoomFixedDate?query="+
-                     document.getElementById("date").value, true);
-                 xhttp.send();
-                }
-
-             </script>
-
-             </form>
-            </tbody>
-        </table>
-
-        <style>
-
-            #booked{
-                background-color: crimson;
-                color: white;
-            }
-
-            #requested{
-                background-color: #a64bf4;
-                color: white;
-            }
-
-            #apply{
-                background-color: #5f9ea0;
-                color: white;
-            }
-
-            #text_color{
-                color: white;
-            }
-
-        </style>
-
-
-    </div>
-</center></section>
-
-<section>
-    <!-- Footer -->
-    <style>
-        footer{
-             margin-top: 100px;
+        td:hover {
+            background-color: white;
         }
     </style>
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; DU Booking Website 2018</p>
-      </div>
-    </footer>
-
-</section>
-    </div>
-
-    <!-- Bootstrap core JavaScript -->
-   <script src="/static/vendor/jquery/jquery.min.js"></script>
-   <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-   <!--this 2 source is for selecting date from calender-->
 
 
+    <section>
+        <center>
+            <style>
+                section {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+            </style>
+            <div class="table-responsive">
 
-    <!-- Bootstrap core JavaScript -->
-   <script src="/static/vendor/jquery/jquery.min.js"></script>
-   <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <table id="Table" class="mb30" bgcolor="#f0ffff">
 
-   <!--this 2 source is for selecting date from calender-->
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-   <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+                    <thead>
+                    <tr id="tableHeadRow" bgcolor="#dcdcdc">
+                        <th>
+                            <center>Room No</center>
+                        </th>
+                        {% for row in data %}
+                            <th>
+                                <center>{{ row[0] }}</center>
+                            </th>
+                        {% endfor %}
+
+                    </tr>
+                    </thead>
+
+                    <tbody id="tableBody" onload="myfunction()">
+                    <form method=post action="/classRoomFixedDate" name="classRoomBooking_form" id="table">
+
+                        {% for row in demoData %}
+                            <tr>
+                                <td id="roomNo">
+                                    <center>{{ row[0] }}</center>
+                                </td>
+                                {% for d in row %}
+                                    {% if d=="0" %}
+                                        <td id="booked" bgcolor="#dc143c">
+                                            <button type="button" class="btn btn-outline-warning"
+                                                       style="width: 100%; background-color: #dc143c; border: none; color: white">Booked
+                                                </button>
+                                        </td>
+                                    {% elif d=="1" %}
+                                        <td id="requested" bgcolor="#a64bf4">
+                                            <button type="button" class="btn btn-outline-warning"
+                                                        style="width: 100%; background-color: #a64bf4; border: none; color: white">Requested
+                                                </button>
+                                        </td>
+                                    {% elif d=="2" or d==None %}
+                                        {% if username != "Guest" %}
+                                            <td id="apply_for_booking" bgcolor="#5f9ea0">
+                                                <button type="button" id="apply" data-toggle="modal"
+                                                        data-target="#bookingForm" ;
+                                                        class="btn btn-outline-warning" style="width: 100%; border: none">Apply for
+                                                    Booking
+                                                </button>
+                                            </td>
+                                        {% else %}
+                                            <td id="apply_for_booking" bgcolor="#5f9ea0">
+                                                <button type="button" id="apply" data-toggle="modal"
+                                                        data-target="#popUpWindow" ;
+                                                        class="btn btn-outline-warning" style="width: 100%">Apply for
+                                                    Booking
+                                                </button>
+                                            </td>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+
+                        <script type="text/javascript">
+                            function getValue() {
+
+                                var myTable = document.getElementById('Table');
+                                var date = document.getElementById('date').value;
+                                var xhttp = new XMLHttpRequest();
+
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var dataArr = JSON.parse(this.response);
+                                        var length = dataArr.length;
+                                        var i, j;
+
+                                        for (i = 1; i <= length; i++) {
+                                            for (j = 0; j < 2; j++) {
+                                                myTable.rows[i].cells[j].innerHTML = dataArr[i - 1][j];
+                                                if (dataArr[i - 1][j] == 2) {
+                                                    if (user == "Guest")
+                                                        myTable.rows[i].cells[j].innerHTML = '<button id="apply" data-toggle="modal" data-target= "#popUpWindow";' +
+                                                            'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
+                                                    else {
+                                                        myTable.rows[i].cells[j].innerHTML = '<button id="apply" data-toggle="modal" data-target= "#bookingForm";' +
+                                                            'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
+                                                    }
+                                                    myTable.rows[i].cells[1].style.height = "45px";
+                                                    myTable.rows[i].cells[1].style.padding = "0%"
+                                                    myTable.rows[i].cells[1].style.backgroundColor = "#138D75";
+                                                }
+                                                else if (dataArr[i - 1][j] == 0) {
+                                                    myTable.rows[i].cells[1].style.backgroundColor = "#dc143c";
+                                                    myTable.rows[i].cells[1].style.textAlign = "center";
+                                                    myTable.rows[i].cells[1].style.verticalAlign = "middle";
+                                                    myTable.rows[i].cells[1].style.height = " 45px";
+                                                }
+                                                else if (dataArr[i - 1][j] == 1) {
+                                                    myTable.rows[i].cells[1].style.backgroundColor = "#A569BD";
+                                                    myTable.rows[i].cells[1].style.textAlign = "center";
+                                                    myTable.rows[i].cells[1].style.verticalAlign = "middle";
+                                                    myTable.rows[i].cells[1].style.height = " 45px";
+                                                }
+                                            }
+                                        }
+                                    }
+                                };
+
+                                xhttp.open("GET", "http://127.0.0.1:5000/classRoomFixedDate?query=" +
+                                    document.getElementById("date").value, true);
+                                xhttp.send();
+                            }
+
+                        </script>
+
+                    </form>
+                    </tbody>
+                </table>
+
+                <style>
+
+                    #booked {
+                        background-color: crimson;
+                        color: white;
+                    }
+
+                    #requested {
+                        background-color: #a64bf4;
+                        color: white;
+                    }
+
+                    #apply {
+                        background-color: #5f9ea0;
+                        color: white;
+                    }
+
+                    #text_color {
+                        color: white;
+                    }
+
+                </style>
 
 
-  </body>
+                <script>
+                    function login() {
+                        var xhttp = new XMLHttpRequest();
+
+
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById("password").value;
+                        var btn = document.getElementById("apply");
+                        xhttp.onreadystatechange = function () {
+
+                            if (this.readyState == 4 && this.status == 200) {
+                                // swal("Good kok!", "You clicked the button!", "success");
+                                var x = xhttp.responseText;
+                                if (x == "OK_User") {
+                                    location.reload(true);
+                                }
+
+                            }
+
+                        };
+
+                        if (username != "" && password != "") {
+                            var args = [username, password];
+                            xhttp.open("GET", "http://127.0.0.1:5000/login_user?query=" + JSON.stringify(args), true);
+                            xhttp.send();
+                        }
+                    }
+                </script>
+
+
+            </div>
+            <div class="container">
+                <!--
+               <button type='button' class="btn btn-success" >Open Log In Window</button>
+              -->
+                <div class="modal fade" id="popUpWindow">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- header -->
+                            <div class="modal-header">
+                                <h3 class="modal-title">PLEASE LOGIN FIRST !</h3>
+                                <button style="height: 3px;width: 3px" type="button" class="close" data-dismiss="modal">
+                                    &times;
+                                </button>
+                            </div>
+                            <!-- body -->
+                            <div class="modal-header">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <input id="username" type="email" class="form-control" placeholder="Username"/>
+                                        <input id="password" type="password" class="form-control"
+                                               placeholder="Password"/>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button onclick="login()" class="btn btn-primary btn-block" data-dismiss="modal">Log
+                                    In
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <!--
+               <button type='button' class="btn btn-success" >Open Log In Window</button>
+              -->
+                <div class="modal fade" id="bookingForm">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- header -->
+                            <div class="modal-header">
+                                <h3 class="modal-title">Confirm Request</h3>
+                                <button style="height: 3px;width: 3px" type="button" class="close" data-dismiss="modal">
+                                    &times;
+                                </button>
+                            </div>
+                            <!-- body -->
+                            <div class="modal-header">
+
+                                <form role="form">
+                                    <div class="form-group">
+                                        <input style="background-color:white ;width: 350px;" id="payment" type="file"
+                                               name="pic" accept="image/*">
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- footer -->
+                            <div class="modal-footer">
+                                <button onclick="bookNow()" class="btn btn-primary btn-block" data-dismiss="modal">BOOK
+                                    NOW
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </center>
+    </section>
+
+    <section>
+        <!-- Footer -->
+        <style>
+            footer {
+                margin-top: 100px;
+            }
+        </style>
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; DU Booking Website 2018</p>
+            </div>
+        </footer>
+
+    </section>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+
+<script src="../static/vendor/jquery/jquery.min.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!--this 2 source is for selecting date from calender-->
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="../static/vendor/jquery/jquery.min.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!--this 2 source is for selecting date from calender-->
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+
+</body>
 
 
 </html>
