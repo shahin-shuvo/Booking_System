@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../static/img/du_57x57.png" type="image/ico"/>
 
-    <title>Class Info</title>
+    <title>Auditorium Info</title>
 
     <!-- Bootstrap -->
     <link href="../static/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -91,7 +91,7 @@
                                     <li><a href="ClassUpdate">Classroom</a></li>
                                     <li><a href="LabUpdate">Lab</a></li>
                                     <li><a href="AuditoriumUpdate">Auditorium</a></li>
-                                        <li><a href="FieldUpdate">Field</a></li>
+                                    <li><a href="FieldUpdate">Field</a></li>
                                 </ul>
                             </li>
 
@@ -242,7 +242,7 @@
         <div class="right_col" role="main">
             <div class="">
                 <div class="title">
-                    <h1 style="text-align: center;margin: 20px">Class Information</h1>
+                    <h1 style="text-align: center;margin: 20px">Auditorium Information</h1>
                 </div>
 
 
@@ -253,7 +253,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Class Info Table
+                                <h2>Auditorium Info Table
                                 </h2>
 
 
@@ -279,8 +279,10 @@
                                 <table id="class_info" class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Room no</th>
+                                        <th>Auditorium</th>
+                                        <th>Address</th>
                                         <th>Capacity</th>
+                                        <th>Details</th>
                                         <th>Edit</th>
                                     </tr>
                                     </thead>
@@ -331,17 +333,27 @@
                                 <form action="">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h3 class="modal-title">Add Class</h3>
+                                        <h3 class="modal-title">Add Auditorium</h3>
                                     </div>
                                     <div class="form-group">
-                                        <label for="room_name">Room Name:</label>
-                                        <input type="text" class="form-control" id="add_room_name"
-                                               name="room_name">
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="add_name"
+                                               name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address:</label>
+                                        <input type="text" class="form-control" id="add_address"
+                                               name="address">
                                     </div>
                                     <div class="form-group">
                                         <label for="capacity">Capacity:</label>
                                         <input type="number" class="form-control" id="add_capacity"
                                                name="capacity">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="details">Details:</label>
+                                        <input type="text" class="form-control" id="add_details"
+                                               name="details">
                                     </div>
 
                                 </form>
@@ -368,18 +380,29 @@
                                 <form action="">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h3 class="modal-title">Edit Class Info</h3>
+                                        <h3 class="modal-title">Edit Auditorium Info</h3>
                                     </div>
                                     <div class="form-group">
-                                        <label for="room_name">Room Name:</label>
-                                        <input type="text" class="form-control" id="room_name"
-                                               name="room_name">
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="name"
+                                               name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address:</label>
+                                        <input type="text" class="form-control" id="address"
+                                               name="address">
                                     </div>
                                     <div class="form-group">
                                         <label for="capacity">Capacity:</label>
                                         <input type="number" class="form-control" id="capacity"
                                                name="capacity">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="details">Details:</label>
+                                        <input type="text" class="form-control" id="details"
+                                               name="details">
+                                    </div>
+
 
                                 </form>
                             </div>
@@ -447,7 +470,7 @@
 <script src="../static/build/js/custom.min.js"></script>
 
 <!-- my custom js file -->
-<script src="../static/js/table_row.js?version=33"></script>
+<script src="../static/js/audi_field_update.js?version=33"></script>
 
 <!-- extra -->
 

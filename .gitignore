@@ -7,8 +7,9 @@ static/vendor/jquery/external/
 static/vendor/jquery/src/
 static/vendor/node-waves/
 workspace.xml
-.idea/
+__pycache__
 ConfirmationMail.cpython-35.pyc
+.idea/
 *.pyc
 class_book.js
 MyFile.py
