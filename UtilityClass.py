@@ -1,8 +1,4 @@
-from json import dumps
-from flask import render_template, request,make_response,session
-from ConfirmationMail import send_mail
-from threading import Thread
-from dateutil import parser
+from flask import render_template
 
 admin_img='../static/img/admin/'
 def img_link(name):
