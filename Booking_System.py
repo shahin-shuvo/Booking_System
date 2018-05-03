@@ -520,6 +520,11 @@ def showClassSlotOnSelectedDate():
 def showClassSlotOnFixedDate():
     return classBookingClass(mysql).showClassSlotOnFixedDate()
 
+@app.route('/selectedSlotRoom', methods=["GET", "POST"])
+def showSelectedSlot():
+    return classBookingClass(mysql).applyforBookig()
+
+
 @app.route('/labBooking', methods=["GET","POST"])
 def showLabStatus():
     return labBookingClass(mysql).showLabStatus()
@@ -528,6 +533,8 @@ def showLabStatus():
 @app.route('/labFixedDate', methods=["GET", "POST"])
 def showLabSlotOnFixedDate():
     return labBookingClass(mysql).showLabSlotOnFixedDate()
+
+
 
 if __name__ == '__main__':
     app.debug = True

@@ -316,21 +316,24 @@
                                     {% if d=="0" %}
                                         <td id="booked" bgcolor="#dc143c">
                                             <button type="button" class="btn btn-outline-warning"
-                                                       style="width: 100%; background-color: #dc143c; border: none; color: white">Booked
-                                                </button>
+                                                    style="width: 100%; background-color: #dc143c; border: none; color: white">
+                                                Booked
+                                            </button>
                                         </td>
                                     {% elif d=="1" %}
                                         <td id="requested" bgcolor="#a64bf4">
                                             <button type="button" class="btn btn-outline-warning"
-                                                        style="width: 100%; background-color: #a64bf4; border: none; color: white">Requested
-                                                </button>
+                                                    style="width: 100%; background-color: #a64bf4; border: none; color: white">
+                                                Requested
+                                            </button>
                                         </td>
                                     {% elif d=="2" or d==None %}
                                         {% if username != "Guest" %}
                                             <td id="apply_for_booking" bgcolor="#5f9ea0">
                                                 <button type="button" id="apply" data-toggle="modal"
                                                         data-target="#bookingForm" ;
-                                                        class="btn btn-outline-warning" style="width: 100%; border: none">Apply for
+                                                        class="btn btn-outline-warning"
+                                                        style="width: 100%; border: none">Apply for
                                                     Booking
                                                 </button>
                                             </td>
@@ -349,10 +352,32 @@
                         {% endfor %}
 
                         <script type="text/javascript">
+
+                            var table = document.getElementById("Table"), rIndex, cIndex, roomNo = 0, iFixed;
+                            var selectedDate;
+
+                            // table rows
+                            for (var i = 1; i < table.rows.length; i++) {
+                                // row cells
+                                for (var j = 1; j < table.rows[i].cells.length; j++) {
+
+                                    if (table.rows[i].cells[j].id == "apply_for_booking") {
+                                        table.rows[i].cells[j].onclick = function () {
+                                            rIndex = this.parentElement.rowIndex;
+                                            cIndex = this.cellIndex + 1;
+                                            iFixed = i;
+                                            getRoomNo(rIndex, cIndex);
+                                            //confirmBooking(rIndex, cIndex);
+                                        };
+                                    }
+
+                                }
+                            }
+
                             function getValue() {
 
                                 var myTable = document.getElementById('Table');
-                                var date = document.getElementById('date').value;
+                                selectedDate = document.getElementById("date").value;
                                 var xhttp = new XMLHttpRequest();
 
                                 xhttp.onreadystatechange = function () {
@@ -360,43 +385,90 @@
                                         var dataArr = JSON.parse(this.response);
                                         var length = dataArr.length;
                                         var i, j;
-
-                                        for (i = 1; i <= length; i++) {
-                                            for (j = 0; j < 2; j++) {
-                                                myTable.rows[i].cells[j].innerHTML = dataArr[i - 1][j];
-                                                if (dataArr[i - 1][j] == 2) {
-                                                    if (user == "Guest")
-                                                        myTable.rows[i].cells[j].innerHTML = '<button id="apply" data-toggle="modal" data-target= "#popUpWindow";' +
-                                                            'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
-                                                    else {
-                                                        myTable.rows[i].cells[j].innerHTML = '<button id="apply" data-toggle="modal" data-target= "#bookingForm";' +
-                                                            'type="button" class="btn btn-outline-warning"  style="width: 100%">Apply fo Booking</button>';
-                                                    }
-                                                    myTable.rows[i].cells[1].style.height = "45px";
-                                                    myTable.rows[i].cells[1].style.padding = "0%"
-                                                    myTable.rows[i].cells[1].style.backgroundColor = "#138D75";
-                                                }
-                                                else if (dataArr[i - 1][j] == 0) {
-                                                    myTable.rows[i].cells[1].style.backgroundColor = "#dc143c";
-                                                    myTable.rows[i].cells[1].style.textAlign = "center";
-                                                    myTable.rows[i].cells[1].style.verticalAlign = "middle";
-                                                    myTable.rows[i].cells[1].style.height = " 45px";
-                                                }
-                                                else if (dataArr[i - 1][j] == 1) {
-                                                    myTable.rows[i].cells[1].style.backgroundColor = "#A569BD";
-                                                    myTable.rows[i].cells[1].style.textAlign = "center";
-                                                    myTable.rows[i].cells[1].style.verticalAlign = "middle";
-                                                    myTable.rows[i].cells[1].style.height = " 45px";
-                                                }
-                                            }
-                                        }
                                     }
                                 };
 
                                 xhttp.open("GET", "http://127.0.0.1:5000/classRoomFixedDate?query=" +
                                     document.getElementById("date").value, true);
                                 xhttp.send();
+
+                                //return selectedDate;
                             }
+
+
+                            function getRoomNo(row, column) {
+                                roomNo = table.rows[row].cells[0].innerText;
+                                slot = table.rows[0].cells[column - 1].innerText;
+
+                                //alert("slot: "+slot+" room: "+roomNo);
+
+                                date_date = new Date();
+
+                                todayDate = date_date.getDate();
+
+                                month = date_date.getMonth()+1;
+                                var path;
+
+                               // var date=   path.substring(path.indexOf("?")+6);
+
+                               if(selectedDate == undefined) {
+
+                                   if(todayDate<10) todayDate = '0'+todayDate;
+                                   if(month<10) month = '0'+month;
+
+                                   selectedDate = date_date.getFullYear() + '-' + month +'-'+ todayDate;
+                               }
+
+                               else{
+                                   path = window.location.href;
+                                   selectedDate = path.substring(path.indexOf("?")+6);
+                               }
+
+                                document.getElementById("room").textContent=roomNo;
+                                document.getElementById("selected_slot").textContent=slot;
+                                document.getElementById("selected_date").textContent=selectedDate;
+
+
+                            }
+
+                        function confirmBooking() {
+
+                            /*roomNo = table.rows[row].cells[0].innerText;
+                            slot = table.rows[0].cells[column - 1].innerText;
+
+                            date_date = new Date();
+
+                            month = date_date.getMonth()+1;
+                            var path;
+
+                               // var date=   path.substring(path.indexOf("?")+6);
+
+                            if(selectedDate == undefined) {
+                                selectedDate = date_date.getFullYear() + '-' + month +'-'+ date_date.getDate();
+                            }
+
+                            else{
+                                path = window.location.href;
+                                selectedDate = path.substring(path.indexOf("?")+6);
+                            }
+
+                            */
+
+                            //alert(selectedDate+', '+roomNo+', '+slot);
+
+                            var xhttp = new XMLHttpRequest();
+
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var dataArr =this.responseText;
+                                        //var length = dataArr.length;
+                                    }
+                                };
+                                console.log(roomNo+slot+selectedDate);
+                                xhttp.open("GET", "http://127.0.0.1:5000/selectedSlotRoom?roomNo=" + roomNo + "&slot=" +
+                                    (cIndex-1) +"&selected_date=" + selectedDate, true);
+                                xhttp.send();
+                        }
 
                         </script>
 
@@ -505,25 +577,39 @@
                             <!-- header -->
                             <div class="modal-header">
                                 <h3 class="modal-title">Confirm Request</h3>
-                                <button style="height: 3px;width: 3px" type="button" class="close" data-dismiss="modal">
-                                    &times;
-                                </button>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="room">Room No:</label>
+                                        <label id="room"></label>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selected_slot">Slot:</label>
+                                        <label id="selected_slot"></label>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="selected_date">Date:</label>
+                                        <label id="selected_date"></label>
+
+                                    </div>
+
+                                </form>
+
                             </div>
                             <!-- body -->
                             <div class="modal-header">
 
-                                <form role="form">
-                                    <div class="form-group">
-                                        <input style="background-color:white ;width: 350px;" id="payment" type="file"
-                                               name="pic" accept="image/*">
-                                    </div>
-                                </form>
+
                             </div>
                             <!-- footer -->
                             <div class="modal-footer">
-                                <button onclick="bookNow()" class="btn btn-primary btn-block" data-dismiss="modal">BOOK
-                                    NOW
+                                <button type="submit" class="btn btn-default" data-dismiss="modal" id="update">Discard
                                 </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="confirmBooking()">Confirm</button>
                             </div>
 
                         </div>

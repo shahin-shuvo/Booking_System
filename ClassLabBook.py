@@ -85,7 +85,7 @@ class classBookingClass:
 
         # print ("data: ", len(numberOfSlot))
         # print ("fnd class room: ", foundClassRoomArray)
-        print ("slot: ", selectDateData)
+        #print ("slot: ", selectDateData)
 
         today_class_date = str(date.today())
         session['today_date'] = today_class_date
@@ -96,6 +96,34 @@ class classBookingClass:
     def showClassSlotOnFixedDate(self):
         today = request.args['query']
         session['today_date'] = today
+
+        return "0"
+
+    def applyforBookig(self):
+        roomNo = request.args['roomNo']
+        slot = request.args['slot']
+        selected_date = request.args['selected_date']
+        current_date=str(date.today())
+        #print(current_date)
+        #print("slot: "+ slot, " room: "+ roomNo, "date: "+date)
+        slots=[]
+        for i in range(5):
+            slots.append(0)
+        slots[int(slot)]=1
+        name=session['username']
+        #print(name)
+        conn = self.mysql.connect()
+        cursor = conn.cursor()
+
+        # cursor.execute("""UPDATE
+        #                 """)
+
+        #TODO:Dept should be replaced with dept name
+        cursor.execute("""INSERT INTO class_booking_request
+                         (u_name,room_no,dept_name,registration_date,start_date,slot_1,slot_2,slot_3,slot_4,slot_5,admin_confirmation)
+                         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,0)""",(name,roomNo,"CSE",current_date,selected_date,slots[0],slots[1],slots[2],
+                                                                     slots[3],slots[4],))
+        conn.commit()
 
         return "0"
 
