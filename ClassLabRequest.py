@@ -1,7 +1,5 @@
 from json import dumps
-from flask import render_template, request,make_response,session
-from ConfirmationMail import send_mail
-from threading import Thread
+from flask import render_template, request,make_response,session,redirect,url_for
 from dateutil import parser
 
 class ClassBookingReq:
@@ -9,9 +7,12 @@ class ClassBookingReq:
         self.mysql=mysql
 
     def class_booking(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
         conn = self.mysql.connect()
         cursor = conn.cursor()
-        user_name=session['username']
         cursor.execute("""SELECT u_name,req_id, room_no,registration_date,start_date, 
                           end_date, slot_1, slot_2, slot_3, slot_4, slot_5,admin_confirmation 
                           from class_booking_request""")
@@ -102,6 +103,10 @@ class LabBookingReq:
         self.mysql=mysql
 
     def lab_booking(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
@@ -109,7 +114,7 @@ class LabBookingReq:
               slot_2,admin_confirmation
                from lab_booking_request""")
         data = cursor.fetchall()
-        return render_template('LabBookingReq.html', data=data)
+        return render_template('LabBookingReq.html', data=data,user_name=user_name)
 
     def lab_feedback(self):
         reply = request.args['query']

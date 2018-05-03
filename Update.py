@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request,session,redirect,url_for
 
 
 class ClassUpdate:
@@ -6,12 +6,16 @@ class ClassUpdate:
         self.mysql=mysql
 
     def class_info(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
             "SELECT room_name,capacity from class_info")
         data = cursor.fetchall()
-        return render_template('ClassUpdate.html', data=data)
+        return render_template('ClassUpdate.html', data=data,user_name=user_name)
 
     def class_delete(self):
         name = request.args["name"]
@@ -64,12 +68,16 @@ class LabUpdate:
         self.mysql=mysql
 
     def lab_info(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
             "SELECT room_name,capacity from lab_info")
         data = cursor.fetchall()
-        return render_template('LabUpdate.html', data=data)
+        return render_template('LabUpdate.html', data=data,user_name=user_name)
 
     def lab_delete(self):
         name = request.args["name"]
@@ -120,12 +128,16 @@ class AuditoriumUpdate:
         self.mysql=mysql
 
     def auditorium_info(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
             "SELECT * from Auditorium_Info")
         data = cursor.fetchall()
-        return render_template('AuditoriumUpdate.html', data=data)
+        return render_template('AuditoriumUpdate.html', data=data,user_name=user_name)
 
     def auditorium_delete(self):
         name = request.args["name"]
@@ -181,12 +193,17 @@ class FieldUpdate:
         self.mysql=mysql
 
     def field_info(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
+
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
             "SELECT * from Field_Info")
         data = cursor.fetchall()
-        return render_template('FieldUpdate.html', data=data)
+        return render_template('FieldUpdate.html', data=data,user_name=user_name)
 
     def field_delete(self):
         name = request.args["name"]
