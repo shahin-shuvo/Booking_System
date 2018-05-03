@@ -1,7 +1,7 @@
 from datetime import date
 
 from flask import Flask, render_template, request, session
-
+username = "Guest"
 class classBookingClass:
     def __init__(self,mysql):
         self.mysql=mysql
@@ -9,7 +9,7 @@ class classBookingClass:
     def showClassSlot(self):
         conn = self.mysql.connect()
         cursor = conn.cursor()
-
+        username=""
         today = ""
         try:
             today = session['today_date']
@@ -91,7 +91,12 @@ class classBookingClass:
         session['today_date'] = today_class_date
 
         conn.close()
-        return render_template('classRoomBooking.html', demoData=selectDateData, data=numberOfSlot)
+
+        if 'logged_in' in session:
+            username = session['username']
+        else:
+            username = "Guest"
+        return render_template('classRoomBooking.html', demoData=selectDateData, data=numberOfSlot,username=username)
 
     def showClassSlotOnFixedDate(self):
         today = request.args['query']
