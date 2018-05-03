@@ -11,6 +11,7 @@ class classBookingClass:
         cursor = conn.cursor()
 
         today = ""
+
         try:
             today = session['today_date']
         except KeyError:

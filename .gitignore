@@ -2,10 +2,6 @@
 *.xml
 
 #folder to be ignored
-static/vendor/jquery/dist
-static/vendor/jquery/external/
-static/vendor/jquery/src/
-static/vendor/node-waves/
 workspace.xml
 __pycache__
 ConfirmationMail.cpython-35.pyc
@@ -14,7 +10,5 @@ ConfirmationMail.cpython-35.pyc
 class_book.js
 MyFile.py
 backup.py
-ClassLabBook.py
-classRoomBooking.html
 six.cpython-35.pyc
 __init__.cpython-35.pyc
