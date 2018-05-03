@@ -72,7 +72,7 @@ class ClassBookingReq:
         slots=[]
         for i in range(5):
             slots.append(data[0][2+i])
-        print(slots)
+        # print(slots)
         if(reply==1):
             for i in r_slot:
                 slots[int(i)-1]='0'
@@ -81,7 +81,7 @@ class ClassBookingReq:
                 slots[int(i)-1]='2'
 
 
-        print(slots)
+        # print(slots)
         try:
             cursor.execute("""UPDATE class_booking_request 
                               SET admin_confirmation = %s WHERE req_id = %s"""

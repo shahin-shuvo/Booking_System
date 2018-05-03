@@ -115,14 +115,32 @@ class classBookingClass:
         slots=[]
         for i in range(5):
             slots.append(0)
-        slots[int(slot)]=1
+        slots[int(slot)-1]=1
         name=session['username']
-        #print(name)
+        print(slot)
         conn = self.mysql.connect()
         cursor = conn.cursor()
 
-        # cursor.execute("""UPDATE
-        #                 """)
+        cursor.execute("SELECT * FROM classRoomTable WHERE room_no = %s AND date_date = %s",(roomNo,selected_date,))
+        is_row=cursor.fetchall()
+        if(len(is_row)>0):
+            print(is_row)
+            update_slot = []
+            for i in range(5):
+                update_slot.append(is_row[0][2 + i])
+            update_slot[int(slot)-1]='1'
+            cursor.execute("""UPDATE classRoomTable SET s1 = %s,s2 = %s,s3 = %s ,s4=%s,s5 = %s
+                                          WHERE room_no = %s AND date_date = %s""",
+                           (update_slot[0], update_slot[1], update_slot[2], update_slot[3], update_slot[4], roomNo, selected_date,))
+
+        else:
+            new_slot=[]
+            for i in range(5):
+                new_slot.append('2')
+            new_slot[int(slot)-1]='1'
+            cursor.execute("""INSERT INTO classRoomTable (room_no,date_date,s1,s2,s3,s4,s5) 
+                              VALUES (%s,%s,%s,%s,%s,%s,%s)""",(roomNo,selected_date,new_slot[0],new_slot[1],new_slot[2],new_slot[3],new_slot[4]))
+
 
         #TODO:Dept should be replaced with dept name
         cursor.execute("""INSERT INTO class_booking_request
