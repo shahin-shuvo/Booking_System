@@ -25,8 +25,8 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 # app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
 # app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
-app.config['MYSQL_DATABASE_PASSWORD'] = 'shanto55'
-app.config['MYSQL_DATABASE_DB'] = "Booking_system"
+app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
+app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
 mysql.init_app(app)
 
 username = "Guest"
