@@ -26,7 +26,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 # app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
 # app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
-app.config['MYSQL_DATABASE_PASSWORD'] = 'shanto55'
+app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
 app.config['MYSQL_DATABASE_DB'] = "Booking_system"
 mysql.init_app(app)
 
@@ -160,6 +160,7 @@ def login_required(f):
 @login_required
 def logout():
     session.clear()
+    session['username']="Guest"
     gc.collect()
     return render_template("index.html")
 #Auditorium info page
