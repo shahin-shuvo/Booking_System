@@ -335,7 +335,7 @@
                                             </button>
                                         </td>
                                     {% elif d=="2" or d==None %}
-                                        {% if username != "Guest" %}
+                                        {% if username != "Guest" and isPossible == 1%}
                                             <td id="apply_for_booking" bgcolor="#5f9ea0">
                                                 <button type="button" id="apply" data-toggle="modal"
                                                         data-target="#bookingForm" ;
@@ -344,6 +344,15 @@
                                                     Booking
                                                 </button>
                                             </td>
+                                            {% elif isPossible==0 %}
+                                               <td id="apply_for_booking" bgcolor="#5f9ea0">
+                                                <button type="button" id="apply" data-toggle="modal"
+                                                        data-target="#" ;
+                                                        class="btn btn-outline-warning"
+                                                        style="width: 100%; border: none">Not Applicable
+                                                </button>
+                                            </td>
+
                                         {% else %}
                                             <td id="apply_for_booking" bgcolor="#5f9ea0">
                                                 <button type="button" id="apply" data-toggle="modal"
@@ -361,7 +370,7 @@
                         <script type="text/javascript">
 
                             var table = document.getElementById("Table"), rIndex, cIndex, roomNo = 0, iFixed;
-                            var selectedDate;
+                            //var selectedDate;
 
                             // table rows
                             for (var i = 1; i < table.rows.length; i++) {
@@ -384,7 +393,7 @@
                             function getValue() {
 
                                 var myTable = document.getElementById('Table');
-                                selectedDate = document.getElementById("date").value;
+                                var date = document.getElementById("date").value;
                                 var xhttp = new XMLHttpRequest();
 
                                 xhttp.onreadystatechange = function () {
@@ -409,28 +418,37 @@
 
                                 //alert("slot: "+slot+" room: "+roomNo);
 
-                                date_date = new Date();
+                                selectedDate = undefined;
+
+                                var date_date = new Date();
+
+                                var path;
 
                                 todayDate = date_date.getDate();
 
                                 month = date_date.getMonth()+1;
-                                var path;
+                                path_l=window.location.href;
+
 
                                // var date=   path.substring(path.indexOf("?")+6);
 
-                               if(selectedDate == undefined) {
+                               if(path_l.endsWith("classRoomBooking")) {
+
 
                                    if(todayDate<10) todayDate = '0'+todayDate;
                                    if(month<10) month = '0'+month;
+
+                                  // selectedDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
                                    selectedDate = date_date.getFullYear() + '-' + month +'-'+ todayDate;
                                }
 
                                else{
+
                                    path = window.location.href;
                                    selectedDate = path.substring(path.indexOf("?")+6);
                                }
-
+                                console.log(selectedDate);
                                 document.getElementById("room").textContent=roomNo;
                                 document.getElementById("selected_slot").textContent=slot;
                                 document.getElementById("selected_date").textContent=selectedDate;
@@ -440,28 +458,6 @@
 
                         function confirmBooking() {
 
-                            /*roomNo = table.rows[row].cells[0].innerText;
-                            slot = table.rows[0].cells[column - 1].innerText;
-
-                            date_date = new Date();
-
-                            month = date_date.getMonth()+1;
-                            var path;
-
-                               // var date=   path.substring(path.indexOf("?")+6);
-
-                            if(selectedDate == undefined) {
-                                selectedDate = date_date.getFullYear() + '-' + month +'-'+ date_date.getDate();
-                            }
-
-                            else{
-                                path = window.location.href;
-                                selectedDate = path.substring(path.indexOf("?")+6);
-                            }
-
-                            */
-
-                            //alert(selectedDate+', '+roomNo+', '+slot);
 
                             var xhttp = new XMLHttpRequest();
 
@@ -646,7 +642,6 @@
 
 <!-- Bootstrap core JavaScript -->
 
-<script src="../static/vendor/jquery/jquery.min.js"></script>
 <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!--this 2 source is for selecting date from calender-->
@@ -657,8 +652,8 @@
 <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!--this 2 source is for selecting date from calender-->
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+{#<script src="//code.jquery.com/jquery-1.10.2.js"></script>#}
+{#<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>#}
 
 
 </body>

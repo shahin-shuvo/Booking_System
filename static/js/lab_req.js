@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#my_data').dataTable({
-        "aaSorting": [[3, 'desc']]
+        "aaSorting": [[1, 'desc']]
     });
 });
 $(document).ready(function () {
@@ -32,13 +32,13 @@ $(document).ready(function () {
 
 
                 var start = d[4].split('-');
-                start = new Date(start[0], start[1], start[2]);
+                start = new Date(start[0], start[1]-1, start[2]);
                 $('#start_date').text(start.toDateString());
 
                 //console.log(d[5] + "  " + typeof (d[5]));
                 if (d[5] != "None") {
                     var end = d[5].split('-');
-                    end = new Date(end[0], end[1], end[2]);
+                    end = new Date(end[0], end[1]-1, end[2]);
                     var differenceInMilisecond = end - start;
 
                     var year_age = Math.floor(differenceInMilisecond / 31536000000);
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
 
                 var count = 0, slots = [], slot_number;
-                for (var i = 6; i <= 10; i++) {
+                for (var i = 6; i <= 7; i++) {
                     if (d[i].includes("checked")) {
                         slot_number = i - 5;
                         slots[count] = slot_number;
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 }
                 //console.log(slots);
                 $('#slot_number').text(slots);
-                if (d[11].includes("checked")) {
+                if (d[8].includes("checked")) {
                     $('#admin_confirmation').text("Yes");
                 } else {
                     $('#admin_confirmation').text("No");

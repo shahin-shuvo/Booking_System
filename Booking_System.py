@@ -546,6 +546,12 @@ def showLabSlotOnFixedDate():
     return labBookingClass(mysql).showLabSlotOnFixedDate()
 
 
+@app.route('/selectedSlotLab', methods=["GET", "POST"])
+def showSelectedLabSlot():
+    return labBookingClass(mysql).applyforLabBookig()
+
+
+
 
 if __name__ == '__main__':
     app.debug = True
