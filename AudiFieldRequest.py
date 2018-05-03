@@ -2,7 +2,7 @@ from json import dumps
 from flask import Flask, render_template, request, flash, session, url_for, redirect, jsonify, make_response, json
 from ConfirmationMail import send_mail
 from threading import Thread
-
+from UtilityClass import img_link
 class AuditoriumBookingReq:
     def __init__(self,mysql):
         self.mysql=mysql
@@ -17,7 +17,7 @@ class AuditoriumBookingReq:
         cursor.execute(
             "SELECT Username,req_id,Auditorium,ApplyDate,Date,Status from Auditorium_Table")
         data = cursor.fetchall()
-        return render_template('AuditoriumBookingReq.html', data=data,user_name=user_name)
+        return render_template('AuditoriumBookingReq.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def audi_payment_image(self):
         req_id = request.args["query"]
@@ -87,7 +87,7 @@ class FieldBookingReq:
         cursor.execute(
             "SELECT Username,req_id,Field,ApplyDate,Date,Status from Field_Table")
         data = cursor.fetchall()
-        return render_template('FieldBookingReq.html', data=data,user_name=user_name)
+        return render_template('FieldBookingReq.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def field_payment_image(self):
         req_id = request.args["query"]

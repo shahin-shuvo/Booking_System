@@ -1,6 +1,7 @@
 from json import dumps
 from flask import render_template, request,make_response,session,redirect,url_for
 from dateutil import parser
+from UtilityClass import img_link
 
 class ClassBookingReq:
     def __init__(self,mysql):
@@ -17,7 +18,7 @@ class ClassBookingReq:
                           end_date, slot_1, slot_2, slot_3, slot_4, slot_5,admin_confirmation 
                           from class_booking_request""")
         data = cursor.fetchall()
-        return render_template('ClassBookingReq.html', data=data,user_name=user_name)
+        return render_template('ClassBookingReq.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def feedback(self):
         reply = request.args['query']
@@ -114,7 +115,7 @@ class LabBookingReq:
               slot_2,admin_confirmation
                from lab_booking_request""")
         data = cursor.fetchall()
-        return render_template('LabBookingReq.html', data=data,user_name=user_name)
+        return render_template('LabBookingReq.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def lab_feedback(self):
         reply = request.args['query']

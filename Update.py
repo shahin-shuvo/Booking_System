@@ -1,5 +1,5 @@
 from flask import render_template, request,session,redirect,url_for
-
+from UtilityClass import img_link
 
 class ClassUpdate:
     def __init__(self,mysql):
@@ -15,7 +15,7 @@ class ClassUpdate:
         cursor.execute(
             "SELECT room_name,capacity from class_info")
         data = cursor.fetchall()
-        return render_template('ClassUpdate.html', data=data,user_name=user_name)
+        return render_template('ClassUpdate.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def class_delete(self):
         name = request.args["name"]
@@ -77,7 +77,7 @@ class LabUpdate:
         cursor.execute(
             "SELECT room_name,capacity from lab_info")
         data = cursor.fetchall()
-        return render_template('LabUpdate.html', data=data,user_name=user_name)
+        return render_template('LabUpdate.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def lab_delete(self):
         name = request.args["name"]
@@ -137,7 +137,7 @@ class AuditoriumUpdate:
         cursor.execute(
             "SELECT * from Auditorium_Info")
         data = cursor.fetchall()
-        return render_template('AuditoriumUpdate.html', data=data,user_name=user_name)
+        return render_template('AuditoriumUpdate.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def auditorium_delete(self):
         name = request.args["name"]
@@ -203,7 +203,7 @@ class FieldUpdate:
         cursor.execute(
             "SELECT * from Field_Info")
         data = cursor.fetchall()
-        return render_template('FieldUpdate.html', data=data,user_name=user_name)
+        return render_template('FieldUpdate.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def field_delete(self):
         name = request.args["name"]
