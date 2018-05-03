@@ -27,8 +27,7 @@
     <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
    <!-- This for login Modal -->
 
-
-
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body id="header">
@@ -46,7 +45,7 @@
             <li  class="active"  style="width: 110px" ><a class="active" href="index" >Home</a></li>
             <li  class="active"><a class="active" href="table" id = "lab">Lab Booking</a></li>
             <li   class="active" style="width: 160px"><a class="active" href="#" id="class">Class Booking</a></li>
-            <li  class="active" style="width: 210px"><a class="active " href="auditorium_test" id="auditorium" >Auditorium Booking</a></li>
+            <li  class="active" style="width: 210px"><a class="active " href="auditorium_main" id="auditorium" >Auditorium Booking</a></li>
             <li  class="active" style="width: 150px"><a class="active" href="field_main" id="field" >Field Booking</a></li>
           </ul>
         </div>
@@ -186,7 +185,7 @@
                                     <tbody class="card-link" style="font-family: 'Josefin Sans', sans-serif">
 
                                     {% for row in data %}
-                                        {#                                        <a href="#detail_info">#}
+                                        {#    <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>                                    <a href="#detail_info">#}
                                         <tr class="clickable-row">
 
                                             {% for d in row %}

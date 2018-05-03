@@ -327,6 +327,8 @@ def field_book():
 
 @app.route('/user_profile',methods=["GET","POST"])
 def view_profile():
+    accepted=0
+    process=0
     date_current = str(date.today())
     username = session['username']
     # date_current ="2018-04-04"
@@ -338,18 +340,27 @@ def view_profile():
         (username,))
 
     dataA = cursor.fetchall()
+    for row in dataA:
+        if row[1]=="Booked": accepted = accepted+1
+        else: process = process +1
+
     Aud= len(dataA)
 
     cursor.execute(
         "SELECT  Field,Status,Date FROM   Field_Table WHERE Username = %s",
         (username,))
     dataF = cursor.fetchall()
+    for row in dataF:
+        if row[1] == "Booked":
+            accepted = accepted + 1
+        else:
+            process = process + 1
     Fild= len(dataF)
     cursor.execute(
         "SELECT  username,email,phone,dept FROM   Registration WHERE Username = %s",
         (username,))
     dataP= cursor.fetchall()
-    dataNum=[Aud,Fild]
+    dataNum=[Aud,Fild,accepted,process]
     return render_template('user_profile.html',dataA=dataA,dataF=dataF,dataP= dataP,dataNum=dataNum);
     #return render_template('profile.html')
 
