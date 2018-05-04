@@ -11,6 +11,7 @@ from ClassLabRequest import ClassBookingReq,User,LabBookingReq
 from AudiFieldRequest import AuditoriumBookingReq,FieldBookingReq
 from Update import *
 from ClassLabBook import *
+from Pass import DB_PASS
 
 import formencode_jinja2
 jinja_env = Environment(extensions=['jinja2.ext.loopcontrols'])
@@ -26,7 +27,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 # app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
 # app.config['MYSQL_DATABASE_DB'] = "Du_Booking_Data"
-app.config['MYSQL_DATABASE_PASSWORD'] = '$huvo919671'
+app.config['MYSQL_DATABASE_PASSWORD'] = DB_PASS
 app.config['MYSQL_DATABASE_DB'] = "Booking_system"
 mysql.init_app(app)
 
@@ -160,7 +161,6 @@ def login_required(f):
 @login_required
 def logout():
     session.clear()
-    session['username']="Guest"
     gc.collect()
     return render_template("index.html")
 #Auditorium info page
@@ -545,6 +545,12 @@ def showLabStatus():
 @app.route('/labFixedDate', methods=["GET", "POST"])
 def showLabSlotOnFixedDate():
     return labBookingClass(mysql).showLabSlotOnFixedDate()
+
+
+@app.route('/selectedSlotLab', methods=["GET", "POST"])
+def showSelectedLabSlot():
+    return labBookingClass(mysql).applyforLabBookig()
+
 
 
 

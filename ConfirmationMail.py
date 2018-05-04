@@ -1,5 +1,6 @@
 import smtplib
 from email.mime import multipart,text as mailText
+from Pass import MAIL_PASS
 
 def send_mail(msg_body,toaddr):
     fromaddr = "lab.project.manager@gmail.com"
@@ -15,7 +16,7 @@ def send_mail(msg_body,toaddr):
     server.starttls()
     server.ehlo()
     #TODO: right password needed to provide
-    server.login("lab.project.manager@gmail.com", "515557")
+    server.login("lab.project.manager@gmail.com",MAIL_PASS)
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()

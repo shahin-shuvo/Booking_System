@@ -1,5 +1,6 @@
 #file to be ignored
 *.xml
+Pass.py
 
 #folder to be ignored
 workspace.xml

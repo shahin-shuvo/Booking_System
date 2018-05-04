@@ -1,27 +1,32 @@
-from datetime import date
+import time
+from datetime import datetime, date
 
 from flask import Flask, render_template, request, session
+
 username = "Guest"
+
+
 class classBookingClass:
-    def __init__(self,mysql):
-        self.mysql=mysql
+    def __init__(self, mysql):
+        self.mysql = mysql
 
     def showClassSlot(self):
         conn = self.mysql.connect()
         cursor = conn.cursor()
-        username=""
+        username = ""
         today = ""
 
         try:
             today = session['today_date']
         except KeyError:
             print("Not Found")
+            today = str(date.today())
 
-        #today = "'" + today + "'"
+        # today = "'" + today + "'"
 
         # for selecting the desired date data
 
-        cursor.execute("SELECT * FROM classRoomTable WHERE date_date=%s",(today,))
+        cursor.execute("SELECT * FROM classRoomTable WHERE date_date=%s", (today,))
         slotData = cursor.fetchall()
 
         # fetch all the room no
@@ -51,10 +56,10 @@ class classBookingClass:
 
         # copy the class room no based on the selected date
         for i in range(limit):
-            #foundClassRoomArray[i] = int(slotData[i][0])
+            # foundClassRoomArray[i] = int(slotData[i][0])
             foundClassRoomArray[i] = slotData[i][0]
 
-        #foundClassRoomArray.sort()
+        # foundClassRoomArray.sort()
 
         selectDateData = []
 
@@ -86,18 +91,39 @@ class classBookingClass:
 
         # print ("data: ", len(numberOfSlot))
         # print ("fnd class room: ", foundClassRoomArray)
-        #print ("slot: ", selectDateData)
+        # print ("slot: ", selectDateData)
 
         today_class_date = str(date.today())
         session['today_date'] = today_class_date
 
-        conn.close()
+
 
         if 'logged_in' in session:
             username = session['username']
         else:
             username = "Guest"
-        return render_template('classRoomBooking.html', demoData=selectDateData, data=numberOfSlot,username=username)
+
+        pattern = '%Y-%m-%d'
+        pattern1 = '%Y-%m-%d'
+        epoch_today_class_date = int(time.mktime(time.strptime(today_class_date, pattern1)))
+        epoch_today = int(time.mktime(time.strptime(today, pattern)))
+
+        isPossible = 0
+
+        if (epoch_today_class_date > epoch_today):
+           isPossible = 0
+        else:
+            isPossible = 1
+
+        print("flag: ", isPossible)
+
+        print(today)
+        print(today_class_date)
+
+        conn.close()
+
+        return render_template('classRoomBooking.html', demoData=selectDateData, data=numberOfSlot, username=username,
+                               isPossible=isPossible)
 
     def showClassSlotOnFixedDate(self):
         today = request.args['query']
@@ -109,52 +135,75 @@ class classBookingClass:
         roomNo = request.args['roomNo']
         slot = request.args['slot']
         selected_date = request.args['selected_date']
-        current_date=str(date.today())
-        #print(current_date)
-        #print("slot: "+ slot, " room: "+ roomNo, "date: "+date)
-        slots=[]
+        current_date = str(date.today())
+        # print(current_date)
+        # print("slot: "+ slot, " room: "+ roomNo, "date: "+date)
+        slots = []
         for i in range(5):
             slots.append(0)
-        slots[int(slot)]=1
-        name=session['username']
-        #print(name)
+        slots[int(slot) - 1] = 1
+        name = session['username']
+        print(slot)
         conn = self.mysql.connect()
         cursor = conn.cursor()
 
-        # cursor.execute("""UPDATE
-        #                 """)
+        cursor.execute("SELECT * FROM classRoomTable WHERE room_no = %s AND date_date = %s", (roomNo, selected_date,))
+        is_row = cursor.fetchall()
+        if (len(is_row) > 0):
+            print(is_row)
+            update_slot = []
+            for i in range(5):
+                update_slot.append(is_row[0][2 + i])
+            update_slot[int(slot) - 1] = '1'
+            cursor.execute("""UPDATE classRoomTable SET s1 = %s,s2 = %s,s3 = %s ,s4=%s,s5 = %s
+                                          WHERE room_no = %s AND date_date = %s""",
+                           (update_slot[0], update_slot[1], update_slot[2], update_slot[3], update_slot[4], roomNo,
+                            selected_date,))
 
-        #TODO:Dept should be replaced with dept name
+        else:
+            new_slot = []
+            for i in range(5):
+                new_slot.append('2')
+            new_slot[int(slot) - 1] = '1'
+            cursor.execute("""INSERT INTO classRoomTable (room_no,date_date,s1,s2,s3,s4,s5) 
+                              VALUES (%s,%s,%s,%s,%s,%s,%s)""",
+                           (roomNo, selected_date, new_slot[0], new_slot[1], new_slot[2], new_slot[3], new_slot[4]))
+
+        # TODO:Dept should be replaced with dept name
         cursor.execute("""INSERT INTO class_booking_request
                          (u_name,room_no,dept_name,registration_date,start_date,slot_1,slot_2,slot_3,slot_4,slot_5,admin_confirmation)
-                         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,0)""",(name,roomNo,"CSE",current_date,selected_date,slots[0],slots[1],slots[2],
-                                                                     slots[3],slots[4],))
+                         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,0)""",
+                       (name, roomNo, "CSE", current_date, selected_date, slots[0], slots[1], slots[2],
+                        slots[3], slots[4],))
         conn.commit()
 
         return "0"
 
 
 class labBookingClass:
-    def __init__(self,mysql):
-        self.mysql=mysql
+    def __init__(self, mysql):
+        self.mysql = mysql
 
     def showLabStatus(self):
         conn = self.mysql.connect()
         cursor = conn.cursor()
+
+        username = ""
 
         today = ""
         try:
             today = session['today_date1']
         except KeyError:
             print("Not Found")
+            today = str(date.today())
 
-        #today = "'" + today + "'"
+        # today = "'" + today + "'"
 
         cursor.execute("SELECT * FROM LabTable WHERE date_date=%s", (today,))
         # cursorClassSlot = conn.execute("SELECT * FROM LabTable")
         slotData = cursor.fetchall()
 
-        cursor.execute("SELECT * FROM LabNoTable")
+        cursor.execute("SELECT room_name FROM lab_info WHERE dept_name='CSE'")
         labRoomNoData = cursor.fetchall()
 
         # fetch the number of lab slots
@@ -175,10 +224,10 @@ class labBookingClass:
 
         # copy the classRoom no
         for i in range(length):
-            labRoomNo[i] = int(labRoomNoData[i][0])
+            labRoomNo[i] = labRoomNoData[i][0]
 
         for i in range(limit):
-            foundLabRoomArray[i] = int(slotData[i][0])
+            foundLabRoomArray[i] = slotData[i][0]
 
         k = 0
         selectDateData = []
@@ -215,14 +264,77 @@ class labBookingClass:
         todayLabDate = str(date.today())
         session['today_date1'] = todayLabDate
 
+        if 'logged_in' in session:
+            username = session['username']
+        else:
+            username = "Guest"
+
+        pattern = '%Y-%m-%d'
+        pattern1 = '%Y-%m-%d'
+        epoch_today_class_date = int(time.mktime(time.strptime(todayLabDate, pattern1)))
+        epoch_today = int(time.mktime(time.strptime(today, pattern)))
+
+        isPossible = 0
+
+        if (epoch_today_class_date > epoch_today):
+            isPossible = 0
+        else:
+            isPossible = 1
+
         # print ("lab Data: ", labData)
         conn.close()
 
-        return render_template('labBooking.html', demoData=selectDateData, data=numberOfSlot)
 
+        return render_template('labBooking.html', demoData=selectDateData, data=numberOfSlot,username=username, isPossible=isPossible)
 
     def showLabSlotOnFixedDate(self):
         today = request.args['query']
         session['today_date1'] = today
 
         return "1"
+    def applyforLabBookig(self):
+        roomNo = request.args['roomNo']
+        slot = request.args['slot']
+        selected_date = request.args['selected_date']
+        current_date = str(date.today())
+        # print(current_date)
+        # print("slot: "+ slot, " room: "+ roomNo, "date: "+date)
+        slots = []
+        for i in range(2):
+            slots.append(0)
+        slots[int(slot) - 1] = 1
+        name = session['username']
+        print(slot)
+        conn = self.mysql.connect()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM LabTable WHERE labNo = %s AND date_date = %s", (roomNo, selected_date,))
+        is_row = cursor.fetchall()
+        if (len(is_row) > 0):
+            print(is_row)
+            update_slot = []
+            for i in range(2):
+                update_slot.append(is_row[0][2 + i])
+            update_slot[int(slot) - 1] = '1'
+            cursor.execute("""UPDATE LabTable SET s1 = %s,s2 = %s
+                                                  WHERE labNo = %s AND date_date = %s""",
+                           (update_slot[0], update_slot[1], roomNo,
+                            selected_date,))
+
+        else:
+            new_slot = []
+            for i in range(2):
+                new_slot.append('2')
+            new_slot[int(slot) - 1] = '1'
+            cursor.execute("""INSERT INTO LabTable (labNo,date_date,s1,s2) 
+                                      VALUES (%s,%s,%s,%s)""",
+                           (roomNo, selected_date, new_slot[0], new_slot[1]))
+
+        # TODO:Dept should be replaced with dept name
+        cursor.execute("""INSERT INTO lab_booking_request
+                                 (u_name,room_no,dept_name,registration_date,start_date,slot_1,slot_2,admin_confirmation)
+                                 VALUES (%s,%s,%s,%s,%s,%s,%s,0)""",
+                       (name, roomNo, "CSE", current_date, selected_date, slots[0], slots[1],))
+        conn.commit()
+
+        return "0"

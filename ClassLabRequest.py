@@ -1,21 +1,28 @@
 from json import dumps
-from flask import render_template, request,make_response
-from ConfirmationMail import send_mail
 from threading import Thread
+
+from flask import render_template, request,make_response,session,redirect,url_for
 from dateutil import parser
+from UtilityClass import img_link
+from ConfirmationMail import send_mail
 
 class ClassBookingReq:
     def __init__(self,mysql):
         self.mysql=mysql
 
     def class_booking(self):
+        try:
+            user_name=session['username']
+            # check=session['type']
+        except:
+            return redirect(url_for('login'))
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute("""SELECT u_name,req_id, room_no,registration_date,start_date, 
                           end_date, slot_1, slot_2, slot_3, slot_4, slot_5,admin_confirmation 
                           from class_booking_request""")
         data = cursor.fetchall()
-        return render_template('ClassBookingReq.html', data=data)
+        return render_template('ClassBookingReq.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def feedback(self):
         reply = request.args['query']
@@ -57,8 +64,8 @@ class ClassBookingReq:
              "Time Range : " + time_range + "\n" \
             "Slot Numbers : " + time_slot + "\n"
         msg_body = msg_body + "\nWith Regards\nDU Online Booking System\nFor any query visit https://www.du.ac.bd"
-        # mailThread = Thread(target=send_mail, args=(msg_body, email))
-        # mailThread.start()
+        mailThread = Thread(target=send_mail, args=(msg_body, email))
+        mailThread.start()
 
         print("Request id " + str(req_id_f))
         print(msg_body)
@@ -72,7 +79,7 @@ class ClassBookingReq:
         slots=[]
         for i in range(5):
             slots.append(data[0][2+i])
-        print(slots)
+        # print(slots)
         if(reply==1):
             for i in r_slot:
                 slots[int(i)-1]='0'
@@ -81,7 +88,7 @@ class ClassBookingReq:
                 slots[int(i)-1]='2'
 
 
-        print(slots)
+        # print(slots)
         try:
             cursor.execute("""UPDATE class_booking_request 
                               SET admin_confirmation = %s WHERE req_id = %s"""
@@ -101,14 +108,19 @@ class LabBookingReq:
         self.mysql=mysql
 
     def lab_booking(self):
+        try:
+            user_name=session['username']
+        except:
+            return redirect(url_for('login'))
+
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
             """SELECT u_name,req_id, room_no,registration_date,start_date, end_date, slot_1,
-              slot_2, slot_3, slot_4, slot_5,admin_confirmation
+              slot_2,admin_confirmation
                from lab_booking_request""")
         data = cursor.fetchall()
-        return render_template('LabBookingReq.html', data=data)
+        return render_template('LabBookingReq.html', data=data,user_name=user_name,admin_image_link=img_link(user_name))
 
     def lab_feedback(self):
         reply = request.args['query']
@@ -119,10 +131,16 @@ class LabBookingReq:
         end_date = request.args['end_date']
         time_range = request.args['time_range']
         time_slot = request.args['time_slot']
+
+        requested_date = str(parser.parse(start_date)).split(" ")[0]
+
         req_id = request.args['reqid']
         req_id_f = int(req_id)
         print(req_id_f)
         confirmed = ""
+
+        r_slot = time_slot.split(",")
+
         if reply.lower() == "yes":
             reply = 1
             confirmed = "confirmed"
@@ -150,10 +168,30 @@ class LabBookingReq:
         mailThread.start()
         conn = self.mysql.connect()
         cursor = conn.cursor()
+        cursor.execute("SELECT * FROM LabTable WHERE labNo = %s AND date_date = %s",
+                       (room_name, requested_date,))
+        data = cursor.fetchall()
+        print(room_name+requested_date)
+        print(time_slot)
+        slots = []
+        for i in range(2):
+            slots.append(data[0][2 + i])
+        # print(slots)
+        if (reply == 1):
+            for i in r_slot:
+                slots[int(i) - 1] = '0'
+        elif (reply == 0):
+            for i in r_slot:
+                slots[int(i) - 1] = '2'
+
+        # print(slots)
         try:
             cursor.execute("""UPDATE lab_booking_request 
-                               SET admin_confirmation = %s WHERE u_id = %s"""
+                                      SET admin_confirmation = %s WHERE req_id = %s"""
                            , (reply, req_id_f,))
+            cursor.execute("""UPDATE LabTable SET s1 = %s,s2 = %s
+                                      WHERE labNo = %s AND date_date = %s""",
+                           (slots[0], slots[1], room_name, requested_date,))
             conn.commit()
             return "Success"
         except Exception as e:

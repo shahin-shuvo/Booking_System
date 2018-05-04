@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#my_data').dataTable({
-        "aaSorting": [[3, 'desc']],
+        "aaSorting": [[1, 'desc']],
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
