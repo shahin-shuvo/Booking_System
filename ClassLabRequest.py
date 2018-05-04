@@ -1,7 +1,10 @@
 from json import dumps
+from threading import Thread
+
 from flask import render_template, request,make_response,session,redirect,url_for
 from dateutil import parser
 from UtilityClass import img_link
+from ConfirmationMail import send_mail
 
 class ClassBookingReq:
     def __init__(self,mysql):
@@ -10,6 +13,7 @@ class ClassBookingReq:
     def class_booking(self):
         try:
             user_name=session['username']
+            # check=session['type']
         except:
             return redirect(url_for('login'))
         conn = self.mysql.connect()
@@ -60,8 +64,8 @@ class ClassBookingReq:
              "Time Range : " + time_range + "\n" \
             "Slot Numbers : " + time_slot + "\n"
         msg_body = msg_body + "\nWith Regards\nDU Online Booking System\nFor any query visit https://www.du.ac.bd"
-        # mailThread = Thread(target=send_mail, args=(msg_body, email))
-        # mailThread.start()
+        mailThread = Thread(target=send_mail, args=(msg_body, email))
+        mailThread.start()
 
         print("Request id " + str(req_id_f))
         print(msg_body)
@@ -108,6 +112,7 @@ class LabBookingReq:
             user_name=session['username']
         except:
             return redirect(url_for('login'))
+
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute(
@@ -159,8 +164,8 @@ class LabBookingReq:
                         "Slot Numbers : " + time_slot + "\n"
         msg_body = msg_body + "\nWith Regards\nDU Online Booking System\nFor any query visit https://www.du.ac.bd"
         print(msg_body)
-        # mailThread = Thread(target=send_mail, args=(msg_body, email))
-        # mailThread.start()
+        mailThread = Thread(target=send_mail, args=(msg_body, email))
+        mailThread.start()
         conn = self.mysql.connect()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM LabTable WHERE labNo = %s AND date_date = %s",
