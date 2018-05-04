@@ -22,6 +22,32 @@ class profile_class:
         cursor = conn.cursor()
 
         cursor.execute(
+            "SELECT  room_no,registration_date,start_date,end_date,admin_confirmation FROM   class_booking_request WHERE u_name = %s",
+            (username,))
+
+        dataC = cursor.fetchall()
+        for row in dataC:
+            if row[4]==1:
+                accepted = accepted + 1
+            elif  row[4]==0 :
+                process = process + 1
+
+        clas = len(dataC)
+
+        cursor.execute(
+            "SELECT  room_no,registration_date,start_date,end_date,admin_confirmation FROM   lab_booking_request WHERE u_name = %s",
+            (username,))
+
+        dataL = cursor.fetchall()
+        for row in dataL:
+            if row[4] == 1:
+                accepted = accepted + 1
+            elif row[4] == 0:
+                process = process + 1
+
+        lab = len(dataL)
+
+        cursor.execute(
             "SELECT  Auditorium,Status,Date FROM   Auditorium_Table WHERE Username = %s",
             (username,))
 
@@ -48,8 +74,9 @@ class profile_class:
             "SELECT  username,email,phone,dept FROM   Registration WHERE Username = %s",
             (username,))
         dataP = cursor.fetchall()
-        dataNum = [Aud, Fild, accepted, process]
-        return render_template('user_profile.html', dataA=dataA, dataF=dataF, dataP=dataP, dataNum=dataNum);
+        dataNum = [Aud, Fild, accepted, process,clas,lab]
+
+        return render_template('user_profile.html', dataA=dataA, dataF=dataF, dataP=dataP, dataNum=dataNum,dataC=dataC,dataL=dataL)
         # return render_template('profile.html')
 
 
