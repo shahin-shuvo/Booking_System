@@ -11,6 +11,8 @@ from ClassLabRequest import ClassBookingReq,User,LabBookingReq
 from AudiFieldRequest import AuditoriumBookingReq,FieldBookingReq
 from Update import *
 from ClassLabBook import *
+from Signup import *
+from Login import *
 from Pass import DB_PASS
 
 import formencode_jinja2
@@ -52,99 +54,18 @@ def signup():
 
 @app.route('/signup_helper', methods=["GET", "POST"])
 def signup_helper():
-    global logged_in
-    try:
-        query = request.args['query']
-        query = json.loads(query)
-        conn = mysql.connect()
-        x = conn.cursor()
-
-
-
-
-        y = x.execute("SELECT * FROM Registration WHERE username = (%s)", (query[0],))
-        if int(y) > 0:
-            return "Exist"
-
-        else:
-            data = (query[0], query[1], query[2], query[3], query[4])
-
-            x.execute("INSERT INTO Registration (username,email,password,phone,dept) VALUES (%s, %s, %s, %s, %s)",
-                          data)
-            flash('Thanks for Registering')
-            conn.commit()
-            conn.close()
-            gc.collect()
-            session['logged_in'] = True
-            session['username'] = username
-            return "OK"
-        return "ERROR"
-
-    except Exception as e:
-        return (str(e))
+    return Signup_Class(mysql).signup_helper()
 @app.route('/login', methods=["GET", "POST"])
 def login():
     return render_template('login.html')
 
 @app.route('/login_helper', methods=["GET", "POST"])
 def login_helper():
-    error = ''
-    try:
-        query = request.args['query']
-        query = json.loads(query)
-        conn = mysql.connect()
-        c = conn.cursor()
-        print(query[0])
-        print(query[1])
-        if query[2]=="ADMIN":
-            data = c.execute("SELECT * FROM Admin WHERE username = (%s) AND password = (%s)",
-                             (query[0], query[1]))
-            if int(data) > 0:
-                session['logged_in'] = True
-                session['username'] = query[0]
-                gc.collect()
-                return "OK_Admin"
-        elif query[2]=="USER":
-            data = c.execute("SELECT * FROM Registration WHERE username = (%s) AND password = (%s)",
-                             (query[0], query[1]))
-            if int(data) > 0:
-                session['logged_in'] = True
-                session['username'] = query[0]
-                gc.collect()
-                return "OK_User"
-
-        return "error"
-
-
-    except Exception as e:
-        # flash(e)
-        error = "Invalid credentials, try again."
-        return "Error"
+   return Login_Class(mysql).login_helper()
 #This is only for user before booking
 @app.route('/login_user', methods=["GET", "POST"])
 def login_user():
-    error = ''
-    try:
-        query = request.args['query']
-        query = json.loads(query)
-        conn = mysql.connect()
-        c = conn.cursor()
-        data = c.execute("SELECT * FROM Registration WHERE username = (%s) AND password = (%s)",
-                         (query[0], query[1]))
-        if int(data) > 0:
-            session['logged_in'] = True
-            session['username'] = query[0]
-            gc.collect()
-            return "OK_User"
-
-        return "error"
-
-
-    except Exception as e:
-        # flash(e)
-        error = "Invalid credentials, try again."
-        return "Error"
-
+    return Login_Class(mysql).login_user()
 
 def login_required(f):
     @wraps(f)
@@ -170,7 +91,6 @@ def blog1():
 #Field info page
 @app.route('/field_blog',methods=["GET", "POST"])
 def blog2():
-
     return render_template('field_blog.html')
 
 
