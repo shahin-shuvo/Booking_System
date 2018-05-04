@@ -12,6 +12,7 @@ from AudiFieldRequest import AuditoriumBookingReq,FieldBookingReq
 from Update import *
 from ClassLabBook import *
 from Signup import *
+from Auditorium import *
 from Login import *
 from Pass import DB_PASS
 
@@ -99,77 +100,21 @@ def blog2():
 #Here are all function of auditorium related
 @app.route('/auditorium_main',methods=['GET'])
 def auditorium_final():
-    date_current=str(date.today())
-    session['date'] = date_current
-    #date_current ="2018-04-04"
-    conn = mysql.connect()
-    cursor = conn.cursor()
-
-
-    cursor.execute("SELECT  Auditorium_Info.Name, Auditorium_Table.Status FROM Auditorium_Info LEFT OUTER JOIN  Auditorium_Table  ON Auditorium_Info.Name=Auditorium_Table.Auditorium AND Auditorium_Table.Date= %s ORDER BY Auditorium_Info.Name DESC",(date_current,))
-
-    data = cursor.fetchall()
-    print(data)
-    if 'logged_in' in session:
-            username = session['username']
-    else: username = "Guest"
-    return render_template("auditorium_main.html", data=data, username=username, date =date_current)
-
+   return auditorium_book_class(mysql).auditorium_final()
 
 #After selecting date this function return data
 @app.route('/auditorium_data_query',methods=["GET","POST"])
 def auditorium_query():
-    #initialize
-    date_current = request.args['query']
-    if(date_current==""):
-        date_current = str(date.today())
-    session['date'] = date_current
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT  Auditorium_Info.Name, Auditorium_Table.Status FROM Auditorium_Info LEFT OUTER JOIN  Auditorium_Table  ON Auditorium_Info.Name=Auditorium_Table.Auditorium AND Auditorium_Table.Date= %s  ORDER BY Auditorium_Info.Name ASC",
-        (date_current,))
-    data = cursor.fetchall()
-    print(data)
-    return make_response(dumps(data))
+   return auditorium_book_class(mysql).auditorium_query()
 
 #this function receive auditorium name
 @app.route('/auditorium_book_helper',methods=["GET","POST"])
 def auditorium_book_helper():
-    try:
-       auditorium = request.args['query']
-       session['auditorium_applied'] = auditorium
-       print(auditorium)
-       return "0"
-    except Exception as e:
-        return "1"
+    return auditorium_book_class(mysql).auditorium_book_helper()
 
 @app.route('/auditorium_book',methods=["GET","POST"])
 def auditorium_book():
-    #initialize
-    status = "Already Applied"
-    auditorium = session['auditorium_applied']
-    file = request.args['query2']
-    date_apply = session['date']
-    username = session['username']
-    print(auditorium)
-    print(date_apply)
-    print(username)
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    try:
-        with open('/home/shuvo/Pictures/'+file, "rb") as image_file:
-            encoded_string = base64.b64encode(image_file.read())
-        cursor.execute(
-            "INSERT INTO Auditorium_Table (Auditorium,Date,Status,Payment,Username,Applydate) VALUES (%s, %s, %s,  %s, %s, %s)",
-            (auditorium, date_apply, status, encoded_string, username, date_apply))
-        # x.execute("UPDATE Auditorium_table SET Status = %s WHERE username = %s",(table,username,))
-        conn.commit()
-        conn.close()
-        return "0"
-
-    except Exception as e:
-        return "1"
+   return auditorium_book_class(mysql).auditorium_book()
 
 # Start of fielding booking
 #Here are all function related to field booking
